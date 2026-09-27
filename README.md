@@ -5,7 +5,7 @@
 Graphic declaration of artificial intelligence use in manuscripts.
 Declaración gráfica de uso de inteligencia artificial en manuscritos.
 
-**[▶ Open the app / Abrir la app](https://editorial-labs-cr.github.io/ai-labelling-system/)**
+**[▶ Open the app / Abrir la app](https://editorial-labs-cr.github.io/aimls/)**
 
 Unidad de Ciencia Abierta · **Vicerrectoría de Investigación**
 Universidad Estatal a Distancia (UNED), Costa Rica
@@ -97,7 +97,7 @@ window.__app.runSelfTest()
 
 > Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 21) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
-> Distancia. https://github.com/Editorial-Labs-CR/ai-labelling-system
+> Distancia. https://github.com/Editorial-Labs-CR/aimls
 
 GitHub also reads [`CITATION.cff`](CITATION.cff).
 
@@ -204,7 +204,7 @@ window.__app.runSelfTest()
 
 > Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 21) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
-> Distancia. https://github.com/Editorial-Labs-CR/ai-labelling-system
+> Distancia. https://github.com/Editorial-Labs-CR/aimls
 
 ### Licencias
 

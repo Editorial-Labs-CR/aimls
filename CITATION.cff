@@ -22,8 +22,8 @@ date-released: "2026-09-27"
 license:
   - MIT
   - CC-BY-4.0
-repository-code: "https://github.com/Editorial-Labs-CR/ai-labelling-system"
-url: "https://editorial-labs-cr.github.io/ai-labelling-system/"
+repository-code: "https://github.com/Editorial-Labs-CR/aimls"
+url: "https://editorial-labs-cr.github.io/aimls/"
 keywords:
   - research integrity
   - artificial intelligence

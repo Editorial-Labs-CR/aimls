@@ -37,6 +37,11 @@ descriptor are not translated.
   página de atrás.
 - Imagen de vista previa regenerada con el nombre nuevo.
 
+El repositorio pasa a llamarse **`aimls`**, en minúsculas. La dirección pública queda en
+`editorial-labs-cr.github.io/aimls/`, que es la que viaja dentro del código QR de cada
+etiqueta. Se cambia ahora, antes de publicar, porque una vez que haya etiquetas impresas
+circulando esa dirección ya no se puede tocar sin romperlas.
+
 Limpieza y endurecimiento, sin cambio visible:
 
 - El script de terceros (QRious, desde cdnjs) se carga con **verificación de
@@ -48,8 +53,9 @@ Limpieza y endurecimiento, sin cambio visible:
 - Se elimina la regla `.sr-only`, muerta desde que el rótulo del selector es visible.
 - Pruebas nuevas: el índice del manual en los tres idiomas, una guarda contra el nombre
   viejo del selector, comillas angulares y números de apartado sobre el texto ya
-  renderizado (antes solo se miraban los diccionarios, y el manual se escapaba), y la
-  caída a inglés. La batería pasa de 1312 a 1334.
+  renderizado (antes solo se miraban los diccionarios, y el manual se escapaba), la
+  caída a inglés, y que el valor por defecto del QR y los tres metadatos de enlace
+  apunten todos a la misma dirección. La batería pasa de 1312 a 1337.
 
 Corrección: el commit de la versión 20 dejó `CITATION.cff` y el README en la 19, por un
 error al rehacer los commits. Ambos quedan en la 21, coherentes con el resto.
