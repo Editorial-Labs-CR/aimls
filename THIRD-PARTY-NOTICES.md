@@ -30,9 +30,14 @@ test suite.
 
 - Author: Alasdair Mercer
 - Licence: **GPL-3.0**
+- Version: **4.0.2**, pinned in the URL
 - Source: <https://github.com/neocotic/qrious>
 - Loaded at runtime from `cdnjs.cloudflare.com`; **no QRious code is contained in this
   repository.**
+- Loaded with **subresource integrity** (`sha512-…`). If the file served by the CDN ever
+  differed by a single byte, the browser refuses to execute it and the app carries on
+  without QR codes. The hash was computed from the actual file and matches the one
+  cdnjs publishes.
 
 This file links the library from a CDN; the browser combines them when the page runs.
 Because the distributed HTML contains none of its code, the MIT licence of this
@@ -40,12 +45,16 @@ repository is not in conflict with the GPL of the library. This is a practical r
 not legal advice.
 
 Consequence to be aware of: **without a connection the QR code cannot be generated.**
-The label still composes and the QR area comes out empty.
+The label still composes and the QR area comes out empty, as a square with a dashed
+outline. The failure is not silent: the app shows a warning saying the library did not
+load. The same happens if the integrity check fails.
 
 ## 3. Inter — typeface
 
 - Author: Rasmus Andersson
 - Licence: **SIL Open Font License 1.1 (OFL-1.1)**
+- Version: **5.0.16** of the `@fontsource/inter` package, pinned in the URL; weights
+  500, 600 and 700
 - Source: <https://rsms.me/inter/>
 - Loaded at runtime from `cdn.jsdelivr.net` and **embedded as base64 inside exported
   SVG files**, which the OFL expressly permits.

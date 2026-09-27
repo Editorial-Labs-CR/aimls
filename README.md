@@ -29,12 +29,12 @@ AI: ED:1+TR:3+CO:2    the same, with the extent of each one
 AI: N                 no use above the disclosable threshold
 ```
 
-The label **does not replace** the prose declaration a journal asks for: it accompanies
-it, so the record is comparable across articles, aggregable at scale and transportable
-as metadata.
+The label **does not replace** the prose declaration the journal or publishing body
+asks for: it accompanies it, so the record is comparable across articles, aggregable at
+scale and transportable as metadata.
 
-It is an open notation system, **proposed for any scholarly journal**. Adoption is
-gradual and does not require a journal to change its current policies.
+It is an open notation system, **proposed for any journal or publishing body**. Adoption
+is gradual and does not require changing current policies.
 
 ### Vocabulary
 
@@ -60,7 +60,7 @@ preparation only, not the rest of the research process.
 Activity **1** (spell checker, grammar, style) need not be: that is the threshold, set
 by the 2023 STM Guidelines. If you used it alongside other activities, simply leave it unticked. If there was
 nothing above it at all, the correct declaration is `AI: N`, which is exclusive and states
-not that no tool was used but that none was used above the threshold. A journal may set its threshold lower, and `ED` stays available for that.
+not that no tool was used but that none was used above the threshold. A journal or publishing body may set its threshold lower, and `ED` stays available for that.
 
 A second, **optional** axis records the extent of each use: 1 incidental (<¼),
 2 partial (¼–½), 3 majority (½–¾), 4 total (>¾). Omitting it is a valid declaration.
@@ -74,9 +74,10 @@ use must produce the same string, in any country, so that it can be searched, co
 and aggregated. What *does* follow the label language is the natural-language text
 inside the label, and the prose declaration.
 
-The tool has **two independent language controls**: "Screen language", at the top, changes
-what you see while working; "Label and prose language", further down, is the language of the article
-and is what gets printed. An editor can work in one language and publish in another.
+The tool has **two independent language controls**: "Screen language", at the top,
+changes what you see while working; "Label and prose language", further down, is the
+language of the article and is what gets printed. An editor can work in one language and
+publish in another.
 
 ### Running it
 
@@ -132,12 +133,12 @@ AI: ED:1+TR:3+CO:2    lo mismo, con la extensión de cada una
 AI: N                 sin uso por encima del umbral declarable
 ```
 
-La etiqueta **no sustituye** la declaración en prosa que pide la revista: la acompaña,
-para que el dato sea comparable entre artículos, agregable en conjuntos grandes y
-transportable como metadato.
+La etiqueta **no sustituye** la declaración en prosa que pide la revista o entidad
+editora: la acompaña, para que el dato sea comparable entre artículos, agregable en
+conjuntos grandes y transportable como metadato.
 
-Es un sistema de notación abierto, **propuesto para cualquier revista científica**. La
-adopción es gradual y no exige que una revista modifique sus políticas vigentes.
+Es un sistema de notación abierto, **propuesto para cualquier revista o entidad
+editora**. La adopción es gradual y no exige modificar las políticas vigentes.
 
 ### Vocabulario
 
@@ -164,7 +165,7 @@ manuscrito, no el resto del proceso de investigación.
 de STM de 2023. Si la usó junto con otras actividades, basta con dejarla sin marcar. Si no hubo nada por
 encima en absoluto, la declaración correcta es `AI: N`, que es excluyente y no dice que no
 se usara ninguna herramienta sino que no se usó ninguna por encima del umbral.
-Una revista puede situar su umbral más abajo, y para eso `ED` sigue disponible.
+Una revista o entidad editora puede situar su umbral más abajo, y para eso `ED` sigue disponible.
 
 Un segundo eje, **opcional**, registra la extensión de cada uso: 1 puntual (<¼),
 2 parcial (¼–½), 3 mayoritaria (½–¾), 4 total (>¾). Omitirlo es una declaración válida.
@@ -180,9 +181,9 @@ se pueda buscar, comparar y agregar. Lo que *sí* sigue al idioma de la etiqueta
 texto en lengua natural que va dentro, y la prosa de la declaración.
 
 La herramienta tiene **dos controles de idioma independientes**: "Idioma de la
-herramienta", arriba, cambia solo la pantalla; "Idioma de la etiqueta y la prosa", más
-abajo, es el idioma del artículo y es el que se imprime. Una persona editora puede
-trabajar en una lengua y publicar en otra.
+pantalla", arriba, cambia lo que se ve mientras se trabaja; "Idioma de la etiqueta y la
+prosa", más abajo, es el idioma del artículo y es el que se imprime. Una persona editora
+puede trabajar en una lengua y publicar en otra.
 
 ### Cómo se usa
 

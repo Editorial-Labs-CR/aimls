@@ -8,5 +8,6 @@
 *.docx
 Prepints*/
 
-# copia temporal para probar sin conexión
-_sin-conexion.html
+# copias temporales de prueba (sin conexión, comparaciones tipográficas…)
+# El guion bajo inicial las marca: nada publicable empieza así.
+_*.html
