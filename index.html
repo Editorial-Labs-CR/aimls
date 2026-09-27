@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v21
+  AIMLS · AI Manuscript Labelling System — v22
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -721,7 +721,7 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '21',
+  version : '22',
   date    : {es:'27 de setiembre de 2026', en:'27 September 2026', pt:'27 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
@@ -870,7 +870,7 @@ ${extentTable()}
 <h3>8. Frequently asked questions</h3>
 <p><b>Does AIMLS detect whether a text was written by an AI?</b> No. AIMLS does not analyse the manuscript or estimate anything: it only turns what you declare into a label. It is a declaration system, not a detection system.</p>
 <p><b>Does it work for a thesis or a report, or only for journal articles?</b> It works for any manuscript. The vocabulary describes the preparation of a document submitted for publication or assessment, and that includes theses, reports and book chapters.</p>
-<p><b>How do I choose the extent?</b> It is your estimate, not a measurement, and it is optional: you may tick the task and leave the level at "—". If you do declare it, the question is how much of <b>that task</b> the tool did, not how much of the article. If you translated the text with AI help, it is 4 even though translation is a small part of all your work. The proportions are guidance: nobody expects you to count words.</p>
+<p><b>How do I choose the extent?</b> It is your estimate, not a measurement, and it is optional: you may tick the task and leave the level at "—". If you do declare it, the question is how much of <b>that task</b> the tool did, not how much of the article. If the tool translated the whole text, it is 4, even though translating is a small part of all your work. If you translated it yourself and the tool only revised part of it, it is less. The proportions are guidance: nobody expects you to count words.</p>
 <p><b>What if I used AI for mathematical formulas?</b> It depends on what the tool did. If it wrote the mathematical content that appears in the text, that is activity 2. If it only typeset it (converting it to LaTeX, say), that is activity 1 and sits at the threshold. If it did the mathematics (solving, proving, deriving), that is part of the research process and falls outside this system: declare it in prose if you are asked to.</p>
 <p><b>Why are there two language selectors?</b> Because they are two different things. The one at the top, "Screen language", changes what you see while working: it is for whoever operates the tool. The one below, "Label and prose language", is the language of the article, and it is what gets printed. An editor can work in Spanish and produce an English label for an English article. The codes depend on neither.</p>
 <p><b>Does the label replace the written declaration?</b> No. It accompanies it.</p>
@@ -931,7 +931,7 @@ ${extentTable()}
 <h3>8. Perguntas frequentes</h3>
 <p><b>O AIMLS deteta se um texto foi escrito por uma IA?</b> Não. O AIMLS não analisa o manuscrito nem estima nada: apenas converte em etiqueta o que você declara. É um sistema de declaração, não de deteção.</p>
 <p><b>Serve para uma tese ou um relatório, ou só para artigos de revista?</b> Serve para qualquer manuscrito. O vocabulário descreve a preparação de um documento submetido a publicação ou avaliação, e isso inclui teses, relatórios e capítulos de livro.</p>
-<p><b>Como escolho o nível de uso?</b> É uma estimativa sua, não uma medição, e é opcional: pode marcar a tarefa e deixar o nível em "—". Se o declarar, a pergunta é quanto <b>dessa tarefa</b> a ferramenta fez, não quanto do artigo. Se traduziu o texto com ajuda de IA, é 4 mesmo que a tradução seja uma parte pequena de todo o seu trabalho. As proporções são orientação: ninguém espera que conte palavras.</p>
+<p><b>Como escolho o nível de uso?</b> É uma estimativa sua, não uma medição, e é opcional: pode marcar a tarefa e deixar o nível em "—". Se o declarar, a pergunta é quanto <b>dessa tarefa</b> a ferramenta fez, não quanto do artigo. Se a ferramenta traduziu o texto inteiro, é 4, mesmo que traduzir seja uma parte pequena de todo o seu trabalho. Se traduziu você e a ferramenta apenas revisou parte, é menos. As proporções são orientação: ninguém espera que conte palavras.</p>
 <p><b>E se usei IA para as fórmulas matemáticas?</b> Depende do que a ferramenta fez. Se redigiu o conteúdo matemático que aparece no texto, é a atividade 2. Se apenas o formatou (passá-lo para LaTeX, por exemplo), é a atividade 1 e está no limiar. Se fez a matemática (resolver, demonstrar, derivar), isso faz parte do processo de pesquisa e fica fora deste sistema: declare-o em prosa se lho pedirem.</p>
 <p><b>Por que há dois seletores de idioma?</b> Porque são duas coisas distintas. O de cima, "Idioma da tela", muda o que você vê enquanto trabalha: é para quem opera. O de baixo, "Idioma da etiqueta e da prosa", é o idioma do artigo, e é o que se imprime. Uma pessoa editora pode trabalhar em português e produzir uma etiqueta em inglês para um artigo em inglês. Os códigos não dependem de nenhum dos dois.</p>
 <p><b>A etiqueta substitui a declaração escrita?</b> Não. Acompanha-a.</p>
@@ -992,8 +992,8 @@ ${extentTable()}
 <h3>8. Preguntas frecuentes</h3>
 <p><b>¿AIMLS detecta si un texto fue escrito por una IA?</b> No. AIMLS no analiza el manuscrito ni estima nada: solo convierte en etiqueta lo que usted declara. Es un sistema de declaración, no de detección.</p>
 <p><b>¿Sirve para una tesis o un informe, o solo para artículos de revista?</b> Sirve para cualquier manuscrito. El vocabulario describe la preparación de un documento que se somete a publicación o evaluación, y eso incluye tesis, informes y capítulos de libro.</p>
-<p><b>¿Cómo escojo el nivel de uso?</b> Es una estimación suya, no una medición, y es opcional: puede marcar la tarea y dejar el nivel en "—". Si lo declara, la pregunta es cuánto de <b>esa tarea</b> hizo la herramienta, no cuánto del artículo. Si tradujo el texto con ayuda de IA, es 4 aunque la traducción sea una parte pequeña de todo su trabajo. Las proporciones son orientación: nadie espera que cuente palabras.</p>
-<p><b>¿Y si usé IA para las fórmulas matemáticas?</b> Depende de qué hizo la herramienta. Si redactó el contenido matemático que aparece en el texto, es la actividad 2. Si solo lo maquetó (pasarlo a LaTeX, por ejemplo), es la actividad 1 y está en el umbral. Si hizo la matemática (resolver, demostrar, derivar), eso es parte del proceso de investigación y queda fuera de este sistema: decláralo en prosa si se lo piden.</p>
+<p><b>¿Cómo escojo el nivel de uso?</b> Es una estimación suya, no una medición, y es opcional: puede marcar la tarea y dejar el nivel en "—". Si lo declara, la pregunta es cuánto de <b>esa tarea</b> hizo la herramienta, no cuánto del artículo. Si la herramienta tradujo el texto entero, es 4, aunque traducir sea una parte pequeña de todo su trabajo. Si tradujo usted y la herramienta solo revisó parte, es menos. Las proporciones son orientación: nadie espera que cuente palabras.</p>
+<p><b>¿Y si usé IA para las fórmulas matemáticas?</b> Depende de qué hizo la herramienta. Si redactó el contenido matemático que aparece en el texto, es la actividad 2. Si solo lo maquetó (pasarlo a LaTeX, por ejemplo), es la actividad 1 y está en el umbral. Si hizo la matemática (resolver, demostrar, derivar), eso es parte del proceso de investigación y queda fuera de este sistema: declárelo en prosa si se lo piden.</p>
 <p><b>¿Por qué hay dos selectores de idioma?</b> Porque son dos cosas distintas. El de arriba, "Idioma de la pantalla", cambia lo que usted ve mientras trabaja: es para quien opera. El de abajo, "Idioma de la etiqueta y la prosa", es el idioma del artículo, y es el que se imprime. Una persona editora puede trabajar en español y producir una etiqueta en inglés para un artículo en inglés. Los códigos no dependen de ninguno de los dos.</p>
 <p><b>¿La etiqueta reemplaza la declaración escrita?</b> No. La acompaña.</p>
 <p><b>¿Y la verificación humana?</b> No es un nivel de la escala: se entiende que quien declara revisó todo lo incorporado y asume la responsabilidad del contenido.</p>
@@ -2711,6 +2711,29 @@ function runSelfTest(){
 
     ok(angulares.length===0, `no hay comillas angulares en pantalla, solo dobles${angulares.length?': '+angulares.join(' | '):''}`);
     ok(apartados.length===0, `el manual y «Acerca de» tampoco citan números de apartado${apartados.length?': '+apartados.join(' | '):''}`); }
+
+  /* 8septies. TRATAMIENTO DE USTED, EN ESPAÑOL. La app trata de usted de punta
+     a punta: «puede marcar», «es una estimación suya», «si se lo piden». Un
+     solo «decláralo» se coló en las preguntas frecuentes y sobrevivió a dos
+     revisiones porque a simple vista no chirría. La lista es corta y concreta
+     a propósito: formas de tú que nunca aparecen en un texto de usted. No
+     intenta detectar el tuteo en general, que daría falsos positivos. */
+  { const prevL = $('lang').value;
+    irA('es');
+    const TUTEO = [
+      /\b(decláralo|declaralo|márcalo|marcalo|escógelo|escogelo|úsalo|usalo|hazlo|ponlo|déjalo|dejalo|revísalo|revisalo)\b/i,
+      /\b(tienes|puedes|debes|quieres|necesitas|escoges|declaras|marcas)\b/i,
+      /\btu (manuscrito|artículo|declaración|revista|texto)\b/i,
+    ];
+    const t = [];
+    document.querySelectorAll('header, .controls, .actions, .meta, #foot, #manualBody, #aboutBody')
+      .forEach(n=>t.push(n.textContent));
+    document.querySelectorAll('[data-tip]')
+      .forEach(n=>t.push(n.getAttribute('data-tip')||'', n.getAttribute('data-tip-sub')||''));
+    const j = t.join(' ');
+    const tuteos = TUTEO.map(re=>j.match(re)).filter(Boolean).map(m=>m[0]);
+    irA(prevL);
+    ok(tuteos.length===0, `el español trata de usted en todas partes${tuteos.length?', y se coló: '+tuteos.join(', '):''}`); }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida
      en cuatro lugares: el valor por defecto del QR, og:url, og:image y

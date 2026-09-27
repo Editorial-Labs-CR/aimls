@@ -96,7 +96,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 21) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 22) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -203,7 +203,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 21) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 22) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 

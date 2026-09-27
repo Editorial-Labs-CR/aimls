@@ -3,6 +3,24 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 22 — 2026-09-27
+
+Tres correcciones de redacción encontradas en una revisión externa, todas reales y
+verificadas una por una.
+
+- **El manual tuteaba en un sitio.** La pregunta sobre las fórmulas matemáticas decía
+  «decláralo» dentro de un texto que trata de usted de punta a punta. Sobrevivió a dos
+  revisiones porque a simple vista no chirría. Ahora hay una prueba que lo vigila.
+- **«Si tradujo el texto con ayuda de IA, es 4» era ambiguo, y además chocaba con la
+  nota del Eje 2**, que usa el 3 como ejemplo de traducción. «Con ayuda» sugiere un uso
+  parcial, que es justo lo contrario de lo que la frase quería decir. Queda: «Si la
+  herramienta tradujo el texto entero, es 4 […]. Si tradujo usted y la herramienta solo
+  revisó parte, es menos.» Corregido en los tres idiomas.
+- **Las cifras de la batería en la entrada 21 se contradecían**: decía 1337 en un punto
+  y 1311 en otro. Corregido con las cifras medidas.
+
+Batería: **1338 aserciones con conexión · 1329 sin conexión**, con un bloque omitido.
+
 ## 21 — 2026-09-27
 
 **El sistema pasa a llamarse AIMLS — AI Manuscript Labelling System.** El nombre propio y
@@ -55,12 +73,15 @@ Limpieza y endurecimiento, sin cambio visible:
   viejo del selector, comillas angulares y números de apartado sobre el texto ya
   renderizado (antes solo se miraban los diccionarios, y el manual se escapaba), la
   caída a inglés, y que el valor por defecto del QR y los tres metadatos de enlace
-  apunten todos a la misma dirección. La batería pasa de 1312 a 1337.
+  apunten todos a la misma dirección. La batería pasa de las 1299 de la versión 20 a
+  1337.
 
 Corrección: el commit de la versión 20 dejó `CITATION.cff` y el README en la 19, por un
 error al rehacer los commits. Ambos quedan en la 21, coherentes con el resto.
 
-Batería: **1311 aserciones con conexión**, con el bloque del QR omitido sin conexión.
+Batería: **1337 aserciones con conexión · 1328 sin conexión**, con un bloque omitido.
+Una versión anterior de esta entrada decía 1311 y se contradecía con la cifra de arriba:
+era una cuenta intermedia que no se actualizó al añadir las últimas pruebas.
 
 ## 20 — 2026-09-24
 
