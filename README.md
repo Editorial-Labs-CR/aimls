@@ -1,7 +1,9 @@
-# AI Labelling System · Sistema de etiquetado AI
+# AIMLS
 
-Graphic declaration of artificial intelligence use in scientific manuscripts.
-Declaración gráfica de uso de inteligencia artificial en manuscritos científicos.
+**AI Manuscript Labelling System**
+
+Graphic declaration of artificial intelligence use in manuscripts.
+Declaración gráfica de uso de inteligencia artificial en manuscritos.
 
 **[▶ Open the app / Abrir la app](https://editorial-labs-cr.github.io/ai-labelling-system/)**
 
@@ -72,8 +74,8 @@ use must produce the same string, in any country, so that it can be searched, co
 and aggregated. What *does* follow the label language is the natural-language text
 inside the label, and the prose declaration.
 
-The tool has **two independent language controls**: "Tool language", at the top, changes
-the screen only; "Label and prose language", further down, is the language of the article
+The tool has **two independent language controls**: "Screen language", at the top, changes
+what you see while working; "Label and prose language", further down, is the language of the article
 and is what gets printed. An editor can work in one language and publish in another.
 
 ### Running it
@@ -93,7 +95,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AI Labelling System* (Version 19) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 21) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/ai-labelling-system
 
@@ -200,7 +202,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *Sistema de etiquetado AI* (Versión 19) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 21) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/ai-labelling-system
 

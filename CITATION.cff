@@ -1,11 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
-title: "AI Labelling System"
+title: "AIMLS: AI Manuscript Labelling System"
 abstract: >-
   Open notation system and single-file web tool that produces a graphic label
-  and a matching prose declaration of artificial intelligence use in scientific
-  manuscripts, built on the STM (2025) classification of nine activities.
+  and a matching prose declaration of artificial intelligence use in manuscripts, built on the STM (2025) classification of nine activities.
 authors:
   - family-names: "Chinchilla Serrano"
     given-names: "Alexander"
@@ -18,8 +17,8 @@ institution:
   name: >-
     Vicerrectoría de Investigación, Universidad Estatal a Distancia (UNED),
     Costa Rica
-version: "19"
-date-released: "2026-09-23"
+version: "21"
+date-released: "2026-09-27"
 license:
   - MIT
   - CC-BY-4.0

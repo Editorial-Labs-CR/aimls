@@ -3,6 +3,59 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 21 — 2026-09-27
+
+**El sistema pasa a llamarse AIMLS — AI Manuscript Labelling System.** El nombre propio y
+su descriptor no se traducen: son la denominación oficial y se leen igual en todos los
+idiomas. Sustituye a «AI Labelling System» / «Sistema de etiquetado AI».
+
+The system is now named **AIMLS — AI Manuscript Labelling System**. The name and its
+descriptor are not translated.
+
+- El eje 2 deja de apoyarse en la palabra «componente», que la app nunca definía. Las
+  cuatro etiquetas se sostienen solas y la guía de cada número **nombra lo que mide**:
+  «de lo que se tradujo», «de las imágenes y figuras», «de las referencias». La
+  aclaración de que la extensión es de la tarea y no del artículo queda donde hace
+  falta: en la leyenda general, la nota y el manual.
+- El título deja de decir «manuscritos científicos». El sistema sirve igual para una
+  tesis o un informe técnico; «manuscrito» ya acota el alcance heredado de STM.
+- Quien pide la declaración o fija el umbral deja de ser solo «la revista»: se unifica
+  en **«la revista o entidad que publica o evalúa»**, que cubre editoriales,
+  universidades y congresos.
+- En español y portugués se explica que **AI** es la sigla inglesa de *artificial
+  intelligence*, en su primera aparición.
+- El selector de arriba deja de llamarse «Idioma de la herramienta» y pasa a
+  **«Idioma de la pantalla»** (*Screen language*, *Idioma da tela*). Los dos selectores
+  se entienden por oposición y «herramienta» no se oponía a nada: la etiqueta también
+  la produce la herramienta. «Pantalla» contra «etiqueta y prosa» se entiende sin
+  explicación. Cambia también en el manual, las preguntas frecuentes y «Acerca de».
+- Ese selector **se ve como un control**: rótulo, globo y lista dentro de un solo
+  recuadro. Antes era un rótulo gris diminuto junto a una lista suelta, encajonado
+  entre dos botones, y pasaba desapercibido siendo el primer ajuste que se hace.
+- El manual abre con un **índice interactivo**. Se arma leyendo los propios títulos de
+  sección, así que no puede quedar desfasado, y salta dentro del diálogo sin mover la
+  página de atrás.
+- Imagen de vista previa regenerada con el nombre nuevo.
+
+Limpieza y endurecimiento, sin cambio visible:
+
+- El script de terceros (QRious, desde cdnjs) se carga con **verificación de
+  integridad**. Si ese archivo cambiara aunque fuera un byte, el navegador se niega a
+  ejecutarlo y la app sigue funcionando sin código QR, en vez de ejecutar lo que
+  llegue. El hash se calculó del archivo real y coincide con el que publica cdnjs.
+- `applyLang` cae al inglés si recibe un idioma inexistente, en lugar de dejar la
+  pantalla en blanco.
+- Se elimina la regla `.sr-only`, muerta desde que el rótulo del selector es visible.
+- Pruebas nuevas: el índice del manual en los tres idiomas, una guarda contra el nombre
+  viejo del selector, comillas angulares y números de apartado sobre el texto ya
+  renderizado (antes solo se miraban los diccionarios, y el manual se escapaba), y la
+  caída a inglés. La batería pasa de 1312 a 1334.
+
+Corrección: el commit de la versión 20 dejó `CITATION.cff` y el README en la 19, por un
+error al rehacer los commits. Ambos quedan en la 21, coherentes con el resto.
+
+Batería: **1311 aserciones con conexión**, con el bloque del QR omitido sin conexión.
+
 ## 20 — 2026-09-24
 
 Cambios sobre la 19, que ya estaba publicada. Changes on top of the published 19.

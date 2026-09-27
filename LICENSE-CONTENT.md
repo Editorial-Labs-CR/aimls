@@ -45,7 +45,7 @@ applies, and attribution is required.
 
 A sufficient attribution:
 
-> Chinchilla Serrano, A. (2026). *AI Labelling System*. Unidad de Ciencia Abierta,
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System*. Unidad de Ciencia Abierta,
 > Vicerrectoría de Investigación, Universidad Estatal a Distancia (UNED), Costa Rica.
 > CC BY 4.0.
 > https://github.com/Editorial-Labs-CR/ai-labelling-system
