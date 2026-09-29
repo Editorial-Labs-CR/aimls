@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v24
+  AIMLS · AI Manuscript Labelling System — v25
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -147,6 +147,7 @@ SOFTWARE.
   /* Cada persona que colaboró, como bloque propio: sangrado y con una línea
      a la izquierda, para que se distingan del párrafo que las presenta. */
   .dlg-in .person{margin:6px 0 6px 2px;padding-left:10px;border-left:2px solid var(--line);line-height:1.5;}
+  .dlg-in .affil{margin:6px 0 0 12px;color:var(--muted);line-height:1.5;}
   .toc{border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px;margin:14px 0 4px;background:#fafafb;}
   .toc-t{margin:0 0 6px;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
   /* Sin viñetas ni numeración propia: los títulos del manual ya vienen
@@ -294,6 +295,7 @@ SOFTWARE.
       <fieldset id="toolsBox">
         <legend data-i18n="legTools"></legend>
         <div id="toolList"></div>
+        <datalist id="toolNames"></datalist>
         <button type="button" id="btnAddTool" class="addtool" data-i18n="btnAddTool"></button>
         <p class="note" data-i18n="noteTools"></p>
       </fieldset>
@@ -724,7 +726,7 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '24',
+  version : '25',
   date    : {es:'29 de setiembre de 2026', en:'29 September 2026', pt:'29 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
@@ -839,7 +841,7 @@ function manualHTML(){
 <ol>
 <li><b>Tick the tasks</b> where AI was used (Axis 1). If there was no use above the disclosable threshold, keep <b>N</b> ticked: it is the starting option.</li>
 <li><b>Optional: state the extent</b> of each task (Axis 2) with buttons 1 to 4. "—" means you do not state it, which is a valid declaration. Hover over each number to see what it means.</li>
-<li><b>Optional: add the tools and models</b> you used (up to 6). Empty rows are ignored.</li>
+<li><b>Optional: add the tools and models</b> you used (up to 6). Empty rows are ignored. The tool field suggests some frequent names as you type, so that the same tool is always written the same way and the records can be compared. It is <b>not</b> an approved or exhaustive list: any other tool is typed by hand and counts exactly the same.</li>
 <li>Choose the <b>label and prose language</b>: the language of the article. It sets the descriptions inside the label and the language of the prose. It is independent of the screen language, and it does not touch the codes.</li>
 <li>Enter the <b>QR URL</b>: the page that explains the system or the policy of the journal or publishing body.</li>
 <li><b>Download</b> the label as PNG (image) or SVG (vector).</li>
@@ -900,7 +902,7 @@ ${extentTable()}
 <ol>
 <li><b>Marque as tarefas</b> em que usou IA (Eixo 1). Se não houve uso acima do limiar declarável, deixe <b>N</b> marcada: é a opção inicial.</li>
 <li><b>Opcional: indique a extensão</b> de cada tarefa (Eixo 2) com os botões 1 a 4. "—" significa que você não a declara, e é uma declaração válida. Passe o cursor sobre cada número para ver o que significa.</li>
-<li><b>Opcional: acrescente as ferramentas e modelos</b> que usou (até 6). Linhas vazias são ignoradas.</li>
+<li><b>Opcional: acrescente as ferramentas e modelos</b> que usou (até 6). Linhas vazias são ignoradas. O campo da ferramenta sugere alguns nomes frequentes enquanto você escreve, para que a mesma ferramenta se escreva sempre igual e os registros possam ser comparados. <b>Não</b> é uma lista aprovada nem exaustiva: qualquer outra ferramenta se escreve à mão e vale exatamente o mesmo.</li>
 <li>Escolha o <b>idioma da etiqueta e da prosa</b>: o idioma do artigo. Fixa as descrições dentro da etiqueta e a língua da prosa. É independente do idioma da tela, e não toca nos códigos.</li>
 <li>Escreva a <b>URL do QR</b>: a página que explica o sistema ou a política da revista ou entidade que publica.</li>
 <li><b>Baixe</b> a etiqueta em PNG (imagem) ou SVG (vetorial).</li>
@@ -961,7 +963,7 @@ ${extentTable()}
 <ol>
 <li><b>Marque las tareas</b> en las que usó IA (Eje 1). Si no hubo uso por encima del umbral declarable, deje marcada <b>N</b>: es la opción inicial.</li>
 <li><b>Opcional: indique la extensión</b> de cada tarea (Eje 2) con los botones 1 a 4. "—" significa que no la declara, y es una declaración válida. Pase el cursor sobre cada número para ver qué significa.</li>
-<li><b>Opcional: agregue las herramientas y modelos</b> que usó (hasta 6). Las filas vacías se ignoran.</li>
+<li><b>Opcional: agregue las herramientas y modelos</b> que usó (hasta 6). Las filas vacías se ignoran. El campo de la herramienta sugiere algunos nombres frecuentes mientras escribe, para que la misma herramienta se escriba siempre igual y los registros se puedan comparar. <b>No</b> es una lista aprobada ni exhaustiva: cualquier otra herramienta se escribe a mano y vale exactamente lo mismo.</li>
 <li>Escoja el <b>idioma de la etiqueta y la prosa</b>: el idioma del artículo. Fija las descripciones dentro de la etiqueta y la lengua de la prosa. Es independiente del idioma de la pantalla, y no toca los códigos.</li>
 <li>Escriba la <b>URL del QR</b>: la página que explica el sistema o la política de la revista o entidad que publica.</li>
 <li><b>Descargue</b> la etiqueta en PNG (imagen) o SVG (vectorial).</li>
@@ -1022,17 +1024,21 @@ ${extentTable()}
    se vuelve ilegible, y porque así cada quien puede señalar su propia línea. */
 function collabBlock(l){
   const T = {
-    es:{lead:'Colaboración', unidad:'Unidad de Ciencia Abierta',
+    es:{lead:'Colaboración',
         roles:'revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz'},
-    en:{lead:'Collaboration', unidad:'Open Science Unit',
+    en:{lead:'Collaboration',
         roles:'text revision, English-language review, user testing and interface suggestions'},
-    pt:{lead:'Colaboração', unidad:'Unidade de Ciência Aberta',
+    pt:{lead:'Colaboração',
         roles:'revisão de textos, revisão do inglês, testes de uso e sugestões de interface'},
   }[l] || {};
   const gente = APP.collab.map(c =>
     `<p class="person"><b>${esc(c.name)}</b><br>${orcidLink(c.orcid)} · ${mailLink(c.email)}</p>`
   ).join('');
-  return `<p><b>${T.lead}:</b> ${T.unidad}. ${T.roles[0].toUpperCase()+T.roles.slice(1)}.</p>${gente}`;
+  /* La afiliación va DEBAJO de las personas y no en la línea de entrada, con
+     la misma forma que en el bloque de autoría: son de la misma unidad, y
+     ponerla arriba la separaba de a quién pertenece. */
+  const casa = `<p class="affil">${APP.unit[l] || APP.unit.es}<br>${APP.univ}</p>`;
+  return `<p><b>${T.lead}:</b> ${T.roles[0].toUpperCase()+T.roles.slice(1)}.</p>${gente}${casa}`;
 }
 
 function aboutHTML(){
@@ -1291,6 +1297,38 @@ let state = {};                 // code -> extensión 0..4 (0 = no declarada). L
 let fonts = {ready:false, faces:[]};
 let fontState = {kind:null, kb:0};
 /* Herramientas y modelos: opcional y múltiple. Filas vacías se ignoran. */
+/* Sugerencias para el campo de herramienta. Son nombres propios: NO se
+   traducen, igual que los códigos de la etiqueta. Van agrupadas por tarea y
+   no alfabéticamente, porque quien abre la lista sin escribir la recorre
+   mejor así; en cuanto escribe, el navegador filtra y el orden da igual.
+
+   NO es una lista aprobada ni exhaustiva, y el manual lo dice con todas las
+   letras. Se usa `datalist`, no `select`: sugiere sin cerrar la puerta, así
+   que cualquier otra herramienta se escribe a mano y vale igual. Una lista
+   cerrada habría dejado fuera a quien use algo que no esté acá.
+
+   Envejece: este archivo se descarga y se aloja, y quien se lleve una copia
+   congela la lista de ese día. Es el precio de que el dato sea comparable,
+   y por eso son sugerencias y no una imposición. */
+const TOOL_SUGGESTIONS = [
+  // escritura, edición y código. «Copilot» a secas era ambiguo: hay dos
+  // productos distintos con ese nombre, uno para escribir en Office y otro
+  // para código, y declarar «Copilot» no decía cuál. Microsoft va primero
+  // por ser el de uso más extendido entre quienes escriben manuscritos.
+  'ChatGPT', 'Claude', 'Gemini', 'Microsoft Copilot', 'GitHub Copilot', 'DeepSeek',
+  'DeepL', 'Google Translate',                                  // traducción
+  'Grammarly', 'QuillBot', 'Paperpal', 'Writefull', 'Trinka',   // edición de lenguaje
+  'Perplexity', 'Elicit', 'Consensus', 'SciSpace', 'NotebookLM',// búsqueda de referencias
+  'Midjourney', 'DALL·E', 'Stable Diffusion',                   // imágenes y figuras
+  /* Las actividades 4 (formato de datos) y 6 (visualizaciones) no llevan
+     sugerencia propia a propósito: no hay ahí una herramienta dominante como
+     DeepL lo es en traducción, y esas tareas se hacen con los asistentes
+     generales que ya están arriba. Añadir un producto de nicho para tapar el
+     hueco le daría prominencia a algo que casi nadie usa.
+     Tampoco va nada de DETECCIÓN, tipo Turnitin: no se prepara un manuscrito
+     con eso, se revisa, y son dos cosas que el sistema separa a propósito. */
+];
+
 let toolRows = [{name:'', model:''}];
 const clean = v => String(v||'').replace(/\s+/g,' ').trim();
 function toolItems(){
@@ -1983,6 +2021,11 @@ function buildControls(){
 function buildTools(){
   const box = $('toolList');
   box.innerHTML = '';
+  /* Un solo datalist para todas las filas: se llena una vez y cada campo de
+     nombre lo referencia por id. */
+  const dl = $('toolNames');
+  if(dl && !dl.children.length)
+    dl.innerHTML = TOOL_SUGGESTIONS.map(t=>`<option value="${esc(t)}"></option>`).join('');
   const off = !!state.N;                                     // con «sin uso» no hay herramientas que declarar
   toolRows.forEach((r,i)=>{
     const row = document.createElement('div');
@@ -1991,6 +2034,9 @@ function buildTools(){
       const inp = document.createElement('input');
       inp.type = 'text'; inp.maxLength = max; inp.value = r[key];
       inp.placeholder = ph; inp.setAttribute('aria-label', ph); inp.disabled = off;
+      /* Solo el nombre lleva sugerencias. El modelo no: cambia cada pocos
+         meses y sería lo primero en quedar desfasado. */
+      if(key === 'name'){ inp.setAttribute('list', 'toolNames'); inp.autocomplete = 'off'; }
       inp.addEventListener('input', ()=>{ r[key] = inp.value; render(); });
       return inp;
     };
@@ -2817,6 +2863,66 @@ function runSelfTest(){
       || c.name.trim().split(/\s+/).length < 2);
     ok(rotos.length===0,
        `los datos de quienes colaboraron son válidos, con dígito de control correcto${rotos.length?': '+rotos.map(c=>c.name).join(', '):''}`);
+  }
+
+  /* 8nonies. SUGERENCIAS DE HERRAMIENTA. Lo que importa no es que la lista
+     exista, sino que SUGIERA sin cerrar: si un día alguien la cambiara por un
+     <select>, quien use una herramienta que no esté en la lista no podría
+     declararla, y eso rompe el sistema en silencio para esa persona. */
+  { const dl = $('toolNames');
+    ok(!!dl && dl.tagName === 'DATALIST',
+       'las sugerencias van en un datalist, no en una lista cerrada');
+    const ops = [...(dl ? dl.querySelectorAll('option') : [])].map(o=>o.value);
+    ok(ops.length === TOOL_SUGGESTIONS.length && TOOL_SUGGESTIONS.every(t=>ops.includes(t)),
+       `la lista del DOM es la misma que la del código (${ops.length} sugerencias)`);
+    ok(new Set(ops).size === ops.length, 'no hay sugerencias repetidas');
+    const largos = TOOL_SUGGESTIONS.filter(t=>t.length > D.toolNameMax);
+    ok(largos.length===0,
+       `toda sugerencia cabe en el campo${largos.length?': se pasan '+largos.join(', '):''}`);
+
+    /* El campo del nombre las ofrece; el del modelo NO, a propósito: los
+       modelos cambian cada pocos meses y envejecerían primero.
+       La prueba se construye su propia fila en vez de mirar la que haya:
+       a esta altura la batería ya vació toolRows, y comprobar sobre lo que
+       quedara era medir el estado de otra prueba, no esta conducta. */
+    { const antes = JSON.parse(JSON.stringify(toolRows));
+      const antesN = state.N;
+      delete state.N;                       // con «sin uso» los campos van desactivados
+      toolRows = [{name:'', model:''}];
+      buildTools();
+      const fila = $('toolList').querySelector('.tool-row');
+      const campos = fila ? [...fila.querySelectorAll('input')] : [];
+      ok(campos.length===2, 'la fila de herramienta tiene sus dos campos, nombre y modelo');
+      ok(campos.length===2 && campos[0].getAttribute('list')==='toolNames',
+         'el campo del nombre está enganchado a las sugerencias');
+      ok(campos.length===2 && !campos[1].getAttribute('list'),
+         'el campo del modelo NO sugiere: los modelos cambian demasiado rápido');
+      toolRows = antes; if(antesN) state.N = antesN; buildTools(); }
+
+    /* Escribir algo que no está en la lista tiene que seguir funcionando y
+       llegar entero a la etiqueta. Es la mitad del punto de usar datalist. */
+    const guardadas = JSON.parse(JSON.stringify(toolRows));
+    const prevState = JSON.parse(JSON.stringify(state));
+    toolRows = [{name:'Herramienta Que No Existe', model:'v1'}];
+    state = {ED:0};
+    const linea = (badgeStrings().toolLines||[]).join(' ') || badgeStrings().tools || '';
+    ok(String(linea).includes('Herramienta Que No Existe'),
+       'una herramienta fuera de la lista se escribe a mano y llega a la etiqueta');
+    toolRows = guardadas; state = prevState; buildTools();
+
+    /* Y el manual tiene que decir que no es una lista aprobada: sin eso, 17
+       nombres en un sistema que se propone como norma se leen como respaldo. */
+    const prevL2 = $('lang').value;
+    const sinAviso = [];
+    for(const L of LANG_ALL){
+      irA(L);
+      const t = $('manualBody').textContent;
+      const tiene = /no es una lista aprobada|not an approved or exhaustive|não é uma lista aprovada/i.test(t);
+      if(!tiene) sinAviso.push(L);
+    }
+    irA(prevL2);
+    ok(sinAviso.length===0,
+       `el manual aclara que las sugerencias no son una lista aprobada${sinAviso.length?': falta en '+sinAviso.join(', '):''}`);
   }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida

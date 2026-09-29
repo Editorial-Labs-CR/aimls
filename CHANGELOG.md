@@ -3,6 +3,47 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 25 — 2026-09-29
+
+**El campo de la herramienta sugiere nombres mientras se escribe.** Era texto libre, así
+que una misma herramienta entraba como «ChatGPT», «chatgpt», «Chat GPT» o «GPT-4o»:
+cuatro cadenas para una cosa. La app promete que el dato sea comparable entre artículos,
+y ese campo lo incumplía.
+
+Se usa **`datalist`, no `select`**. Es la diferencia entre sugerir y cerrar la puerta:
+quien use algo que no esté en la lista lo escribe a mano y vale exactamente lo mismo, sin
+tener que elegir una opción «Otra» ni pasar por ningún paso extra. Una lista cerrada
+habría dejado fuera a esas personas y roto el sistema en silencio para ellas. Hay una
+prueba que lo vigila: si alguien cambiara el `datalist` por un `select`, se pone en rojo.
+
+**21 sugerencias**, ordenadas por tarea y no alfabéticamente, porque quien abre la lista
+sin escribir la recorre mejor así; en cuanto escribe, el navegador filtra. Son nombres
+propios y no se traducen, igual que los códigos.
+
+- **«Copilot» se separa en dos.** Hay dos productos distintos con ese nombre, uno para
+  escribir en Office y otro para código, y declarar «Copilot» no decía cuál, que es justo
+  lo que el sistema quiere evitar. `Microsoft Copilot` va primero por ser el de uso más
+  extendido entre quienes escriben manuscritos.
+- **Las actividades 4 y 6 no llevan sugerencia propia, a propósito.** En formato de datos
+  y visualizaciones no hay una herramienta dominante como DeepL lo es en traducción: esas
+  tareas se hacen con los asistentes generales que ya están en la lista. Añadir un
+  producto de nicho para tapar el hueco le daría prominencia a algo que casi nadie usa.
+- **Nada de detección**, tipo Turnitin. Con eso no se prepara un manuscrito, se revisa, y
+  son dos cosas que el sistema separa a propósito.
+- **El campo del modelo sigue en texto libre.** Los modelos cambian cada pocos meses y
+  serían lo primero en quedar desfasado.
+
+**Se dice en claro que son ejemplos**, en el manual en los tres idiomas y en las dos
+mitades del README: que no es una lista aprobada ni exhaustiva, y que nada queda excluido
+por no estar. Sin esa aclaración, veintiún nombres dentro de algo que se propone como
+norma se leen como respaldo. Una prueba comprueba que la aclaración esté en los tres
+idiomas.
+
+**En «Acerca de», la afiliación pasa debajo de quienes colaboraron**, con la misma forma
+que en el bloque de autoría, en vez de ir metida en la línea de entrada.
+
+Batería: **1360 aserciones con conexión · 1351 sin conexión**, con un bloque omitido.
+
 ## 24 — 2026-09-29
 
 **Quienes colaboraron llevan identificador y correo, igual que la autoría.** En la 23

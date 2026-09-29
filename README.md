@@ -66,6 +66,13 @@ A second, **optional** axis records the extent of each use: 1 incidental (<¼),
 2 partial (¼–½), 3 majority (½–¾), 4 total (>¾). Omitting it is a valid declaration.
 Human verification is not a level: it is a single statement covering everything declared.
 
+**Tools.** Up to six tools and their models can be listed, and they are printed on the
+label. The tool field suggests frequent names as you type, so that the same tool is
+always written the same way and the records can be compared: free text turns one tool
+into five different strings. It is **not** an approved or exhaustive list, and nothing
+is ruled out by being absent: any other tool is typed by hand and counts exactly the
+same. The model field is free text on purpose, because models change every few months.
+
 ### The code is never translated
 
 `AI`, the `+` separator and the two-letter codes are **always in English**, in every
@@ -96,7 +103,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 24) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 25) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -172,6 +179,15 @@ Un segundo eje, **opcional**, registra la extensión de cada uso: 1 puntual (<¼
 La verificación humana no es un nivel: es una afirmación única que cubre todo lo
 declarado.
 
+**Herramientas.** Se pueden listar hasta seis herramientas con su modelo, y se imprimen
+en la etiqueta. El campo de la herramienta sugiere nombres frecuentes mientras se
+escribe, para que la misma herramienta se escriba siempre igual y los registros se
+puedan comparar: en texto libre, una sola herramienta se convierte en cinco cadenas
+distintas. **No** es una lista aprobada ni exhaustiva, y nada queda excluido por no
+estar: cualquier otra herramienta se escribe a mano y vale exactamente lo mismo. El
+campo del modelo es texto libre a propósito, porque los modelos cambian cada pocos
+meses.
+
 ### El código no se traduce
 
 `AI`, el separador `+` y los códigos de dos letras van **siempre en inglés**, sea cual
@@ -203,7 +219,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 24) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 25) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
