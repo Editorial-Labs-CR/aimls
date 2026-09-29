@@ -1064,6 +1064,7 @@ ${collabBlock('en')}
 <li><b>Content — CC BY 4.0.</b> The notation, the texts, this guide, the label design and the logo are under the ${licLink('Creative Commons Attribution 4.0 International licence')}: you may share and adapt them for any purpose, giving appropriate credit, linking to the licence and indicating whether changes were made.</li>
 </ul>
 <p>Creative Commons licences are not intended for software, which is why the code carries its own licence.</p>
+<p><b>Trademarks.</b> The tool names suggested in the tools field are trademarks of their respective owners. They are used only to identify those tools, so that the same one is always written the same way. Their presence implies no affiliation with, or endorsement by, their owners, and their absence rules nothing out.</p>
 <details><summary>MIT licence text</summary><pre class="lic-text">${esc(MIT)}</pre></details>
 <h3>Open source</h3>
 <p>The whole system is this single HTML file: its source code is in plain view and can be read, copied, modified and hosted with no server and no installation. It includes an automated test suite, run from the browser console with <code>window.__app.runSelfTest()</code>.</p>
@@ -1096,6 +1097,7 @@ ${collabBlock('pt')}
 <li><b>Conteúdo — CC BY 4.0.</b> A notação, os textos, este manual, o desenho da etiqueta e o logotipo estão sob a ${licLink('licença Creative Commons Atribuição 4.0 Internacional')}: você pode compartilhá-los e adaptá-los com qualquer finalidade, reconhecendo a autoria, indicando a licença e informando se fez alterações.</li>
 </ul>
 <p>As licenças Creative Commons não são pensadas para software; por isso o código leva uma licença própria.</p>
+<p><b>Marcas.</b> Os nomes de ferramentas sugeridos no campo correspondente são marcas de seus titulares. Usam-se apenas para identificar essas ferramentas, de modo que a mesma se escreva sempre igual. Sua presença não implica afiliação nem aval de seus titulares, e sua ausência não exclui nada.</p>
 <details><summary>Texto da licença MIT</summary><pre class="lic-text">${esc(MIT)}</pre></details>
 <h3>Código aberto</h3>
 <p>Todo o sistema é este único arquivo HTML: o código-fonte está à vista e pode ser lido, copiado, modificado e hospedado sem servidor nem instalação. Inclui uma bateria de testes automáticos, executada no console do navegador com <code>window.__app.runSelfTest()</code>.</p>
@@ -1128,6 +1130,7 @@ ${collabBlock('es')}
 <li><b>Contenido — CC BY 4.0.</b> La notación, los textos, este manual, el diseño de la etiqueta y el logotipo están bajo la ${licLink('licencia Creative Commons Atribución 4.0 Internacional')}: puede compartirlos y adaptarlos con cualquier fin, reconociendo la autoría, enlazando la licencia e indicando si hizo cambios.</li>
 </ul>
 <p>Las licencias Creative Commons no están pensadas para software; por eso el código lleva una licencia propia.</p>
+<p><b>Marcas.</b> Los nombres de herramientas que sugiere el campo correspondiente son marcas de sus titulares. Se usan solo para identificar esas herramientas, de modo que la misma se escriba siempre igual. Su presencia no implica afiliación ni respaldo de sus titulares, y su ausencia no excluye nada.</p>
 <details><summary>Texto de la licencia MIT</summary><pre class="lic-text">${esc(MIT)}</pre></details>
 <h3>Código abierto</h3>
 <p>Todo el sistema es este único archivo HTML: el código fuente está a la vista y se puede leer, copiar, modificar y alojar sin servidor ni instalación. Incluye una batería de pruebas automáticas, que se ejecuta desde la consola del navegador con <code>window.__app.runSelfTest()</code>.</p>
@@ -2805,7 +2808,11 @@ function runSelfTest(){
     irA('es');
     const TUTEO = [
       /\b(decláralo|declaralo|márcalo|marcalo|escógelo|escogelo|úsalo|usalo|hazlo|ponlo|déjalo|dejalo|revísalo|revisalo)\b/i,
-      /\b(tienes|puedes|debes|quieres|necesitas|escoges|declaras|marcas)\b/i,
+      /* «marcas» estaba en esta lista y daba un falso positivo con el
+         sustantivo, en la nota de marcas comerciales. Es ambiguo de verdad en
+         español, así que se saca: una guarda que obliga a retorcer un texto
+         correcto es peor que no tenerla. */
+      /\b(tienes|puedes|debes|quieres|necesitas|escoges|declaras)\b/i,
       /\btu (manuscrito|artículo|declaración|revista|texto)\b/i,
     ];
     const t = [];
@@ -2923,6 +2930,22 @@ function runSelfTest(){
     irA(prevL2);
     ok(sinAviso.length===0,
        `el manual aclara que las sugerencias no son una lista aprobada${sinAviso.length?': falta en '+sinAviso.join(', '):''}`);
+
+    /* Nota de marcas. Va DENTRO de la app y no solo en los archivos del
+       repositorio porque esto se distribuye como un archivo único: quien se
+       descargue index.html suelto no se lleva THIRD-PARTY-NOTICES.md. */
+    const prevL3 = $('lang').value;
+    const sinMarcas = [];
+    for(const L of LANG_ALL){
+      irA(L);
+      const t = $('aboutBody').textContent;
+      const tiene = /(Marcas\.|Trademarks\.)/.test(t)
+                 && /(no implica afiliación|implies no affiliation|não implica afiliação)/i.test(t);
+      if(!tiene) sinMarcas.push(L);
+    }
+    irA(prevL3);
+    ok(sinMarcas.length===0,
+       `«Acerca de» lleva la nota de marcas, sin afiliación ni respaldo${sinMarcas.length?': falta en '+sinMarcas.join(', '):''}`);
   }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida

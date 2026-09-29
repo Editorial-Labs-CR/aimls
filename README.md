@@ -121,7 +121,10 @@ Two licences, each for what it was designed for. See [LICENSE](LICENSE),
 
 Both live inside the same file; the boundary is explained in `LICENSE-CONTENT.md`.
 The STM classification is third-party material, cited with attribution and **not**
-covered by either licence.
+covered by either licence. The tool names suggested in the tools field are **trademarks
+of their respective owners**, used only to identify those tools; no affiliation or
+endorsement is implied, and no logos are reproduced. See
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 ---
 
@@ -235,7 +238,10 @@ Dos licencias, cada una para lo que fue pensada. Ver [LICENSE](LICENSE),
 
 Las dos conviven en el mismo archivo; el límite se explica en `LICENSE-CONTENT.md`.
 La clasificación de STM es material de terceros, citado con atribución y **no** cubierto
-por ninguna de las dos.
+por ninguna de las dos. Los nombres de herramientas que sugiere el campo correspondiente
+son **marcas de sus titulares**, usadas solo para identificar esas herramientas; no se
+implica afiliación ni respaldo, y no se reproduce ningún logotipo. Ver
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 ---
 

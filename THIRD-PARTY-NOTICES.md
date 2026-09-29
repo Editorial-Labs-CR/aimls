@@ -62,3 +62,32 @@ load. The same happens if the integrity check fails.
 Anyone redistributing an exported SVG is redistributing an OFL font with it. The OFL
 allows this; it does not allow selling the font on its own, and it requires that modified
 versions not use the reserved font name.
+
+## 4. Tool names — trademarks · Nombres de herramientas
+
+The tools field suggests a list of frequent tool names so that the same tool is always
+written the same way and the records can be compared. Those names are **trademarks of
+their respective owners**. They are used nominatively, only to identify the tools
+themselves. No affiliation with, or endorsement by, their owners is implied or claimed,
+and no logos or other brand assets are reproduced anywhere in this repository.
+
+The list is **not approved, exhaustive or exclusive**: a tool's absence rules nothing
+out, and any other tool is typed by hand and counts exactly the same. The field uses an
+open suggestion list, not a closed menu, precisely so that this stays true.
+
+The CC BY 4.0 licence of this repository covers the texts written for this project. It
+does **not** extend to those trademarks, which remain their owners'.
+
+El campo de herramientas sugiere una lista de nombres frecuentes para que la misma
+herramienta se escriba siempre igual y los registros se puedan comparar. Esos nombres son
+**marcas de sus titulares** y se usan de forma nominativa, solo para identificar las
+herramientas. No se implica ni se reclama afiliación ni respaldo de sus titulares, y en
+este repositorio no se reproduce ningún logotipo ni otro elemento de marca.
+
+La lista **no es aprobada, exhaustiva ni excluyente**: que una herramienta no esté no
+excluye nada, y cualquier otra se escribe a mano y vale exactamente lo mismo. El campo usa
+una lista de sugerencias abierta, y no un menú cerrado, precisamente para que eso siga
+siendo cierto.
+
+La licencia CC BY 4.0 de este repositorio cubre los textos escritos para este proyecto.
+**No** se extiende a esas marcas, que siguen siendo de sus titulares.

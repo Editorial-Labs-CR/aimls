@@ -42,7 +42,20 @@ idiomas.
 **En «Acerca de», la afiliación pasa debajo de quienes colaboraron**, con la misma forma
 que en el bloque de autoría, en vez de ir metida en la línea de entrada.
 
-Batería: **1360 aserciones con conexión · 1351 sin conexión**, con un bloque omitido.
+**Nota de marcas.** Los nombres sugeridos son marcas de sus titulares, y ahora se dice.
+Va en «Acerca de» dentro de la propia app, además de en el README y en
+`THIRD-PARTY-NOTICES.md`: esto se distribuye como un archivo único, y quien se descargue
+`index.html` suelto no se lleva los demás archivos. Dice que se usan solo para
+identificar las herramientas, que no implican afiliación ni respaldo, y que la ausencia
+de una no excluye nada. Cumple dos funciones a la vez, porque también ataja la lectura de
+«lista aprobada».
+
+Corregido de paso un falso positivo de la guarda de tuteo: llevaba «marcas» en la lista
+de formas de tú, y el sustantivo la disparaba. En español ese término es ambiguo de
+verdad, así que se saca de la guarda. Una comprobación que obliga a retorcer un texto
+correcto es peor que no tenerla.
+
+Batería: **1361 aserciones con conexión · 1352 sin conexión**, con un bloque omitido.
 
 ## 24 — 2026-09-29
 
