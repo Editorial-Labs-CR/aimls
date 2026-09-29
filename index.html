@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v23
+  AIMLS · AI Manuscript Labelling System — v24
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -144,6 +144,9 @@ SOFTWARE.
   .dlg-in th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
   .dlg-in code{font-size:12px;background:#f2f2f4;padding:1px 4px;border-radius:4px;}
   .dlg-in .cite{border-left:3px solid var(--ink);padding-left:10px;}
+  /* Cada persona que colaboró, como bloque propio: sangrado y con una línea
+     a la izquierda, para que se distingan del párrafo que las presenta. */
+  .dlg-in .person{margin:6px 0 6px 2px;padding-left:10px;border-left:2px solid var(--line);line-height:1.5;}
   .toc{border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px;margin:14px 0 4px;background:#fafafb;}
   .toc-t{margin:0 0 6px;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
   /* Sin viñetas ni numeración propia: los títulos del manual ya vienen
@@ -721,7 +724,7 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '23',
+  version : '24',
   date    : {es:'29 de setiembre de 2026', en:'29 September 2026', pt:'29 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
@@ -739,7 +742,10 @@ const APP = {
      mismas personas figuran como coautoras, que es otra cosa y es correcto.
      NO van en CITATION.cff: el formato solo admite `authors`, y meterlos ahí
      los volvería coautores del software en cada cita generada. */
-  collab  : ['Carolina Seas Carvajal', 'Steven Segura Jiménez'],
+  collab  : [
+    {name:'Carolina Seas Carvajal', orcid:'0000-0002-2102-1973', email:'cseas@uned.ac.cr'},
+    {name:'Steven Segura Jiménez',  orcid:'0009-0005-6475-8798', email:'ssegura@uned.ac.cr'},
+  ],
 };
 /* «ED · Editing» en inglés; «ED · Editing (edición)» en las demás lenguas.
    El término inglés NO se sustituye por el local: es de donde sale la letra,
@@ -747,8 +753,10 @@ const APP = {
    justo lo contrario de lo que el sistema sostiene. */
 const fromLabel = t => t.from + (lang==='en' || !t.gloss ? '' : ` (${t.gloss[lang]})`);
 
-const orcidLink = () => `<a href="https://orcid.org/${APP.orcid}" target="_blank" rel="noopener">ORCID ${APP.orcid}</a>`;
-const mailLink  = () => `<a href="mailto:${APP.email}">${APP.email}</a>`;
+const orcidLink = (id) => { const o = id || APP.orcid;
+  return `<a href="https://orcid.org/${o}" target="_blank" rel="noopener">ORCID ${o}</a>`; };
+const mailLink  = (m) => { const e = m || APP.email;
+  return `<a href="mailto:${e}">${e}</a>`; };
 const licLink   = t  => `<a href="${APP.license}" target="_blank" rel="noopener">${t}</a>`;
 const mitLink   = t  => `<a href="${APP.mit}" target="_blank" rel="noopener">${t}</a>`;
 const MIT = `Copyright (c) 2026 Alexander Chinchilla Serrano
@@ -1008,11 +1016,23 @@ ${extentTable()}
 <p><b>¿Hay que declarar el corrector ortográfico?</b> No necesariamente. STM recomienda que la actividad 1 no requiera declaración; el código ED queda disponible para quien quiera declararla o para revistas con un umbral más exigente.</p>`;
 }
 
-/* Une los nombres con la conjunción del idioma: «y», «and», «e». */
-function collabNames(l){
-  const n = APP.collab;
-  const y = {es:' y ', en:' and ', pt:' e '}[l] || ' y ';
-  return n.slice(0,-1).join(', ') + y + n[n.length-1];
+/* Bloque de colaboración: una línea que dice QUÉ se hizo y, debajo, cada
+   persona con su identificador y su correo, igual que la autora. Se listan
+   aparte y no en una sola frase porque con identificador y correo la frase
+   se vuelve ilegible, y porque así cada quien puede señalar su propia línea. */
+function collabBlock(l){
+  const T = {
+    es:{lead:'Colaboración', unidad:'Unidad de Ciencia Abierta',
+        roles:'revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz'},
+    en:{lead:'Collaboration', unidad:'Open Science Unit',
+        roles:'text revision, English-language review, user testing and interface suggestions'},
+    pt:{lead:'Colaboração', unidad:'Unidade de Ciência Aberta',
+        roles:'revisão de textos, revisão do inglês, testes de uso e sugestões de interface'},
+  }[l] || {};
+  const gente = APP.collab.map(c =>
+    `<p class="person"><b>${esc(c.name)}</b><br>${orcidLink(c.orcid)} · ${mailLink(c.email)}</p>`
+  ).join('');
+  return `<p><b>${T.lead}:</b> ${T.unidad}. ${T.roles[0].toUpperCase()+T.roles.slice(1)}.</p>${gente}`;
 }
 
 function aboutHTML(){
@@ -1029,7 +1049,7 @@ function aboutHTML(){
 <p class="lead">An open tool for producing standardised graphic labels that declare the use of artificial intelligence in manuscripts.</p>
 <h3>Author</h3>
 <p>Developed by <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.en}<br>${APP.univ}</p>
-<p><b>Collaboration:</b> ${collabNames('en')}, Open Science Unit: text revision, English-language review, user testing and interface suggestions.</p>
+${collabBlock('en')}
 <p><b>Coding:</b> Claude Opus 5 (Anthropic) — model identifier <code>claude-opus-5</code> — under human editorial instruction, judgement and experience.</p>
 <h3>Licences</h3>
 <p>Two licences, each for what it was designed for:</p>
@@ -1061,7 +1081,7 @@ function aboutHTML(){
 <p class="lead">Ferramenta aberta para gerar etiquetas gráficas normalizadas de declaração de uso de inteligência artificial em manuscritos.</p>
 <h3>Autoria</h3>
 <p>Desenvolvido por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.pt}<br>${APP.univ}</p>
-<p><b>Colaboração:</b> ${collabNames('pt')}, Unidade de Ciência Aberta: revisão de textos, revisão do inglês, testes de uso e sugestões de interface.</p>
+${collabBlock('pt')}
 <p><b>Codificação:</b> Claude Opus 5 (Anthropic) — identificador do modelo <code>claude-opus-5</code> — sob instrução, critério e experiência editorial humana.</p>
 <h3>Licenças</h3>
 <p>Duas licenças, cada uma para aquilo que foi pensada:</p>
@@ -1093,7 +1113,7 @@ function aboutHTML(){
 <p class="lead">Herramienta abierta para generar etiquetas gráficas normalizadas de declaración de uso de inteligencia artificial en manuscritos.</p>
 <h3>Autoría</h3>
 <p>Desarrollado por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.es}<br>${APP.univ}</p>
-<p><b>Colaboración:</b> ${collabNames('es')}, Unidad de Ciencia Abierta: revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz.</p>
+${collabBlock('es')}
 <p><b>Codificación:</b> Claude Opus 5 (Anthropic) — identificador del modelo <code>claude-opus-5</code> — bajo instrucción, criterio y experiencia editorial humana.</p>
 <h3>Licencias</h3>
 <p>Dos licencias, cada una para lo que fue pensada:</p>
@@ -2767,16 +2787,36 @@ function runSelfTest(){
       ok(iCol > 0, `[${L}] la línea de colaboración está en «Acerca de»`);
       ok(iCol > 0 && iCod > iCol,
          `[${L}] va después de quién desarrolló y antes de la codificación`);
-      const linea = ps[iCol] || '';
-      const faltan = APP.collab.filter(n=>!linea.includes(n));
+      /* Nombre, identificador y correo de cada persona, enlazados. Un dato
+         que se pierda en un idioma es un crédito incompleto, no un detalle. */
+      const bloque = $('aboutBody').innerHTML;
+      const faltan = [];
+      APP.collab.forEach(c=>{
+        if(!bloque.includes(c.name))  faltan.push(c.name);
+        if(!bloque.includes(c.orcid)) faltan.push(c.name+' (identificador)');
+        if(!bloque.includes(c.email)) faltan.push(c.name+' (correo)');
+      });
       ok(faltan.length===0,
-         `[${L}] aparecen todos los nombres, completos${faltan.length?': falta '+faltan.join(', '):''}`);
+         `[${L}] cada persona aparece con nombre, identificador y correo${faltan.length?': falta '+faltan.join(', '):''}`);
+      const enlaces = [...$('aboutBody').querySelectorAll('.person a')].map(a2=>a2.getAttribute('href'));
+      const malEnlazados = APP.collab.filter(c=>
+        !enlaces.includes('https://orcid.org/'+c.orcid) || !enlaces.includes('mailto:'+c.email));
+      ok(malEnlazados.length===0,
+         `[${L}] el identificador y el correo son enlaces reales${malEnlazados.length?': '+malEnlazados.map(c=>c.name).join(', '):''}`);
     }
     irA(prevL);
-    /* Los nombres se escriben una sola vez, en APP.collab. Si alguien los
-       copiara a mano dentro de una traducción, esto lo delata. */
-    ok(APP.collab.length >= 1 && APP.collab.every(n=>typeof n === 'string' && n.trim().split(/\s+/).length >= 2),
-       'los nombres de quienes colaboraron viven en un solo sitio y están completos');
+    /* Los datos se escriben una sola vez, en APP.collab. Además el dígito de
+       control del identificador tiene que cuadrar: si no, está mal escrito
+       aunque tenga la forma correcta, y acreditaría a otra persona. */
+    const digito = o => { let t=0; for(const c of o.replace(/-/g,'').slice(0,15)) t=(t+ +c)*2;
+                          const r=(12-(t%11))%11; return r===10?'X':String(r); };
+    const rotos = APP.collab.filter(c=>
+      !/^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/.test(c.orcid)
+      || c.orcid.slice(-1).toUpperCase() !== digito(c.orcid)
+      || !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(c.email)
+      || c.name.trim().split(/\s+/).length < 2);
+    ok(rotos.length===0,
+       `los datos de quienes colaboraron son válidos, con dígito de control correcto${rotos.length?': '+rotos.map(c=>c.name).join(', '):''}`);
   }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida

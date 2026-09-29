@@ -96,7 +96,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 23) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 24) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -203,7 +203,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 23) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 24) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -229,10 +229,12 @@ por ninguna de las dos.
 Unidad de Ciencia Abierta, Vicerrectoría de Investigación
 Universidad Estatal a Distancia (UNED), Costa Rica
 
-**Colaboración · Collaboration:** **Carolina Seas Carvajal** y **Steven Segura Jiménez**,
-Unidad de Ciencia Abierta: revisión de textos, revisión del inglés, pruebas de uso y
-sugerencias de interfaz / text revision, English-language review, user testing and
-interface suggestions.
+**Colaboración · Collaboration:** Unidad de Ciencia Abierta. Revisión de textos, revisión
+del inglés, pruebas de uso y sugerencias de interfaz / text revision, English-language
+review, user testing and interface suggestions.
+
+- **Carolina Seas Carvajal** · [ORCID 0000-0002-2102-1973](https://orcid.org/0000-0002-2102-1973) · <cseas@uned.ac.cr>
+- **Steven Segura Jiménez** · [ORCID 0009-0005-6475-8798](https://orcid.org/0009-0005-6475-8798) · <ssegura@uned.ac.cr>
 
 **Codificación · Coding:** Claude Opus 5 (Anthropic) — identificador del modelo
 `claude-opus-5` — bajo instrucción, criterio y experiencia editorial humana / under human

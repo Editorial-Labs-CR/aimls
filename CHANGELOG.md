@@ -3,6 +3,37 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 24 — 2026-09-29
+
+**Quienes colaboraron llevan identificador y correo, igual que la autoría.** En la 23
+solo aparecían los nombres en una frase corrida. Con el identificador y el correo dentro,
+esa frase se volvía ilegible, así que ahora cada persona tiene su propio bloque, sangrado
+y con los dos datos enlazados:
+
+> **Colaboración:** Unidad de Ciencia Abierta. Revisión de textos, revisión del inglés,
+> pruebas de uso y sugerencias de interfaz.
+>
+> **Carolina Seas Carvajal** · ORCID 0000-0002-2102-1973 · cseas@uned.ac.cr
+> **Steven Segura Jiménez** · ORCID 0009-0005-6475-8798 · ssegura@uned.ac.cr
+
+Listarlos aparte, y no dentro del párrafo, tiene una razón práctica además de la
+legibilidad: cada quien puede señalar su propia línea.
+
+Los identificadores se comprobaron dos veces antes de publicarlos. Primero el **dígito de
+control**, que llevan incorporado: si no cuadra, el identificador está mal escrito aunque
+tenga la forma correcta. Después se consultó el **registro público**, y ambos resuelven a
+las personas que son. Un identificador con un dígito cambiado acreditaría a otra persona,
+y eso no se corrige después de repartirlo.
+
+La batería comprueba, en los tres idiomas, que cada persona aparezca con los tres datos y
+que el identificador y el correo sean enlaces reales, no texto suelto. Y verifica el
+dígito de control, para que un dato mal copiado no llegue a publicarse.
+
+Siguen **sin aparecer en `CITATION.cff`**, por lo dicho en la 23: el formato solo admite
+`authors`, y eso los volvería coautores del software.
+
+Batería: **1351 aserciones con conexión · 1342 sin conexión**, con un bloque omitido.
+
 ## 23 — 2026-09-29
 
 **Se acredita a quienes colaboraron.** Hasta ahora la app nombraba al autor y a la
