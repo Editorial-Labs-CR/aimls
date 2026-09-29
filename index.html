@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v22
+  AIMLS · AI Manuscript Labelling System — v23
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -721,8 +721,8 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '22',
-  date    : {es:'27 de setiembre de 2026', en:'27 September 2026', pt:'27 de setembro de 2026'},
+  version : '23',
+  date    : {es:'29 de setiembre de 2026', en:'29 September 2026', pt:'29 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
   orcid   : '0000-0001-9465-1522',
@@ -733,6 +733,13 @@ const APP = {
              en:'Open Science Unit, Office of the Vice-Rector for Research',
              pt:'Unidade de Ciência Aberta, Vice-Reitoria de Pesquisa'},
   univ    : 'Universidad Estatal a Distancia (UNED), Costa Rica',
+  /* Colaboración, NO desarrollo ni autoría: quienes aportaron trabajo que no es
+     código. Los nombres viven acá una sola vez y la frase que los rodea se
+     traduce; así no pueden desincronizarse entre idiomas. En el preprint estas
+     mismas personas figuran como coautoras, que es otra cosa y es correcto.
+     NO van en CITATION.cff: el formato solo admite `authors`, y meterlos ahí
+     los volvería coautores del software en cada cita generada. */
+  collab  : ['Carolina Seas Carvajal', 'Steven Segura Jiménez'],
 };
 /* «ED · Editing» en inglés; «ED · Editing (edición)» en las demás lenguas.
    El término inglés NO se sustituye por el local: es de donde sale la letra,
@@ -1001,6 +1008,13 @@ ${extentTable()}
 <p><b>¿Hay que declarar el corrector ortográfico?</b> No necesariamente. STM recomienda que la actividad 1 no requiera declaración; el código ED queda disponible para quien quiera declararla o para revistas con un umbral más exigente.</p>`;
 }
 
+/* Une los nombres con la conjunción del idioma: «y», «and», «e». */
+function collabNames(l){
+  const n = APP.collab;
+  const y = {es:' y ', en:' and ', pt:' e '}[l] || ' y ';
+  return n.slice(0,-1).join(', ') + y + n[n.length-1];
+}
+
 function aboutHTML(){
   // APA 7, formato de software
   const CITE = {
@@ -1015,6 +1029,7 @@ function aboutHTML(){
 <p class="lead">An open tool for producing standardised graphic labels that declare the use of artificial intelligence in manuscripts.</p>
 <h3>Author</h3>
 <p>Developed by <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.en}<br>${APP.univ}</p>
+<p><b>Collaboration:</b> ${collabNames('en')}, Open Science Unit: text revision, English-language review, user testing and interface suggestions.</p>
 <p><b>Coding:</b> Claude Opus 5 (Anthropic) — model identifier <code>claude-opus-5</code> — under human editorial instruction, judgement and experience.</p>
 <h3>Licences</h3>
 <p>Two licences, each for what it was designed for:</p>
@@ -1046,6 +1061,7 @@ function aboutHTML(){
 <p class="lead">Ferramenta aberta para gerar etiquetas gráficas normalizadas de declaração de uso de inteligência artificial em manuscritos.</p>
 <h3>Autoria</h3>
 <p>Desenvolvido por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.pt}<br>${APP.univ}</p>
+<p><b>Colaboração:</b> ${collabNames('pt')}, Unidade de Ciência Aberta: revisão de textos, revisão do inglês, testes de uso e sugestões de interface.</p>
 <p><b>Codificação:</b> Claude Opus 5 (Anthropic) — identificador do modelo <code>claude-opus-5</code> — sob instrução, critério e experiência editorial humana.</p>
 <h3>Licenças</h3>
 <p>Duas licenças, cada uma para aquilo que foi pensada:</p>
@@ -1077,6 +1093,7 @@ function aboutHTML(){
 <p class="lead">Herramienta abierta para generar etiquetas gráficas normalizadas de declaración de uso de inteligencia artificial en manuscritos.</p>
 <h3>Autoría</h3>
 <p>Desarrollado por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.es}<br>${APP.univ}</p>
+<p><b>Colaboración:</b> ${collabNames('es')}, Unidad de Ciencia Abierta: revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz.</p>
 <p><b>Codificación:</b> Claude Opus 5 (Anthropic) — identificador del modelo <code>claude-opus-5</code> — bajo instrucción, criterio y experiencia editorial humana.</p>
 <h3>Licencias</h3>
 <p>Dos licencias, cada una para lo que fue pensada:</p>
@@ -2734,6 +2751,33 @@ function runSelfTest(){
     const tuteos = TUTEO.map(re=>j.match(re)).filter(Boolean).map(m=>m[0]);
     irA(prevL);
     ok(tuteos.length===0, `el español trata de usted en todas partes${tuteos.length?', y se coló: '+tuteos.join(', '):''}`); }
+
+  /* 8octies. CRÉDITO A QUIENES COLABORARON. Es crédito a personas reales: si un
+     nombre se pierde en un idioma, o se cuela en la cita, o la línea se va de
+     sitio, el daño no es cosmético. Se comprueba que aparezcan enteros en los
+     tres idiomas, que la línea vaya entre desarrollo y codificación, y que NO
+     estén en los datos de cita, donde los volvería coautores del software. */
+  { const prevL = $('lang').value;
+    const ROTULO = {es:'Colaboración:', en:'Collaboration:', pt:'Colaboração:'};
+    for(const L of LANG_ALL){
+      irA(L);
+      const ps = [...$('aboutBody').querySelectorAll('p')].map(n=>n.textContent);
+      const iCol = ps.findIndex(t=>t.startsWith(ROTULO[L]));
+      const iCod = ps.findIndex(t=>/^(Codificación:|Coding:|Codificação:)/.test(t));
+      ok(iCol > 0, `[${L}] la línea de colaboración está en «Acerca de»`);
+      ok(iCol > 0 && iCod > iCol,
+         `[${L}] va después de quién desarrolló y antes de la codificación`);
+      const linea = ps[iCol] || '';
+      const faltan = APP.collab.filter(n=>!linea.includes(n));
+      ok(faltan.length===0,
+         `[${L}] aparecen todos los nombres, completos${faltan.length?': falta '+faltan.join(', '):''}`);
+    }
+    irA(prevL);
+    /* Los nombres se escriben una sola vez, en APP.collab. Si alguien los
+       copiara a mano dentro de una traducción, esto lo delata. */
+    ok(APP.collab.length >= 1 && APP.collab.every(n=>typeof n === 'string' && n.trim().split(/\s+/).length >= 2),
+       'los nombres de quienes colaboraron viven en un solo sitio y están completos');
+  }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida
      en cuatro lugares: el valor por defecto del QR, og:url, og:image y

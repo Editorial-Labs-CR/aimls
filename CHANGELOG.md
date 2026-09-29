@@ -3,6 +3,37 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 23 — 2026-09-29
+
+**Se acredita a quienes colaboraron.** Hasta ahora la app nombraba al autor y a la
+herramienta que la codificó, y a ninguna persona más. En un sistema que propone declarar
+contribuciones con precisión, esa omisión se notaba.
+
+En «Acerca de» y en el README aparece una tercera línea, entre quién la desarrolló y la
+codificación:
+
+> **Colaboración:** Carolina Seas Carvajal y Steven Segura Jiménez, Unidad de Ciencia
+> Abierta: revisión de textos, revisión del inglés, pruebas de uso y sugerencias de
+> interfaz.
+
+Tres decisiones que conviene dejar por escrito:
+
+- **Colaboración, no desarrollo ni autoría.** Son papeles distintos y se nombran
+  distinto. En el preprint estas mismas personas figuran como coautoras, que es otra
+  cosa y también es correcto.
+- **Se dice qué hizo cada quien**, no solo los nombres. El propio artículo critica que
+  la contribución se recoja como declaración narrativa vaga; una línea que dijera solo
+  «colaboradores: X e Y» sería justo eso.
+- **No van en `CITATION.cff`.** Verificado contra el esquema del formato: solo admite
+  `authors` y `contact`. Ponerlos en `authors` los convertiría en coautores del software
+  en cada cita que generan GitHub y Zenodo, que no es lo que son.
+
+Los nombres se escriben una sola vez, en `APP.collab`, y la frase que los rodea se
+traduce. Una prueba comprueba que aparezcan completos en los tres idiomas, que la línea
+vaya en su sitio, y que no se cuelen en los datos de cita.
+
+Batería: **1348 aserciones con conexión · 1339 sin conexión**, con un bloque omitido.
+
 ## 22 — 2026-09-27
 
 Tres correcciones de redacción encontradas en una revisión externa, todas reales y
