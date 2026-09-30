@@ -25,7 +25,7 @@ the manuscript. Both come from the same input, so they cannot contradict each ot
 
 ```
 AI: ED+TR+CO          the declared tasks
-AI: ED:1+TR:3+CO:2    the same, with the extent of each one
+AI: ED:1+TR:3+CO:2    the same, with the level of use of each one
 AI: N                 no use above the disclosable threshold
 ```
 
@@ -62,7 +62,7 @@ by the 2023 STM Guidelines. If you used it alongside other activities, simply le
 nothing above it at all, the correct declaration is `AI: N`, which is exclusive and states
 not that no tool was used but that none was used above the threshold. A journal or publishing body may set its threshold lower, and `ED` stays available for that.
 
-A second, **optional** axis records the extent of each use: 1 incidental (<¼),
+A second, **optional** axis records the level of use of each one: 1 incidental (<¼),
 2 partial (¼–½), 3 majority (½–¾), 4 total (>¾). Omitting it is a valid declaration.
 Human verification is not a level: it is a single statement covering everything declared.
 
@@ -103,7 +103,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 25) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 26) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -139,7 +139,7 @@ contradecirse.
 
 ```
 AI: ED+TR+CO          las tareas declaradas
-AI: ED:1+TR:3+CO:2    lo mismo, con la extensión de cada una
+AI: ED:1+TR:3+CO:2    lo mismo, con el nivel de uso de cada una
 AI: N                 sin uso por encima del umbral declarable
 ```
 
@@ -177,7 +177,7 @@ encima en absoluto, la declaración correcta es `AI: N`, que es excluyente y no 
 se usara ninguna herramienta sino que no se usó ninguna por encima del umbral.
 Una revista o entidad editora puede situar su umbral más abajo, y para eso `ED` sigue disponible.
 
-Un segundo eje, **opcional**, registra la extensión de cada uso: 1 puntual (<¼),
+Un segundo eje, **opcional**, registra el nivel de uso de cada una: 1 puntual (<¼),
 2 parcial (¼–½), 3 mayoritaria (½–¾), 4 total (>¾). Omitirlo es una declaración válida.
 La verificación humana no es un nivel: es una afirmación única que cubre todo lo
 declarado.
@@ -222,7 +222,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 25) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 26) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 

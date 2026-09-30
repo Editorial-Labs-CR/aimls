@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v25
+  AIMLS · AI Manuscript Labelling System — v26
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -188,7 +188,40 @@ SOFTWARE.
   .task-row .code{font-weight:700;font-size:13px;letter-spacing:0.01em;}
   .task-row .desc{font-size:11px;color:var(--muted);}
   .task-row .stm{font-size:9.5px;font-weight:600;color:#9a9ca3;letter-spacing:0.04em;margin-left:5px;}
-  .levels button:first-child{width:28px;}
+  /* El primer botón lleva palabra, no símbolo, así que necesita ancho. */
+  .levels button:first-child{width:52px;font-size:10.5px;}
+  /* Y se distingue de los números cuando está activo: no es un nivel más
+     bajo que 1, es no declarar, y pintarlo igual que un nivel confundía. */
+  .levels button:first-child.active{background:#f0f0f2;color:var(--muted);border-color:#cfcfd4;font-weight:600;}
+  .lvhead{display:flex;align-items:flex-end;gap:9px;padding-bottom:6px;}
+  .lvhead .sp{flex:1;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);}
+  /* El rótulo es la TAPA del recuadro, así que su ancho tiene que ser
+     exactamente el de la columna que cubre, o los lados no cuadran:
+     52 del botón de omitir + 4×25 de los números + 4×3 de separación
+     + 4+4 de relleno + 1+1 de borde = 174. El botón de omitir tiene ancho
+     fijo, así que esto no cambia con el idioma. Hay una prueba que lo mide. */
+  .lvhead .cap{width:calc(52px + 100px + 12px + 8px + 2px);box-sizing:border-box;text-align:center;line-height:1.25;
+    font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+    border:1px dashed #cfcfd4;border-bottom:none;border-radius:7px 7px 0 0;
+    padding:4px 4px 3px;background:#fafafb;}
+  .lvhead .cap i{display:block;font-style:normal;font-weight:400;text-transform:none;letter-spacing:0;color:#9a9ca3;}
+  .task-row .levels{border:1px dashed #cfcfd4;border-top:none;border-bottom:none;background:#fafafb;padding:4px;}
+  .task-row .levels.fin{border-bottom:1px dashed #cfcfd4;border-radius:0 0 7px 7px;}
+  /* En pantalla estrecha la columna de botones le robaba 34 px a la
+     descripción de la tarea, y el bloque crecía 257 px de alto porque cada
+     descripción se partía en más renglones. Debajo de 560 px los botones
+     bajan a su propia línea: el texto recupera el ancho completo y el
+     recuadro sigue cerrando, ahora alrededor de una fila en vez de una
+     columna. */
+  @media (max-width:560px){
+    .task-row{flex-wrap:wrap;}
+    .task-row label{flex:1 1 100%;}
+    .task-row .levels{margin-left:auto;margin-top:6px;border-radius:7px;
+      border:1px dashed #cfcfd4;}
+    .task-row .levels.fin{border-radius:7px;}
+    .lvhead .cap{border-bottom:1px dashed #cfcfd4;border-radius:7px;}
+    .lvhead{padding-bottom:2px;}
+  }
   .levels button:focus-visible{outline:2px solid var(--ink);outline-offset:1px;}
 
   /* Guía flotante de los grados de uso. El title nativo del navegador no
@@ -213,6 +246,9 @@ SOFTWARE.
           margin-top:10px;padding-top:9px;border-top:1px solid #eee;font-size:10.5px;color:var(--muted);}
   .legend .lt{font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:9.5px;}
   .legend .li{display:inline-flex;align-items:center;gap:4px;cursor:help;white-space:nowrap;}
+  /* La casilla de «omitir» en la leyenda lleva palabra, no cifra: necesita
+     ancho y no debe verse como un nivel más de la escala. */
+  .legend .li b.wd{min-width:auto;padding:0 5px;font-size:9.5px;color:var(--muted);}
   .legend .li b{display:inline-flex;align-items:center;justify-content:center;
                 min-width:16px;height:16px;border:1px solid #cfcfd4;border-radius:4px;
                 font-size:10px;color:var(--ink);background:#fff;}
@@ -411,9 +447,9 @@ const TASKS = [
      text written primarily by humans»; no incluye: «Using AI tools to generate
      text from prompts…». */
   {code:'ED', unit:{es:'las correcciones de lenguaje', en:'the language corrections', pt:'as correções de linguagem'}, from:'Editing', gloss:{es:'edición', pt:'edição'}, stm:1, tag:'tagThreshold',
-   eg:{es:'Por ejemplo, correctores ortográficos y gramaticales sobre un texto escrito principalmente por personas. No incluye generar texto a partir de indicaciones: eso es la actividad 2.',
-       en:'For example, spell checkers and grammar checkers on text written primarily by humans. Does not include generating text from prompts: that is activity 2.',
-       pt:'Por exemplo, corretores ortográficos e gramaticais sobre um texto escrito principalmente por pessoas. Não inclui gerar texto a partir de instruções: isso é a atividade 2.'},
+   eg:{es:'Por ejemplo, correctores ortográficos y gramaticales sobre un texto escrito principalmente por personas. No incluye generar texto a partir de indicaciones: eso es TG, la actividad 2.',
+       en:'For example, spell checkers and grammar checkers on text written primarily by humans. Does not include generating text from prompts: that is TG, activity 2.',
+       pt:'Por exemplo, corretores ortográficos e gramaticais sobre um texto escrito principalmente por pessoas. Não inclui gerar texto a partir de instruções: isso é TG, a atividade 2.'},
    stmNote:{
      es:'Esta tarea forma parte del umbral de declarabilidad: la guía internacional STM no pide declararla. Puede marcarla si desea declararla, o si lo pide la revista o entidad que publica o evalúa el manuscrito. Si no, déjela sin marcar; y si tampoco hubo otro uso de IA, marque N.',
      en:'This task is part of the disclosable threshold: the international STM guideline does not ask for it to be declared. You may tick it if you want to declare it, or if the journal or body that publishes or reviews the manuscript asks for it. If not, leave it unticked; and if there was no other AI use either, tick N.',
@@ -531,9 +567,9 @@ const UI = {
     hdrTag:'<b>Declaración gráfica de uso de inteligencia artificial en manuscritos</b><br><span style="color:var(--muted)">Construido sobre la clasificación de nueve actividades de <b>STM (2025)</b></span>',
     hdrOpen:'Sistema de notación abierto, <b>propuesto para cualquier revista o entidad editora</b>. La etiqueta <b>no sustituye la declaración en prosa</b>: la acompaña y se genera del mismo acto declarativo, para que el dato sea comparable entre artículos, agregable en conjuntos grandes y transportable como metadato. <b>Se coloca en una página destacada del artículo</b> (habitualmente la primera) para que cualquier lector identifique de un vistazo el uso declarado. La adopción es gradual y <b>no exige modificar las políticas vigentes</b>: puede incorporar primero la etiqueta visible, después el bloque de metadatos y después la generación automática de la prosa.',
     hdrVocab:'<b>Vocabulario.</b> STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. Las nueve actividades se adoptan sin redefinirlas; ocho son declarables y la novena no, porque las guías de STM recomiendan prohibirla. El alcance es el de la fuente: solo la preparación del manuscrito, no el resto del proceso de investigación.',
-    hdrAxes:'<b>Dos ejes.</b> Tipo de tarea (Eje 1) y extensión del uso (Eje 2, opcional). La verificación humana no es un nivel: es una afirmación única que cubre todo lo declarado.',
+    hdrAxes:'<b>Dos ejes.</b> Tipo de tarea (Eje 1) y nivel de uso (Eje 2, opcional). La verificación humana no es un nivel: es una afirmación única que cubre todo lo declarado.',
     noteThreshold:'<b>¿Qué se declara?</b> Las actividades <b>2 a 8</b> siempre, por poco que se hayan usado. La <b>1</b> (corrector, gramática, estilo) no hace falta: es el umbral. Si no hubo nada por encima, <code>AI: N</code>. Detalle en el manual, "Qué se declara y qué no".',
-    legAxes:'Eje 1 · Tipo de tarea &nbsp;·&nbsp; Eje 2 · Extensión (opcional)',
+    legAxes:'Eje 1 · Tipo de tarea',
     lblLang:'Idioma de la pantalla',
     lblDocLang:'Idioma de la etiqueta y la prosa',
     legStart:'Antes de empezar',
@@ -551,22 +587,24 @@ const UI = {
     sc1:'1× (pantalla)', sc2:'2× (retina / web)', sc4:'4× (impresión)',
     noteCodes:'<b>Los códigos no se traducen; las descripciones sí.</b> <code>AI</code> (sigla de <i>artificial intelligence</i>, en inglés), el "+" y los códigos de tarea (<code>ED</code>, <code>TR</code>, <code>CO</code>…) van siempre en inglés: son lo que se compara y se agrega entre revistas de cualquier país, y si se tradujeran, dos artículos que declaran exactamente lo mismo producirían cadenas distintas. Lo que sí sigue al <b>idioma de la etiqueta</b> es lo que la etiqueta dice en lengua natural ("Complementa la declaración en prosa del texto", "Más información", "Herramientas:") y la prosa de la declaración.',
     noteQr:'<b>El QR lleva a esta misma app</b>, donde quien escanee encuentra el manual y puede generar su propia etiqueta. La revista o entidad que publica puede cambiarlo por su página de política. Antes de imprimir, compruebe que la dirección sea la definitiva: un QR impreso es irrevocable.',
-    noteForm:'<b>Forma de la etiqueta.</b> <code>AI</code> aparece una sola vez al inicio, seguido de ": ", y los códigos se separan con "+": <code>AI: ED+TR+CO</code>. Con extensión declarada: <code>AI: ED:1+TR:3+CO:2</code>.',
-    noteAxis2:'<b>Eje 2 — extensión.</b> Dice cuánto de <b>esa tarea</b> hizo la IA, no cuánto del artículo: si marca traducción y pone 3, declara que la mayor parte de lo traducido viene de la herramienta, y no dice nada del resto. 1 puntual (&lt;¼) · 2 parcial (¼–½) · 3 mayoritaria (½–¾) · 4 total (&gt;¾). Las proporciones son orientación, no umbrales. "—" significa <b>extensión no declarada</b>, que es una declaración válida.',
+    noteForm:'<b>Forma de la etiqueta.</b> <code>AI</code> aparece una sola vez al inicio, seguido de ": ", y los códigos se separan con "+": <code>AI: ED+TR+CO</code>. Con nivel de uso declarado: <code>AI: ED:1+TR:3+CO:2</code>.',
+    noteAxis2:'<b>Eje 2 — nivel de uso.</b> Dice cuánto de <b>esa tarea</b> hizo la IA, no cuánto del artículo: si marca traducción y pone 3, declara que la mayor parte de lo traducido viene de la herramienta, y no dice nada del resto. 1 puntual (&lt;¼) · 2 parcial (¼–½) · 3 mayoritaria (½–¾) · 4 total (&gt;¾). Las proporciones son orientación, no umbrales. El botón <b>"omitir"</b> deja el nivel de uso <b>sin declarar</b>, que es una declaración válida y no un olvido. Es opcional, <b>a menos que</b> la revista o entidad que publica le pida que indique el nivel de uso. En ese caso debe indicarlo.',
     btnPng:'Descargar PNG', btnSvg:'Descargar SVG',
     metaCanon:'Cadena canónica', metaCanvas:'Lienzo',
     hintEmpty:'Marcá al menos una tarea del Eje 1 (o "sin uso") para generar la etiqueta.',
     tagThreshold:'UMBRAL · OPCIONAL',
     tagNotDecl:'NO DECLARABLE',
-    tipNotDecl:'Extensión no declarada',
-    tipNotDeclSub:c=>`Marcó la tarea pero no dice cuánto. "AI: ${c}" sin nivel es una declaración válida y completa.`,
+    tipNotDecl:'Omitir el nivel de uso',
+    tipNotDeclSub:'Elige no declarar qué parte de esta actividad hizo la inteligencia artificial. Esta opción también es válida.',
     tipExtentSub:(r,u)=>`${r} ${!u?'de la tarea marcada, no del artículo completo':(u.startsWith('el ')?'del '+u.slice(3):'de '+u)}. Es una orientación, no un límite exacto.`,
     tipStm:n=>`Actividad ${n} de STM (2025)`,
     tipStmSub:'STM es la asociación internacional de editoriales científicas cuya guía adopta este sistema. El número identifica la actividad en esa guía; las dos letras son solo su forma corta para la etiqueta.',
     tipCodeSub:'Las letras salen del término en inglés. El código es el mismo en cualquier idioma.',
     tipNoStm:'Ajeno a la clasificación de STM',
     tipNoStmSub:'N no describe una actividad: afirma que no hubo uso por encima del umbral (la actividad 1 de la guía internacional STM: corrección y estilo). Ver "Qué se declara y qué no" en el manual.',
-    legendTitle:'Eje 2 · extensión', legendNotDecl:'no declarada',
+    legendTitle:'Eje 2 · nivel de uso', legendNotDecl:'no declarada',
+    lvOmit:'omitir', colExtent:'Nivel de uso', colOptional:'opcional',
+    colExtentLead:'Actividades declarables',
     fontOk:kb=>`Tipografía: Inter incrustada (${kb} KB en el SVG). El archivo exportado se ve igual en cualquier máquina.`,
     fontFail:'Tipografía: sin red, se usa la del sistema. El diseño no se rompe, pero el SVG exportado dependerá de las fuentes de quien lo abra.',
     fontLoad:'Tipografía: cargando…',
@@ -595,9 +633,9 @@ const UI = {
     hdrTag:'<b>Visual declaration of artificial intelligence use in manuscripts</b><br><span style="color:var(--muted)">Built on the <b>STM (2025)</b> classification of nine activities</span>',
     hdrOpen:'An open notation system, <b>proposed for any journal or publishing body</b>. The label <b>does not replace the prose declaration</b>: it accompanies it and is generated from the same declarative act, so that the record is comparable across articles, aggregable at scale and transportable as metadata. <b>It sits on a prominent page of the article</b> (usually the first) so that any reader identifies the declared use at a glance. Adoption is gradual and <b>does not require changing current policies</b>: it can start with the visible label, then the metadata block, then automatic generation of the prose.',
     hdrVocab:'<b>Vocabulary.</b> STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. The nine activities are adopted without redefining them; eight are disclosable and the ninth is not, because the STM guidelines recommend prohibiting it. The scope is that of the source: manuscript preparation only, not the rest of the research process.',
-    hdrAxes:'<b>Two axes.</b> Task type (Axis 1) and extent of use (Axis 2, optional). Human verification is not a level: it is a single statement covering everything declared.',
+    hdrAxes:'<b>Two axes.</b> Task type (Axis 1) and level of use (Axis 2, optional). Human verification is not a level: it is a single statement covering everything declared.',
     noteThreshold:'<b>What gets declared?</b> Activities <b>2 to 8</b> always, however little they were used. Activity <b>1</b> (spell checker, grammar, style) need not be: that is the threshold. If there was nothing above it, <code>AI: N</code>. Details in the user guide, "What gets declared and what does not".',
-    legAxes:'Axis 1 · Task type &nbsp;·&nbsp; Axis 2 · Extent (optional)',
+    legAxes:'Axis 1 · Task type',
     lblLang:'Screen language',
     lblDocLang:'Label and prose language',
     legStart:'Before you start',
@@ -615,22 +653,24 @@ const UI = {
     sc1:'1× (screen)', sc2:'2× (retina / web)', sc4:'4× (print)',
     noteCodes:'<b>The codes are never translated; the descriptions are.</b> <code>AI</code>, the "+" and the task codes (<code>ED</code>, <code>TR</code>, <code>CO</code>…) are always in English: they are what gets compared and aggregated across journals in any country, and if they were translated, two articles declaring exactly the same thing would produce different strings. What does follow the <b>label language</b> is what the label says in natural language ("Complements the prose declaration in the text", "More info", "Tools:") and the prose declaration.',
     noteQr:'<b>The QR points to this same app</b>, where whoever scans it finds the user guide and can generate their own label. The journal or body that publishes may replace it with its policy page. Before printing, check that the address is final: a printed QR cannot be revoked.',
-    noteForm:'<b>Label form.</b> <code>AI</code> appears once, at the start, followed by ": ", and codes are joined with "+": <code>AI: ED+TR+CO</code>. With declared extent: <code>AI: ED:1+TR:3+CO:2</code>.',
-    noteAxis2:'<b>Axis 2 — extent.</b> It says how much of <b>that task</b> the AI did, not how much of the article: if you tick translation and enter 3, you declare that most of what was translated comes from the tool, and it says nothing about the rest. 1 incidental (&lt;¼) · 2 partial (¼–½) · 3 majority (½–¾) · 4 total (&gt;¾). The proportions are guidance, not thresholds. "—" means <b>extent not declared</b>, which is a valid declaration.',
+    noteForm:'<b>Label form.</b> <code>AI</code> appears once, at the start, followed by ": ", and codes are joined with "+": <code>AI: ED+TR+CO</code>. With declared level of use: <code>AI: ED:1+TR:3+CO:2</code>.',
+    noteAxis2:'<b>Axis 2 — level of use.</b> It says how much of <b>that task</b> the AI did, not how much of the article: if you tick translation and enter 3, you declare that most of what was translated comes from the tool, and it says nothing about the rest. 1 incidental (&lt;¼) · 2 partial (¼–½) · 3 majority (½–¾) · 4 total (&gt;¾). The proportions are guidance, not thresholds. The <b>"omit"</b> button leaves the level of use <b>undeclared</b>, which is a valid declaration and not an oversight. It is optional, <b>unless</b> the journal or publishing body asks you to state the level of use. In that case you must state it.',
     btnPng:'Download PNG', btnSvg:'Download SVG',
     metaCanon:'Canonical string', metaCanvas:'Canvas',
     hintEmpty:'Tick at least one Axis 1 task (or "no use") to generate the label.',
     tagThreshold:'THRESHOLD · OPTIONAL',
     tagNotDecl:'NOT DISCLOSABLE',
-    tipNotDecl:'Extent not declared',
-    tipNotDeclSub:c=>`You ticked the task but do not say how much. "AI: ${c}" without a level is a valid, complete declaration.`,
+    tipNotDecl:'Omit the level of use',
+    tipNotDeclSub:'You choose not to declare what part of this activity artificial intelligence did. This option is also valid.',
     tipExtentSub:(r,u)=>`${r} of ${u||'the task you ticked, not of the whole article'}. It is guidance, not an exact limit.`,
     tipStm:n=>`STM (2025) activity ${n}`,
     tipStmSub:'STM is the international association of scientific publishers whose guideline this system adopts. The number identifies the activity in that guideline; the two letters are just its short form for the label.',
     tipCodeSub:'The letters come from the English term. The code is the same in any language.',
     tipNoStm:'Outside the STM classification',
     tipNoStmSub:'N does not describe an activity: it states that there was no use above the threshold (activity 1 of the international STM guideline: language correction and style). See "What gets declared and what does not" in the user guide.',
-    legendTitle:'Axis 2 · extent', legendNotDecl:'not declared',
+    legendTitle:'Axis 2 · level of use', legendNotDecl:'not declared',
+    lvOmit:'omit', colExtent:'Level of use', colOptional:'optional',
+    colExtentLead:'Disclosable activities',
     fontOk:kb=>`Typeface: Inter embedded (${kb} KB in the SVG). The exported file looks the same on any machine.`,
     fontFail:'Typeface: offline, the system font is used. The layout does not break, but the exported SVG will depend on the reader’s fonts.',
     fontLoad:'Typeface: loading…',
@@ -659,9 +699,9 @@ const UI = {
     hdrTag:'<b>Declaração gráfica de uso de inteligência artificial em manuscritos</b><br><span style="color:var(--muted)">Construído sobre a classificação de nove atividades da <b>STM (2025)</b></span>',
     hdrOpen:'Sistema de notação aberto, <b>proposto para qualquer revista ou entidade editora</b>. A etiqueta <b>não substitui a declaração em prosa</b>: acompanha-a e é gerada do mesmo ato declarativo, para que o dado seja comparável entre artigos, agregável em conjuntos grandes e transportável como metadado. <b>Coloca-se em uma página destacada do artigo</b> (habitualmente a primeira) para que qualquer leitor identifique de relance o uso declarado. A adoção é gradual e <b>não exige modificar as políticas vigentes</b>: pode incorporar primeiro a etiqueta visível, depois o bloco de metadados e depois a geração automática da prosa.',
     hdrVocab:'<b>Vocabulário.</b> STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. As nove atividades são adotadas sem redefini-las; oito são declaráveis e a nona não, porque as diretrizes da STM recomendam proibi-la. O alcance é o da fonte: apenas a preparação do manuscrito, não o restante do processo de pesquisa.',
-    hdrAxes:'<b>Dois eixos.</b> Tipo de tarefa (Eixo 1) e extensão do uso (Eixo 2, opcional). A verificação humana não é um nível: é uma afirmação única que cobre tudo o que foi declarado.',
+    hdrAxes:'<b>Dois eixos.</b> Tipo de tarefa (Eixo 1) e nível de uso (Eixo 2, opcional). A verificação humana não é um nível: é uma afirmação única que cobre tudo o que foi declarado.',
     noteThreshold:'<b>O que se declara?</b> As atividades <b>2 a 8</b> sempre, por pouco que se tenham usado. A <b>1</b> (corretor, gramática, estilo) não é preciso: esse é o limiar. Se não houve nada acima, <code>AI: N</code>. Detalhe no manual, "O que se declara e o que não".',
-    legAxes:'Eixo 1 · Tipo de tarefa &nbsp;·&nbsp; Eixo 2 · Extensão (opcional)',
+    legAxes:'Eixo 1 · Tipo de tarefa',
     lblLang:'Idioma da tela',
     lblDocLang:'Idioma da etiqueta e da prosa',
     legStart:'Antes de começar',
@@ -679,22 +719,24 @@ const UI = {
     sc1:'1× (tela)', sc2:'2× (retina / web)', sc4:'4× (impressão)',
     noteCodes:'<b>Os códigos não se traduzem; as descrições sim.</b> <code>AI</code> (sigla de <i>artificial intelligence</i>, em inglês), o "+" e os códigos de tarefa (<code>ED</code>, <code>TR</code>, <code>CO</code>…) vão sempre em inglês: são o que se compara e se agrega entre revistas de qualquer país, e se fossem traduzidos, dois artigos que declaram exatamente o mesmo produziriam cadeias diferentes. O que segue o <b>idioma da etiqueta</b> é o que a etiqueta diz em língua natural ("Complementa a declaração em prosa do texto", "Mais informações", "Ferramentas:") e a prosa da declaração.',
     noteQr:'<b>O QR leva a esta mesma app</b>, onde quem escaneia encontra o manual e pode gerar a própria etiqueta. A revista ou entidade que publica pode substituí-lo pela sua página de política. Antes de imprimir, confirme que o endereço é o definitivo: um QR impresso não pode ser revogado.',
-    noteForm:'<b>Forma da etiqueta.</b> <code>AI</code> aparece uma vez, no início, seguido de ": ", e os códigos unem-se com "+": <code>AI: ED+TR+CO</code>. Com extensão declarada: <code>AI: ED:1+TR:3+CO:2</code>.',
-    noteAxis2:'<b>Eixo 2 — extensão.</b> Diz quanto <b>dessa tarefa</b> a IA fez, não quanto do artigo: se marcar tradução e puser 3, declara que a maior parte do que foi traduzido vem da ferramenta, e não diz nada do resto. 1 pontual (&lt;¼) · 2 parcial (¼–½) · 3 majoritária (½–¾) · 4 total (&gt;¾). As proporções são orientação, não limiares. "—" significa <b>extensão não declarada</b>, o que é uma declaração válida.',
+    noteForm:'<b>Forma da etiqueta.</b> <code>AI</code> aparece uma vez, no início, seguido de ": ", e os códigos unem-se com "+": <code>AI: ED+TR+CO</code>. Com nível de uso declarado: <code>AI: ED:1+TR:3+CO:2</code>.',
+    noteAxis2:'<b>Eixo 2 — nível de uso.</b> Diz quanto <b>dessa tarefa</b> a IA fez, não quanto do artigo: se marcar tradução e puser 3, declara que a maior parte do que foi traduzido vem da ferramenta, e não diz nada do resto. 1 pontual (&lt;¼) · 2 parcial (¼–½) · 3 majoritária (½–¾) · 4 total (&gt;¾). As proporções são orientação, não limiares. O botão <b>"omitir"</b> deixa o nível de uso <b>não declarado</b>, o que é uma declaração válida e não um esquecimento. É opcional, <b>a menos que</b> a revista ou entidade que publica peça que você indique o nível de uso. Nesse caso, indique-o.',
     btnPng:'Baixar PNG', btnSvg:'Baixar SVG',
     metaCanon:'Cadeia canônica', metaCanvas:'Tela',
     hintEmpty:'Marque ao menos uma tarefa do Eixo 1 (ou "sem uso") para gerar a etiqueta.',
     tagThreshold:'LIMIAR · OPCIONAL',
     tagNotDecl:'NÃO DECLARÁVEL',
-    tipNotDecl:'Extensão não declarada',
-    tipNotDeclSub:c=>`Marcou a tarefa mas não diz quanto. "AI: ${c}" sem nível é uma declaração válida e completa.`,
+    tipNotDecl:'Omitir o nível de uso',
+    tipNotDeclSub:'Você escolhe não declarar qual parte desta atividade a inteligência artificial fez. Esta opção também é válida.',
     tipExtentSub:(r,u)=>`${r} ${!u?'da tarefa marcada, não do artigo inteiro':(u.replace(/^(os |as |o |a )/,m=>({'os ':'dos ','as ':'das ','o ':'do ','a ':'da '})[m]).replace(/^(?!d[oa]s? )/,'de '))}. É uma orientação, não um limite exato.`,
     tipStm:n=>`Atividade ${n} da STM (2025)`,
     tipStmSub:'STM é a associação internacional de editoras científicas cuja diretriz este sistema adota. O número identifica a atividade nessa diretriz; as duas letras são apenas a sua forma curta para a etiqueta.',
     tipCodeSub:'As letras vêm do termo em inglês. O código é o mesmo em qualquer idioma.',
     tipNoStm:'Fora da classificação da STM',
     tipNoStmSub:'N não descreve uma atividade: afirma que não houve uso acima do limiar (a atividade 1 da diretriz internacional STM: correção e estilo). Ver "O que se declara e o que não" no manual.',
-    legendTitle:'Eixo 2 · extensão', legendNotDecl:'não declarada',
+    legendTitle:'Eixo 2 · nível de uso', legendNotDecl:'não declarada',
+    lvOmit:'omitir', colExtent:'Nível de uso', colOptional:'opcional',
+    colExtentLead:'Atividades declaráveis',
     fontOk:kb=>`Tipografia: Inter incorporada (${kb} KB no SVG). O arquivo exportado fica igual em qualquer máquina.`,
     fontFail:'Tipografia: sem conexão, usa-se a fonte do sistema. O layout não quebra, mas o SVG exportado dependerá das fontes de quem o abra.',
     fontLoad:'Tipografia: carregando…',
@@ -726,7 +768,7 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '25',
+  version : '26',
   date    : {es:'29 de setiembre de 2026', en:'29 September 2026', pt:'29 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
@@ -828,7 +870,7 @@ function codesTable(){
 function extentTable(){
   const rows = [0,1,2,3,4].map(lv=>{
     const E = EXTENTS[lv];
-    return `<tr><td>${lv===0?'—':lv}</td><td>${esc(E[lang])}</td><td>${esc(refOf(lv) || w('valid'))}</td></tr>`;
+    return `<tr><td>${lv===0?esc(U.lvOmit):lv}</td><td>${esc(E[lang])}</td><td>${esc(refOf(lv) || w('valid'))}</td></tr>`;
   }).join('');
   return `<table><thead><tr><th>${w('thLevel')}</th><th>${w('thMean')}</th><th>${w('thGuide')}</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
@@ -840,7 +882,7 @@ function manualHTML(){
 <h3>1. How to create the label</h3>
 <ol>
 <li><b>Tick the tasks</b> where AI was used (Axis 1). If there was no use above the disclosable threshold, keep <b>N</b> ticked: it is the starting option.</li>
-<li><b>Optional: state the extent</b> of each task (Axis 2) with buttons 1 to 4. "—" means you do not state it, which is a valid declaration. Hover over each number to see what it means.</li>
+<li><b>Optional: state the level of use</b> of each task (Axis 2) with buttons 1 to 4. <b>"Omit"</b> leaves it undeclared, which is a valid declaration. Hover over each number to see what it means. It is optional, <b>unless</b> the journal or publishing body asks you to state it. In that case state it, and the label will carry it.</li>
 <li><b>Optional: add the tools and models</b> you used (up to 6). Empty rows are ignored. The tool field suggests some frequent names as you type, so that the same tool is always written the same way and the records can be compared. It is <b>not</b> an approved or exhaustive list: any other tool is typed by hand and counts exactly the same.</li>
 <li>Choose the <b>label and prose language</b>: the language of the article. It sets the descriptions inside the label and the language of the prose. It is independent of the screen language, and it does not touch the codes.</li>
 <li>Enter the <b>QR URL</b>: the page that explains the system or the policy of the journal or publishing body.</li>
@@ -849,7 +891,7 @@ function manualHTML(){
 <h3>2. How to read the label</h3>
 <ul>
 <li><b>Title</b> (<code>AI: ED+TR</code>): the declared tasks.</li>
-<li><b>Top line</b> (<code>AI: ED:1+TR:3</code>): the same string with each task's extent; if none was stated it says so, in the label language.</li>
+<li><b>Top line</b> (<code>AI: ED:1+TR:3</code>): the same string with each task's level of use; if none was stated it says so, in the label language.</li>
 <li><b>Tools line</b>: the tools and models, when given.</li>
 <li><b>Bottom phrase</b>: a reminder that the label complements the prose declaration.</li>
 <li><b>QR code</b>: links to the explanation of the system.</li>
@@ -858,14 +900,14 @@ function manualHTML(){
 <ul>
 <li><code>AI</code> appears once, at the start, followed by ": ".</li>
 <li>Codes are joined with "+", without spaces, always in the order of the STM classification, not in the order they were ticked.</li>
-<li>The extent is attached to its code (<code>ED:1</code>) and is left out when it is not stated.</li>
+<li>The level of use is attached to its code (<code>ED:1</code>) and is left out when it is not stated.</li>
 <li><code>AI: N</code> excludes every other task.</li>
 <li><b>The codes are never translated.</b> <code>AI</code>, the "+" and the task codes are always in English, so the same declaration yields the same string in any country. The descriptions inside the label (and the prose) do follow the label language.</li>
 </ul>
 <h3>4. Codes</h3>
 ${codesTable()}
-<h3>5. Extent of use (optional)</h3>
-<p>Extent answers a single question, and it is answered <b>per task</b>: how much of this did the AI do?</p>
+<h3>5. Level of use (optional)</h3>
+<p>The level of use answers a single question, and it is answered <b>per task</b>: how much of this did the AI do?</p>
 <p><b>The point of comparison is the task, not the article.</b> If you tick images and enter 4, you are saying that practically all the figures come from the tool; that says nothing about the text, which may be entirely yours.</p>
 ${extentTable()}
 <p>The proportions are guidance, not strict thresholds.</p>
@@ -877,17 +919,18 @@ ${extentTable()}
 <li>In print, keep the QR code at least about 2 cm wide so a phone can read it.</li>
 </ul>
 <h3>7. What gets declared and what does not</h3>
+<p>The activity numbers used here are the ones shown beside each code on screen, as <b>STM 1</b>, <b>STM 2</b> and so on. Activity 2, for instance, is the row marked <code>TG</code> · STM 2.</p>
 <p><b>Always declare</b> any use of activities <b>2 to 8</b>: generating content, translating, handling data, images, visualisations, code or references. <b>However little was used</b>: if it was used, it is declared.</p>
 <p><b>You need not declare</b> activity <b>1</b>: spell checker, grammar and style polishing. That is the threshold.</p>
 <p><b>If you used activity 1 along with others</b>, there is no need to tick it: tick only the others and leave it unticked.</p>
 <p><b>If there was nothing above activity 1</b>, the correct declaration is <code>AI: N</code>, which is exclusive and clears the rest. That is why <code>N</code> does not say "no tool was used": it says there was no use above the threshold. Without that distinction, anyone who ran a spell checker would be declaring inaccurately.</p>
-<p class="warn"><b>Do not confuse this with Axis 2.</b> The extent being optional does not make the task optional: <code>AI: TR</code> with no number is a valid declaration, but <b>saying nothing</b> about having translated is not.</p>
+<p class="warn"><b>Do not confuse this with Axis 2.</b> The level of use being optional does not make the task optional: <code>AI: TR</code> with no number is a valid declaration, but <b>saying nothing</b> about having translated is not.</p>
 <p>The threshold is not this system's invention: the 2023 STM Guidelines recommend that activity 1 need not be disclosed, and a review of the policies of eleven large-scale publishers finds the same: minor assistive uses for grammar and style typically are not disclosed, and substantive ones are.</p>
 <p><b>If the journal or body that publishes asks for more, its policy wins.</b> It may set its threshold lower and require activity 1 to be disclosed too; the <code>ED</code> code is available for that, and for anyone who wishes to disclose it voluntarily.</p>
 <h3>8. Frequently asked questions</h3>
 <p><b>Does AIMLS detect whether a text was written by an AI?</b> No. AIMLS does not analyse the manuscript or estimate anything: it only turns what you declare into a label. It is a declaration system, not a detection system.</p>
 <p><b>Does it work for a thesis or a report, or only for journal articles?</b> It works for any manuscript. The vocabulary describes the preparation of a document submitted for publication or assessment, and that includes theses, reports and book chapters.</p>
-<p><b>How do I choose the extent?</b> It is your estimate, not a measurement, and it is optional: you may tick the task and leave the level at "—". If you do declare it, the question is how much of <b>that task</b> the tool did, not how much of the article. If the tool translated the whole text, it is 4, even though translating is a small part of all your work. If you translated it yourself and the tool only revised part of it, it is less. The proportions are guidance: nobody expects you to count words.</p>
+<p><b>How do I choose the level of use?</b> It is your estimate, not a measurement, and it is optional, unless the journal or publishing body asks you for it: you may tick the task and press <b>"omit"</b>. If you do declare it, the question is how much of <b>that task</b> the tool did, not how much of the article. If the tool translated the whole text, it is 4, even though translating is a small part of all your work. If you translated it yourself and the tool only revised part of it, it is less. The proportions are guidance: nobody expects you to count words.</p>
 <p><b>What if I used AI for mathematical formulas?</b> It depends on what the tool did. If it wrote the mathematical content that appears in the text, that is activity 2. If it only typeset it (converting it to LaTeX, say), that is activity 1 and sits at the threshold. If it did the mathematics (solving, proving, deriving), that is part of the research process and falls outside this system: declare it in prose if you are asked to.</p>
 <p><b>Why are there two language selectors?</b> Because they are two different things. The one at the top, "Screen language", changes what you see while working: it is for whoever operates the tool. The one below, "Label and prose language", is the language of the article, and it is what gets printed. An editor can work in Spanish and produce an English label for an English article. The codes depend on neither.</p>
 <p><b>Does the label replace the written declaration?</b> No. It accompanies it.</p>
@@ -901,7 +944,7 @@ ${extentTable()}
 <h3>1. Como gerar a etiqueta</h3>
 <ol>
 <li><b>Marque as tarefas</b> em que usou IA (Eixo 1). Se não houve uso acima do limiar declarável, deixe <b>N</b> marcada: é a opção inicial.</li>
-<li><b>Opcional: indique a extensão</b> de cada tarefa (Eixo 2) com os botões 1 a 4. "—" significa que você não a declara, e é uma declaração válida. Passe o cursor sobre cada número para ver o que significa.</li>
+<li><b>Opcional: indique o nível de uso</b> de cada tarefa (Eixo 2) com os botões 1 a 4. <b>"Omitir"</b> deixa-a não declarada, e é uma declaração válida. Passe o cursor sobre cada número para ver o que significa. É opcional, <b>a menos que</b> a revista ou entidade que publica peça que você o indique. Nesse caso, indique-o e a etiqueta o leva.</li>
 <li><b>Opcional: acrescente as ferramentas e modelos</b> que usou (até 6). Linhas vazias são ignoradas. O campo da ferramenta sugere alguns nomes frequentes enquanto você escreve, para que a mesma ferramenta se escreva sempre igual e os registros possam ser comparados. <b>Não</b> é uma lista aprovada nem exaustiva: qualquer outra ferramenta se escreve à mão e vale exatamente o mesmo.</li>
 <li>Escolha o <b>idioma da etiqueta e da prosa</b>: o idioma do artigo. Fixa as descrições dentro da etiqueta e a língua da prosa. É independente do idioma da tela, e não toca nos códigos.</li>
 <li>Escreva a <b>URL do QR</b>: a página que explica o sistema ou a política da revista ou entidade que publica.</li>
@@ -910,7 +953,7 @@ ${extentTable()}
 <h3>2. Como ler a etiqueta</h3>
 <ul>
 <li><b>Título</b> (<code>AI: ED+TR</code>): as tarefas declaradas.</li>
-<li><b>Linha superior</b> (<code>AI: ED:1+TR:3</code>): a mesma cadeia com a extensão de cada tarefa; se nenhuma foi declarada, a etiqueta o diz, no idioma da etiqueta.</li>
+<li><b>Linha superior</b> (<code>AI: ED:1+TR:3</code>): a mesma cadeia com o nível de uso de cada tarefa; se nenhuma foi declarada, a etiqueta o diz, no idioma da etiqueta.</li>
 <li><b>Linha de ferramentas</b>: as ferramentas e modelos, quando indicados.</li>
 <li><b>Frase inferior</b>: lembra que a etiqueta complementa a declaração em prosa.</li>
 <li><b>Código QR</b>: leva à explicação do sistema.</li>
@@ -919,14 +962,14 @@ ${extentTable()}
 <ul>
 <li><code>AI</code> aparece uma única vez, no início, seguido de ": ".</li>
 <li>Os códigos separam-se com "+", sem espaços, e sempre na ordem da classificação da STM, não na ordem em que foram marcados.</li>
-<li>A extensão vai colada ao seu código (<code>ED:1</code>) e omite-se quando não é declarada.</li>
+<li>O nível de uso vai colado ao seu código (<code>ED:1</code>) e omite-se quando não é declarada.</li>
 <li><code>AI: N</code> exclui qualquer outra tarefa.</li>
 <li><b>Os códigos não se traduzem.</b> <code>AI</code>, o "+" e os códigos de tarefa vão sempre em inglês, de modo que a mesma declaração produz a mesma cadeia em qualquer país. As descrições dentro da etiqueta (e a prosa) seguem o idioma da etiqueta.</li>
 </ul>
 <h3>4. Códigos</h3>
 ${codesTable()}
-<h3>5. Extensão do uso (opcional)</h3>
-<p>A extensão responde a uma só pergunta, e responde-se <b>por tarefa</b>: quanto disto fez a IA?</p>
+<h3>5. Nível de uso (opcional)</h3>
+<p>O nível de uso responde a uma só pergunta, e responde-se <b>por tarefa</b>: quanto disto fez a IA?</p>
 <p><b>O ponto de comparação é a tarefa, não o artigo.</b> Se marcar imagens e puser 4, está a dizer que praticamente todas as figuras vêm da ferramenta; isso não diz nada sobre o texto, que pode ser inteiramente seu.</p>
 ${extentTable()}
 <p>As proporções são orientação, não limiares estritos.</p>
@@ -938,18 +981,19 @@ ${extentTable()}
 <li>Impressa, procure que o código QR não fique abaixo de uns 2 cm de lado, para que possa ser lido com o telefone.</li>
 </ul>
 <h3>7. O que se declara e o que não</h3>
+<p>Os números de atividade usados aqui são os que aparecem ao lado de cada código na tela, como <b>STM 1</b>, <b>STM 2</b> e assim por diante. A atividade 2, por exemplo, é a linha marcada <code>TG</code> · STM 2.</p>
 <p><b>Declara-se sempre</b> qualquer uso das atividades <b>2 a 8</b>: gerar conteúdo, traduzir, tratar dados, imagens, visualizações, código ou referências. <b>Por pouco que se tenha usado</b>: se se usou, declara-se.</p>
 <p><b>Não é preciso declarar</b> a atividade <b>1</b>: corretor ortográfico, gramática e polimento de estilo. Esse é o limiar.</p>
 <p><b>Se usou a atividade 1 junto com outras</b>, não é preciso marcá-la: marque só as outras e deixe-a sem marcar.</p>
 <p><b>Se não houve nada acima da atividade 1</b>, a declaração correta é <code>AI: N</code>, que é excludente e apaga o resto. Por isso <code>N</code> não diz "não se usou nenhuma ferramenta": diz que não houve uso acima do limiar. Sem essa distinção, quem passou o corretor estaria declarando de forma inexata.</p>
-<p class="warn"><b>Não confundir com o Eixo 2.</b> Que a extensão seja opcional não torna a tarefa opcional: <code>AI: TR</code> sem número é uma declaração válida, mas <b>calar</b> que se traduziu não é.</p>
+<p class="warn"><b>Não confundir com o Eixo 2.</b> Que o nível de uso seja opcional não torna a tarefa opcional: <code>AI: TR</code> sem número é uma declaração válida, mas <b>calar</b> que se traduziu não é.</p>
 <p>O limiar não é invenção deste sistema: as diretrizes da STM de 2023 recomendam que a atividade 1 não exija declaração, e uma revisão de políticas de onze editoras de grande escala encontra o mesmo: os usos assistivos menores de gramática e estilo tipicamente não se declaram, e os substantivos sim.</p>
 <p><b>Se a revista ou entidade que publica pedir mais, manda essa política.</b> Pode situar o seu limiar mais abaixo e exigir que a atividade 1 também se declare; para isso o código <code>ED</code> está disponível, e também o usa quem queira declará-la por vontade própria.</p>
 <h3>8. Perguntas frequentes</h3>
 <p><b>O AIMLS deteta se um texto foi escrito por uma IA?</b> Não. O AIMLS não analisa o manuscrito nem estima nada: apenas converte em etiqueta o que você declara. É um sistema de declaração, não de deteção.</p>
 <p><b>Serve para uma tese ou um relatório, ou só para artigos de revista?</b> Serve para qualquer manuscrito. O vocabulário descreve a preparação de um documento submetido a publicação ou avaliação, e isso inclui teses, relatórios e capítulos de livro.</p>
-<p><b>Como escolho o nível de uso?</b> É uma estimativa sua, não uma medição, e é opcional: pode marcar a tarefa e deixar o nível em "—". Se o declarar, a pergunta é quanto <b>dessa tarefa</b> a ferramenta fez, não quanto do artigo. Se a ferramenta traduziu o texto inteiro, é 4, mesmo que traduzir seja uma parte pequena de todo o seu trabalho. Se traduziu você e a ferramenta apenas revisou parte, é menos. As proporções são orientação: ninguém espera que conte palavras.</p>
-<p><b>E se usei IA para as fórmulas matemáticas?</b> Depende do que a ferramenta fez. Se redigiu o conteúdo matemático que aparece no texto, é a atividade 2. Se apenas o formatou (passá-lo para LaTeX, por exemplo), é a atividade 1 e está no limiar. Se fez a matemática (resolver, demonstrar, derivar), isso faz parte do processo de pesquisa e fica fora deste sistema: declare-o em prosa se lho pedirem.</p>
+<p><b>Como escolho o nível de uso?</b> É uma estimativa sua, não uma medição, e é opcional, a menos que a revista ou entidade que publica peça: você pode marcar a tarefa e clicar em <b>"omitir"</b>. Se o declarar, a pergunta é quanto <b>dessa tarefa</b> a ferramenta fez, não quanto do artigo. Se a ferramenta traduziu o texto inteiro, é 4, mesmo que traduzir seja uma parte pequena de todo o seu trabalho. Se traduziu você e a ferramenta apenas revisou parte, é menos. As proporções são orientação: ninguém espera que conte palavras.</p>
+<p><b>E se usei IA para as fórmulas matemáticas?</b> Depende do que a ferramenta fez. Se redigiu o conteúdo matemático que aparece no texto, é a atividade 2. Se apenas o formatou (passá-lo para LaTeX, por exemplo), é a atividade 1 e está no limiar. Se fez a matemática (resolver, demonstrar, derivar), isso faz parte do processo de pesquisa e fica fora deste sistema: declare-o em prosa se pedirem.</p>
 <p><b>Por que há dois seletores de idioma?</b> Porque são duas coisas distintas. O de cima, "Idioma da tela", muda o que você vê enquanto trabalha: é para quem opera. O de baixo, "Idioma da etiqueta e da prosa", é o idioma do artigo, e é o que se imprime. Uma pessoa editora pode trabalhar em português e produzir uma etiqueta em inglês para um artigo em inglês. Os códigos não dependem de nenhum dos dois.</p>
 <p><b>A etiqueta substitui a declaração escrita?</b> Não. Acompanha-a.</p>
 <p><b>E a verificação humana?</b> Não é um nível da escala: entende-se que quem declara revisou tudo o que foi incorporado e assume a responsabilidade pelo conteúdo.</p>
@@ -962,7 +1006,7 @@ ${extentTable()}
 <h3>1. Cómo generar la etiqueta</h3>
 <ol>
 <li><b>Marque las tareas</b> en las que usó IA (Eje 1). Si no hubo uso por encima del umbral declarable, deje marcada <b>N</b>: es la opción inicial.</li>
-<li><b>Opcional: indique la extensión</b> de cada tarea (Eje 2) con los botones 1 a 4. "—" significa que no la declara, y es una declaración válida. Pase el cursor sobre cada número para ver qué significa.</li>
+<li><b>Opcional: indique el nivel de uso</b> de cada tarea (Eje 2) con los botones 1 a 4. <b>"Omitir"</b> la deja sin declarar, y es una declaración válida. Pase el cursor sobre cada número para ver qué significa. Es opcional, <b>a menos que</b> la revista o entidad que publica le pida que lo indique. En ese caso indíquelo, y la etiqueta lo lleva.</li>
 <li><b>Opcional: agregue las herramientas y modelos</b> que usó (hasta 6). Las filas vacías se ignoran. El campo de la herramienta sugiere algunos nombres frecuentes mientras escribe, para que la misma herramienta se escriba siempre igual y los registros se puedan comparar. <b>No</b> es una lista aprobada ni exhaustiva: cualquier otra herramienta se escribe a mano y vale exactamente lo mismo.</li>
 <li>Escoja el <b>idioma de la etiqueta y la prosa</b>: el idioma del artículo. Fija las descripciones dentro de la etiqueta y la lengua de la prosa. Es independiente del idioma de la pantalla, y no toca los códigos.</li>
 <li>Escriba la <b>URL del QR</b>: la página que explica el sistema o la política de la revista o entidad que publica.</li>
@@ -971,7 +1015,7 @@ ${extentTable()}
 <h3>2. Cómo leer la etiqueta</h3>
 <ul>
 <li><b>Título</b> (<code>AI: ED+TR</code>): las tareas declaradas.</li>
-<li><b>Línea superior</b> (<code>AI: ED:1+TR:3</code>): la misma cadena con la extensión de cada tarea; si no se declaró ninguna, lo dice, en el idioma de la etiqueta.</li>
+<li><b>Línea superior</b> (<code>AI: ED:1+TR:3</code>): la misma cadena con el nivel de uso de cada tarea; si no se declaró ninguna, lo dice, en el idioma de la etiqueta.</li>
 <li><b>Línea de herramientas</b>: las herramientas y modelos, si se indicaron.</li>
 <li><b>Frase inferior</b>: recuerda que la etiqueta complementa la declaración en prosa.</li>
 <li><b>Código QR</b>: lleva a la explicación del sistema.</li>
@@ -980,14 +1024,14 @@ ${extentTable()}
 <ul>
 <li><code>AI</code> aparece una sola vez, al inicio, seguido de ": ".</li>
 <li>Los códigos se separan con "+", sin espacios, y siempre en el orden de la clasificación de STM, no en el orden en que se marcaron.</li>
-<li>La extensión va pegada a su código (<code>ED:1</code>) y se omite cuando no se declara.</li>
+<li>El nivel de uso va pegado a su código (<code>ED:1</code>) y se omite cuando no se declara.</li>
 <li><code>AI: N</code> excluye cualquier otra tarea.</li>
 <li><b>Los códigos no se traducen.</b> <code>AI</code>, el "+" y los códigos de tarea van siempre en inglés, de modo que la misma declaración produce la misma cadena en cualquier país. Las descripciones dentro de la etiqueta (y la prosa) sí siguen al idioma de la etiqueta.</li>
 </ul>
 <h3>4. Códigos</h3>
 ${codesTable()}
-<h3>5. Extensión del uso (opcional)</h3>
-<p>La extensión responde a una sola pregunta, y se responde <b>por tarea</b>: ¿cuánto de esto lo hizo la IA?</p>
+<h3>5. Nivel de uso (opcional)</h3>
+<p>El nivel de uso responde a una sola pregunta, y se responde <b>por tarea</b>: ¿cuánto de esto lo hizo la IA?</p>
 <p><b>El punto de comparación es la tarea, no el artículo.</b> Si marca imágenes y pone 4, está diciendo que prácticamente todas las figuras vienen de la herramienta; eso no dice nada sobre el texto, que puede ser enteramente suyo.</p>
 ${extentTable()}
 <p>Las proporciones son orientación, no umbrales estrictos.</p>
@@ -999,17 +1043,18 @@ ${extentTable()}
 <li>Impresa, procure que el código QR no quede por debajo de unos 2 cm de lado, para que se pueda leer con el teléfono.</li>
 </ul>
 <h3>7. Qué se declara y qué no</h3>
+<p>Los números de actividad que se usan acá son los que aparecen junto a cada código en la pantalla, como <b>STM 1</b>, <b>STM 2</b> y así. La actividad 2, por ejemplo, es la fila marcada <code>TG</code> · STM 2.</p>
 <p><b>Se declara siempre</b> cualquier uso de las actividades <b>2 a 8</b>: generar contenido, traducir, tratar datos, imágenes, visualizaciones, código o referencias. <b>Da igual cuán poco se haya usado</b>: si se usó, se declara.</p>
 <p><b>No hace falta declarar</b> la actividad <b>1</b>: corrector ortográfico, gramática y pulido de estilo. Ese es el umbral.</p>
 <p><b>Si usó la actividad 1 junto con otras</b>, no hace falta marcarla: marque solo las otras y déjela sin marcar.</p>
 <p><b>Si no hubo nada por encima de la actividad 1</b>, la declaración correcta es <code>AI: N</code>, que es excluyente y borra el resto. Por eso <code>N</code> no dice "no se usó ninguna herramienta": dice que no hubo uso por encima del umbral. Sin esa distinción, quien pasó el corrector estaría declarando de forma inexacta.</p>
-<p class="warn"><b>Cuidado con no confundirlo con el Eje 2.</b> Que la extensión sea opcional no vuelve opcional la tarea: <code>AI: TR</code> sin número es una declaración válida, pero <b>callar</b> que se tradujo no lo es.</p>
+<p class="warn"><b>Cuidado con no confundirlo con el Eje 2.</b> Que el nivel de uso sea opcional no vuelve opcional la tarea: <code>AI: TR</code> sin número es una declaración válida, pero <b>callar</b> que se tradujo no lo es.</p>
 <p>El umbral no lo inventa este sistema: las guías de STM de 2023 recomiendan que la actividad 1 no requiera declaración, y una revisión de políticas de once editoriales de gran escala encuentra lo mismo: los usos asistivos menores de gramática y estilo típicamente no se declaran, y los sustantivos sí.</p>
 <p><b>Si la revista o entidad que publica pide más, manda esa política.</b> Puede situar su umbral más abajo y exigir que se declare también la actividad 1; para eso el código <code>ED</code> está disponible, y también lo usa quien quiera declararla por voluntad propia.</p>
 <h3>8. Preguntas frecuentes</h3>
 <p><b>¿AIMLS detecta si un texto fue escrito por una IA?</b> No. AIMLS no analiza el manuscrito ni estima nada: solo convierte en etiqueta lo que usted declara. Es un sistema de declaración, no de detección.</p>
 <p><b>¿Sirve para una tesis o un informe, o solo para artículos de revista?</b> Sirve para cualquier manuscrito. El vocabulario describe la preparación de un documento que se somete a publicación o evaluación, y eso incluye tesis, informes y capítulos de libro.</p>
-<p><b>¿Cómo escojo el nivel de uso?</b> Es una estimación suya, no una medición, y es opcional: puede marcar la tarea y dejar el nivel en "—". Si lo declara, la pregunta es cuánto de <b>esa tarea</b> hizo la herramienta, no cuánto del artículo. Si la herramienta tradujo el texto entero, es 4, aunque traducir sea una parte pequeña de todo su trabajo. Si tradujo usted y la herramienta solo revisó parte, es menos. Las proporciones son orientación: nadie espera que cuente palabras.</p>
+<p><b>¿Cómo escojo el nivel de uso?</b> Es una estimación suya, no una medición, y es opcional, a menos que la revista o entidad que publica se lo pida: puede marcar la tarea y pulsar <b>"omitir"</b>. Si lo declara, la pregunta es cuánto de <b>esa tarea</b> hizo la herramienta, no cuánto del artículo. Si la herramienta tradujo el texto entero, es 4, aunque traducir sea una parte pequeña de todo su trabajo. Si tradujo usted y la herramienta solo revisó parte, es menos. Las proporciones son orientación: nadie espera que cuente palabras.</p>
 <p><b>¿Y si usé IA para las fórmulas matemáticas?</b> Depende de qué hizo la herramienta. Si redactó el contenido matemático que aparece en el texto, es la actividad 2. Si solo lo maquetó (pasarlo a LaTeX, por ejemplo), es la actividad 1 y está en el umbral. Si hizo la matemática (resolver, demostrar, derivar), eso es parte del proceso de investigación y queda fuera de este sistema: declárelo en prosa si se lo piden.</p>
 <p><b>¿Por qué hay dos selectores de idioma?</b> Porque son dos cosas distintas. El de arriba, "Idioma de la pantalla", cambia lo que usted ve mientras trabaja: es para quien opera. El de abajo, "Idioma de la etiqueta y la prosa", es el idioma del artículo, y es el que se imprime. Una persona editora puede trabajar en español y producir una etiqueta en inglés para un artículo en inglés. Los códigos no dependen de ninguno de los dos.</p>
 <p><b>¿La etiqueta reemplaza la declaración escrita?</b> No. La acompaña.</p>
@@ -1072,7 +1117,7 @@ ${collabBlock('en')}
 <p class="cite">${cite}</p>
 <h3>Language of the label</h3>
 <p>The tool has <b>two</b> independent languages: that of the screen itself ("Screen language", at the top) and that of what goes into the article ("Label and prose language", in the "Label and prose" group).</p>
-<p><b>The code is invariant: it is always in English.</b> The <code>AI</code> prefix, the "+" separator and the task codes (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) do not change with any language setting. That is the whole point of a code: two articles that declare the same use must produce the same string, in Costa Rica or in Brazil, so that it can be searched, compared and aggregated. What <i>does</i> follow the label language is the natural-language text (the closing phrase, "More info", the tools line and the notice when the extent is not declared) and the prose declaration.</p>
+<p><b>The code is invariant: it is always in English.</b> The <code>AI</code> prefix, the "+" separator and the task codes (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) do not change with any language setting. That is the whole point of a code: two articles that declare the same use must produce the same string, in Costa Rica or in Brazil, so that it can be searched, compared and aggregated. What <i>does</i> follow the label language is the natural-language text (the closing phrase, "More info", the tools line and the notice when the level of use is not declared) and the prose declaration.</p>
 <h3>Sources and third-party components</h3>
 <ul>
 <li>Activity classification: STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. Cited with attribution; not covered by this licence.</li>
@@ -1105,7 +1150,7 @@ ${collabBlock('pt')}
 <p class="cite">${cite}</p>
 <h3>Idioma da etiqueta</h3>
 <p>A ferramenta tem <b>dois</b> idiomas independentes: o da própria tela ("Idioma da tela", acima) e o do que entra no artigo ("Idioma da etiqueta e da prosa", no bloco "Etiqueta e prosa").</p>
-<p><b>O código é invariante: vai sempre em inglês.</b> O prefixo <code>AI</code>, o separador "+" e os códigos de tarefa (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) não mudam com nenhuma opção de idioma. Essa é a razão de ser de um código: dois artigos que declaram o mesmo uso têm de produzir a mesma cadeia, na Costa Rica ou no Brasil, para que se possa buscar, comparar e agregar. O que <i>sim</i> segue o idioma da etiqueta é o texto em língua natural (a frase de fecho, "Mais informações", a linha de ferramentas e o aviso de extensão não declarada) e a prosa da declaração.</p>
+<p><b>O código é invariante: vai sempre em inglês.</b> O prefixo <code>AI</code>, o separador "+" e os códigos de tarefa (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) não mudam com nenhuma opção de idioma. Essa é a razão de ser de um código: dois artigos que declaram o mesmo uso têm de produzir a mesma cadeia, na Costa Rica ou no Brasil, para que se possa buscar, comparar e agregar. O que <i>sim</i> segue o idioma da etiqueta é o texto em língua natural (a frase de fecho, "Mais informações", a linha de ferramentas e o aviso de nível de uso não declarado) e a prosa da declaração.</p>
 <h3>Fontes e componentes de terceiros</h3>
 <ul>
 <li>Classificação de atividades: STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. Citada com atribuição; não fica coberta por esta licença.</li>
@@ -1138,7 +1183,7 @@ ${collabBlock('es')}
 <p class="cite">${cite}</p>
 <h3>Idioma de la etiqueta</h3>
 <p>La herramienta tiene <b>dos</b> idiomas independientes: el de la propia pantalla ("Idioma de la pantalla", arriba) y el de lo que entra al artículo ("Idioma de la etiqueta y la prosa", en el bloque "Etiqueta y prosa").</p>
-<p><b>El código es invariante: va siempre en inglés.</b> El prefijo <code>AI</code>, el separador "+" y los códigos de tarea (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) no cambian con ninguna opción de idioma. Esa es la razón de ser de un código: dos artículos que declaran el mismo uso tienen que producir la misma cadena, en Costa Rica o en Brasil, para que se pueda buscar, comparar y agregar. Lo que <i>sí</i> sigue al idioma de la etiqueta es el texto en lengua natural (la frase de cierre, "Más información", la línea de herramientas y el aviso de extensión no declarada) y la prosa de la declaración.</p>
+<p><b>El código es invariante: va siempre en inglés.</b> El prefijo <code>AI</code>, el separador "+" y los códigos de tarea (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) no cambian con ninguna opción de idioma. Esa es la razón de ser de un código: dos artículos que declaran el mismo uso tienen que producir la misma cadena, en Costa Rica o en Brasil, para que se pueda buscar, comparar y agregar. Lo que <i>sí</i> sigue al idioma de la etiqueta es el texto en lengua natural (la frase de cierre, "Más información", la línea de herramientas y el aviso de nivel de uso no declarado) y la prosa de la declaración.</p>
 <h3>Fuentes y componentes de terceros</h3>
 <ul>
 <li>Clasificación de actividades: STM Association (2025), <i>Recommendations for a Classification of AI Use in Academic Manuscript Preparation</i>. Se cita con atribución; no queda cubierta por esta licencia.</li>
@@ -1258,13 +1303,13 @@ const BADGE = {
 const BADGE_L = {
   es:{ declaration:'Complementa la declaración en prosa del texto',
        toolsLead:'Herramientas: ', moreInfo:'Más información',
-       noUse:'SIN USO POR ENCIMA DEL UMBRAL', noExtent:'EXTENSIÓN NO DECLARADA' },
+       noUse:'SIN USO POR ENCIMA DEL UMBRAL', noExtent:'NIVEL DE USO NO DECLARADO' },
   en:{ declaration:'Complements the prose declaration in the text',
        toolsLead:'Tools: ', moreInfo:'More info',
-       noUse:'NO USE ABOVE THRESHOLD', noExtent:'EXTENT NOT DECLARED' },
+       noUse:'NO USE ABOVE THRESHOLD', noExtent:'LEVEL OF USE NOT DECLARED' },
   pt:{ declaration:'Complementa a declaração em prosa do texto',
        toolsLead:'Ferramentas: ', moreInfo:'Mais informações',
-       noUse:'SEM USO ACIMA DO LIMIAR', noExtent:'EXTENSÃO NÃO DECLARADA' },
+       noUse:'SEM USO ACIMA DO LIMIAR', noExtent:'NÍVEL DE USO NÃO DECLARADO' },
 };
 /* El motor de composición solo conoce `T`: se recompone al cambiar docLang. */
 let T = Object.assign({}, BADGE, BADGE_L.en);
@@ -1280,6 +1325,14 @@ const D = {
   icon:142, iconGap:22,
   titleSize:68, titleWeight:700, titleLS:-1.5, titleMin:30,
   detailsSize:21, detailsWeight:500,
+  /* El aviso de nivel no declarado va un punto más pequeño que la cadena
+     canónica: es una nota sobre lo que falta, no el dato en sí, y con la
+     redacción larga pesaba demasiado en la etiqueta. Se DIBUJA más pequeño
+     pero se MIDE al tamaño normal: la altura de la etiqueta sale de una
+     cadena de referencia a detailsSize, y medirla más pequeña rompería el
+     alto constante de 196 que iguala todas las etiquetas y todos los
+     idiomas. Cabe de sobra en el espacio ya reservado. */
+  noExtentSize:18,
   declSize:17, declWeight:500, declLS:0.1,   // la frase es más larga que «Standard Declaration»: baja de cuerpo
   toolsSize:15, toolsWeight:400,
   gapDetailsTools:7, toolsLineGap:4, toolsMinW:300,
@@ -1474,7 +1527,7 @@ function badgeStrings(){
   // La línea de detalle solo aporta si hay alguna extensión; si no, lo dice.
   // Hacer visible la ausencia de dato es el mismo argumento del §4.5 sobre N.
   const anyExtent = codes.some(c => state[c] > 0);
-  return {title, details: anyExtent ? canonical : T.noExtent, canonical, codes, tools: toolItems()};
+  return {title, details: anyExtent ? canonical : T.noExtent, noExtent: !anyExtent, canonical, codes, tools: toolItems()};
 }
 
 /* =========================== MEDICIÓN ==================================
@@ -1816,7 +1869,7 @@ ${defs}
 <rect data-role="outer" x="0" y="0" width="${f(L.W)}" height="${f(L.H)}" rx="${D.rOut}" fill="${fg}"/>
 <rect data-role="card" x="${f(L.cardX)}" y="${f(L.cardY)}" width="${f(L.cardW)}" height="${f(L.cardH)}" rx="${D.rCard}" fill="${bg}"/>
 <g data-role="icon" transform="translate(${f(L.iconX)},${f(L.iconY)})">${brandIcon(L.iconSize, o.twoTone ? null : fg, null, o.twoTone)}</g>
-<text data-role="details" x="${f(L.detailsEndX)}" y="${f(L.detailsBaseline)}" text-anchor="end" ${FF} font-size="${D.detailsSize}" font-weight="${D.detailsWeight}" fill="${fg}">${esc(L.strings.details)}</text>
+<text data-role="details" x="${f(L.detailsEndX)}" y="${f(L.detailsBaseline)}" text-anchor="end" ${FF} font-size="${L.strings.noExtent ? D.noExtentSize : D.detailsSize}" font-weight="${D.detailsWeight}" fill="${fg}">${esc(L.strings.details)}</text>
 ${(L.toolLines||[]).map((l,k)=>`<text data-role="tools" x="${f(L.detailsEndX)}" y="${f(L.toolsBaselines[k])}" text-anchor="end" ${FF} font-size="${D.toolsSize}" font-weight="${D.toolsWeight}" fill="${fg}">${esc(l.t)}</text>`).join('')}
 <text data-role="title" x="${f(L.titleX)}" y="${f(L.titleBaseline)}" ${FF} font-size="${f(L.titleSize)}" font-weight="${D.titleWeight}" letter-spacing="${D.titleLS}" fill="${fg}">${esc(L.strings.title)}</text>
 <g data-role="rule"><line x1="${f(L.ruleX0)}" y1="${f(L.ruleY)}" x2="${f(L.ruleX1)}" y2="${f(L.ruleY)}" stroke="${fg}" stroke-width="${D.ruleW}" stroke-linecap="round"/><circle cx="${f(L.ruleX0)}" cy="${f(L.ruleY)}" r="${D.dotR}" fill="${fg}"/><circle cx="${f(L.ruleX1)}" cy="${f(L.ruleY)}" r="${D.dotR}" fill="${fg}"/></g>
@@ -1943,6 +1996,10 @@ const taskListEl = $('taskList');
 
 function buildControls(){
   taskListEl.innerHTML = '';
+  /* El encabezado de columna se inserta más abajo, cuando ya están las
+     filas: va justo encima de la primera que TIENE niveles. La fila de N no
+     los lleva, así que un encabezado al principio quedaba colgando sobre una
+     columna vacía. Ver el bloque que lo coloca al final de esta función. */
   TASKS.forEach(t=>{
     if(t.declarable === false){                       // actividad 9: informativa
       const r = document.createElement('div');
@@ -1986,9 +2043,14 @@ function buildControls(){
         const b = document.createElement('button');
         const E = EXTENTS[lv];
         b.type='button';
-        b.textContent = lv===0 ? '—' : lv;
+        /* Antes acá iba un guion. Una estudiante lo encontró confuso y tenía
+           razón: es un símbolo que hay que aprender, y puesto en fila con los
+           números se lee como «nivel cero», que es lo que significa N, no
+           esto. La palabra lo dice sola. En la etiqueta impresa nunca hubo
+           guion: ahí sale «EXTENSIÓN NO DECLARADA» con todas las letras. */
+        b.textContent = lv===0 ? U.lvOmit : lv;
         const head = lv===0 ? U.tipNotDecl : `${lv} · ${E[lang]}`;
-        const sub  = lv===0 ? U.tipNotDeclSub(t.code) : U.tipExtentSub(refOf(lv), t.unit && t.unit[lang]);
+        const sub  = lv===0 ? U.tipNotDeclSub : U.tipExtentSub(refOf(lv), t.unit && t.unit[lang]);
         b.setAttribute('data-tip', head);
         b.setAttribute('data-tip-sub', sub);
         b.setAttribute('aria-label', `${head}. ${sub}`);
@@ -2011,11 +2073,25 @@ function buildControls(){
     + [0,1,2,3,4].map(lv=>{
         const E = EXTENTS[lv];
         const head = lv===0 ? U.tipNotDecl : `${lv} · ${E[lang]}`;
-        const sub  = lv===0 ? U.tipNotDeclSub('ED') : U.tipExtentSub(refOf(lv));
+        const sub  = lv===0 ? U.tipNotDeclSub : U.tipExtentSub(refOf(lv));
         const short = lv===0 ? U.legendNotDecl : E[lang].split(':')[0].toLowerCase();
         return `<span class="li" tabindex="0" data-tip="${esc(head)}" data-tip-sub="${esc(sub)}">`
-             + `<b>${lv===0?'—':lv}</b>${short}</span>`;
+             + `<b class="${lv===0?'wd':''}">${lv===0?esc(U.lvOmit):lv}</b>${short}</span>`;
       }).join('');
+  /* Cierra el recuadro en la última fila que de verdad tiene niveles: la
+     última del bloque es la actividad 9, que no los lleva, así que un
+     :last-of-type en CSS dejaba el borde abierto por abajo. */
+  { const conNiveles = taskListEl.querySelectorAll('.levels');
+    if(conNiveles.length){
+      conNiveles[conNiveles.length-1].classList.add('fin');
+      /* La tapa del recuadro, justo encima de la primera fila con niveles. */
+      const h = document.createElement('div');
+      h.className = 'lvhead';
+      h.innerHTML = `<span class="sp">${esc(U.colExtentLead)}</span>`
+                  + `<span class="cap">${esc(U.colExtent)}<i>${esc(U.colOptional)}</i></span>`;
+      const primera = conNiveles[0].closest('.task-row');
+      primera.parentNode.insertBefore(h, primera);
+    } }
   taskListEl.appendChild(leg);
 }
 
@@ -2602,10 +2678,20 @@ function runSelfTest(){
   const sucias = marcasEs.filter(m => textos.join(' ').includes(m));
   ok(sucias.length===0, `en inglés no queda texto en español${sucias.length?': '+sucias.join(', '):''}`);
 
-  const tipsEn = [...document.querySelectorAll('.levels button')].map(b=>b.getAttribute('data-tip')+' '+b.getAttribute('data-tip-sub'));
-  ok(tipsEn.some(t=>t.includes('Extent not declared')) && tipsEn.some(t=>t.includes('less than a quarter')),
-     'las guías de los números se traducen, incluidas las proporciones');
-  ok(document.querySelector('.legend .lt').textContent==='Axis 2 · extent', 'la leyenda de la escala se traduce');
+  /* Se DERIVA del diccionario, no se copia el texto a mano: la versión
+     anterior llevaba «Extent not declared» escrito en la aserción y se cayó
+     al reescribir esa guía, sin que nada estuviera roto. Lo que hay que
+     comprobar es que las guías salgan del idioma activo, no cuál es la frase
+     exacta de hoy. */
+  { const bts = [...document.querySelectorAll('.levels button')];
+    const guias = bts.map(b=>`${b.getAttribute('data-tip')} ${b.getAttribute('data-tip-sub')}`);
+    const omitir = guias.some(t=>t.includes(UI.en.tipNotDecl));
+    const proporcion = guias.some(t=>t.includes(EXTENTS[1].refEn));
+    ok(omitir && proporcion,
+       'las guías de los números se traducen, incluidas las proporciones');
+    ok(bts[0].textContent === UI.en.lvOmit,
+       'el botón de omitir también se traduce'); }
+  ok(document.querySelector('.legend .lt').textContent===UI.en.legendTitle, 'la leyenda de la escala se traduce');
   /* Hace falta un estado con ALGUNA tarea sin marcar: al llegar aquí venían
      todas seleccionadas y no había ninguna fila apagada que inspeccionar. */
   { state={ED:1}; buildControls();
@@ -2618,9 +2704,9 @@ function runSelfTest(){
      era el español; ahora el arranque es en inglés, así que cada destino se
      fija de forma explícita en vez de confiar en el estado previo. */
   irA('es');
-  ok(document.querySelector('.legend .lt').textContent==='Eje 2 · extensión', 'vuelve al español al cambiar de vuelta');
+  ok(document.querySelector('.legend .lt').textContent===UI.es.legendTitle, 'vuelve al español al cambiar de vuelta');
   irA('pt');
-  ok(document.querySelector('.legend .lt').textContent==='Eixo 2 · extensão', 'y cambia a portugués');
+  ok(document.querySelector('.legend .lt').textContent===UI.pt.legendTitle, 'y cambia a portugués');
   { const marcasEn = ['Download','Task','Remove','Interface language','Canonical string'];
     const t2 = [];
     document.querySelectorAll('.controls, header, .actions, .meta, #foot, #manualBody, #aboutBody').forEach(n=>t2.push(n.textContent));
@@ -2946,6 +3032,113 @@ function runSelfTest(){
     irA(prevL3);
     ok(sinMarcas.length===0,
        `«Acerca de» lleva la nota de marcas, sin afiliación ni respaldo${sinMarcas.length?': falta en '+sinMarcas.join(', '):''}`);
+  }
+
+  /* 8decies. EL CONTROL DE EXTENSIÓN. Una estudiante encontró confuso el
+     guion que había antes: es un símbolo que hay que aprender y, puesto en
+     fila con los números, se lee como «nivel cero», que es lo que significa
+     N y no esto. Ahora el botón lleva palabra y la columna va enmarcada bajo
+     un rótulo que dice «opcional». Lo que se vigila:
+       · que el guion no vuelva al control;
+       · que el rótulo mida EXACTAMENTE lo que la columna, porque es su tapa
+         y si se descuadra el recuadro se ve roto;
+       · que vaya debajo de la fila de N, que no tiene niveles;
+       · y que la guía flotante explique que es una decisión, no un olvido. */
+  { const prevL = $('lang').value;
+    const prevSt = JSON.parse(JSON.stringify(state));
+    state = {ED:0}; 
+    for(const L of LANG_ALL){
+      irA(L);
+      const bts = [...$('taskList').querySelectorAll('.levels button')];
+      const primero = bts[0];
+      ok(primero && primero.textContent.trim() === U.lvOmit,
+         `[${L}] el primer botón dice la palabra, no un símbolo: «${primero && primero.textContent.trim()}»`);
+      ok(primero && !/^[—–-]$/.test(primero.textContent.trim()),
+         `[${L}] el guion no volvió al control de extensión`);
+
+      const cap = $('taskList').querySelector('.lvhead .cap');
+      ok(!!cap, `[${L}] la columna de extensión lleva su rótulo`);
+      ok(cap && /opcional|optional/i.test(cap.textContent),
+         `[${L}] el rótulo dice que es opcional`);
+
+      const col = $('taskList').querySelector('.task-row .levels');
+      if(cap && col){
+        const a2 = cap.getBoundingClientRect(), b2 = col.getBoundingClientRect();
+        ok(Math.abs(a2.left-b2.left) < 1.5 && Math.abs(a2.right-b2.right) < 1.5,
+           `[${L}] el rótulo cuadra con la columna que enmarca (${Math.round(a2.width)} contra ${Math.round(b2.width)})`);
+      }
+      /* Debajo de N: la fila de N no tiene niveles, así que un rótulo puesto
+         al principio quedaba colgando sobre una columna vacía. */
+      const hd = $('taskList').querySelector('.lvhead');
+      ok(hd && hd.previousElementSibling && hd.previousElementSibling.classList.contains('task-row'),
+         `[${L}] el rótulo va después de la fila de N, no al principio del bloque`);
+      ok(hd && !hd.previousElementSibling.querySelector('.levels'),
+         `[${L}] y la fila que queda encima del rótulo es justamente la que no tiene niveles`);
+
+      /* La frase de la decisión vive en el cuerpo de la guía, no en su
+         título: el título solo nombra el botón. */
+      ok(/\b(elige|choose|escolhe)\b/i.test(U.tipNotDeclSub),
+         `[${L}] la guía dice que omitir es una decisión de quien declara, no un olvido`);
+      /* Derivado del diccionario, no copiado: la versión anterior llevaba la
+         frase escrita a mano y se habría caído al reescribirla. */
+      ok(primero && (primero.getAttribute('data-tip-sub')||'') === U.tipNotDeclSub,
+         `[${L}] y la explicación sale del diccionario del idioma activo`);
+      ok(/(también es válida|also valid|também é válida)/i.test(U.tipNotDeclSub),
+         `[${L}] la explicación dice que omitir también es válido`);
+
+      /* «Opcional» no puede leerse como «nadie se lo va a pedir». La revista
+         puede exigir la extensión aunque el sistema no la exija, y si eso no
+         está escrito, alguien omite y se lo devuelven. Se comprueba que esté
+         dicho tanto donde se decide como en el manual. */
+      /* Se comprueba la CONDUCTA y no la frase: que donde se dice «opcional»
+         se diga también que la revista puede pedirlo. La versión anterior
+         buscaba «para AIMLS» escrito a mano y se cayó al reescribir el texto,
+         sin que nada estuviera roto. Lo que no puede faltar es la mención de
+         quién puede exigirlo, que ya tiene su propia guarda de redacción. */
+      const nota = (document.querySelector('[data-i18n="noteAxis2"]')||{}).textContent || '';
+      const man  = $('manualBody').textContent;
+      const quienPide = /(revista o entidad que publica|journal or publishing body|revista ou entidade que publica)/i;
+      const esOpcional = /(opcional|optional)/i;
+      ok(esOpcional.test(nota) && quienPide.test(nota),
+         `[${L}] donde la nota dice «opcional» también dice quién puede pedirlo igualmente`);
+      ok(esOpcional.test(man) && quienPide.test(man),
+         `[${L}] y el manual también lo advierte`);
+    }
+    state = prevSt; irA(prevL);
+  }
+
+  /* 8undecies. UN SOLO NOMBRE PARA EL EJE 2. Se llamaba «extensión» en unos
+     sitios y «nivel de uso» en otros: dos nombres para lo mismo, que es la
+     clase de ambigüedad que este sistema existe para evitar. Se unificó en
+     «nivel de uso» porque en contexto editorial «extensión» significa largo,
+     y en la etiqueta impresa alguien podía leer «no declararon cuán largo
+     es». Esta guarda impide que el término viejo vuelva a colarse. */
+  { const prevL = $('lang').value;
+    const viejo = /(?<![A-Za-z])(extensi[óo]n|extens[ãa]o|extent)(?![A-Za-z])/i;
+    const sucio = [];
+    for(const L of LANG_ALL){
+      irA(L);
+      const t = [];
+      document.querySelectorAll('header, .controls, .actions, .meta, #foot, #manualBody, #aboutBody')
+        .forEach(n=>t.push(n.textContent));
+      document.querySelectorAll('[data-tip]')
+        .forEach(n=>t.push(n.getAttribute('data-tip')||'', n.getAttribute('data-tip-sub')||''));
+      const m = t.join(' ').match(viejo);
+      if(m) sucio.push(`${L}: «${m[0]}»`);
+      /* Y el nombre nuevo tiene que estar de verdad, no solo faltar el viejo. */
+      ok(/(nivel de uso|level of use|nível de uso)/i.test(t.join(' ')),
+         `[${L}] el eje 2 se llama «nivel de uso» en la pantalla`);
+    }
+    irA(prevL);
+    ok(sucio.length===0,
+       `un solo nombre para el eje 2: no vuelve «extensión»${sucio.length?', apareció en '+sucio.join(', '):''}`);
+    /* También en la etiqueta impresa, que es lo que se publica. */
+    ok(LANG_ALL.every(l=>/(NIVEL DE USO|LEVEL OF USE|NÍVEL DE USO)/.test(BADGE_L[l].noExtent)),
+       'la etiqueta impresa también dice «nivel de uso» en los tres idiomas');
+    /* El aviso se dibuja más pequeño que la cadena canónica, pero la altura
+       de la etiqueta NO puede depender de eso. */
+    ok(D.noExtentSize < D.detailsSize,
+       `el aviso de nivel no declarado va más pequeño que el dato (${D.noExtentSize} contra ${D.detailsSize})`);
   }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida

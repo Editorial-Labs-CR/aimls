@@ -3,6 +3,62 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 26 — 2026-09-29
+
+**El control de extensión era confuso y lo dijo una estudiante.** Había un guion en la
+primera casilla de cada actividad, y un guion es un símbolo que hay que aprender. Peor:
+puesto en fila con los números se leía como «nivel cero», que es lo que significa `N` y
+no lo que significaba ese guion. Ahí la confusión dejaba de ser estética.
+
+- El botón dice **«omitir»**. En la etiqueta impresa nunca hubo guion, así que esto no
+  toca la notación.
+- La columna va **enmarcada bajo un rótulo que dice «opcional»**, una sola vez en vez de
+  repetirlo en las ocho filas. El rótulo es la tapa del recuadro y mide exactamente lo
+  que la columna; hay una prueba que lo comprueba, porque si se descuadra se ve roto.
+- El rótulo va **debajo de la fila de N**, que no tiene niveles: encima quedaba colgando
+  sobre una columna vacía.
+- La guía flotante explica que es una decisión: «Elige no declarar qué parte de esta
+  actividad hizo la inteligencia artificial. Esta opción también es válida.»
+
+**Un solo nombre para el eje 2.** Se llamaba «extensión» en la columna y en la nota, y
+«nivel de uso» en las preguntas frecuentes: dos nombres para lo mismo, que es la
+ambigüedad que este sistema existe para evitar. Ahora todo dice **nivel de uso**, incluida
+la etiqueta impresa, y hay una guarda que impide que el término viejo vuelva.
+
+El motivo de elegir ese nombre y no el otro: en contexto editorial «extensión» significa
+largo, «la extensión del artículo». Quien se encontrara la etiqueta impresa sin conocer
+el sistema podía leer «EXTENSIÓN NO DECLARADA» como «no declararon cuán largo es», que es
+un sentido falso y verosímil.
+
+**«Opcional» no significa que nadie se lo vaya a pedir.** La app lo repetía en cuatro
+sitios sin aclarar nunca que la revista puede exigirlo, así que alguien podía omitir y
+que se lo devolvieran. Ahora dice, donde se decide y en el manual: «Es opcional, a menos
+que la revista o entidad que publica le pida que indique el nivel de uso. En ese caso
+debe indicarlo.»
+
+**El aviso de nivel no declarado se dibuja un punto y medio más pequeño** que la cadena
+canónica: es una nota sobre lo que falta, no el dato. Se dibuja más pequeño pero **se
+sigue midiendo al tamaño normal**, porque la altura de la etiqueta sale de una cadena de
+referencia a ese cuerpo y medirla pequeña habría roto el alto constante de 196.
+
+**Las referencias cruzadas a las actividades se pueden seguir.** La explicación de `ED`
+decía «eso es la actividad 2» mientras la fila decía «STM 2»: dos maneras de nombrar lo
+mismo. Ahora dice «eso es **TG**, la actividad 2», y el manual abre atando los números
+con los distintivos que se ven en pantalla.
+
+**Portugués menos europeo.** «pedir-lhe», «lho peça» y «carregar em» se cambiaron por
+formas que se entienden en los dos lados del Atlántico. Sigue sin revisar por hablante
+nativo y sigue sin ofrecerse en el selector.
+
+**En celular**, la columna de botones le robaba 34 píxeles a la descripción de la tarea.
+Por debajo de 560 de ancho los botones bajan a su propia línea y el texto recupera el
+ancho completo. El bloque queda algo más alto, y se desplaza un poco más: es el precio de
+no tener texto en una columna de 82 píxeles.
+
+README y `LICENSE-CONTENT.md` quedan alineados con el vocabulario nuevo.
+
+Batería: **1404 aserciones con conexión · 1395 sin conexión**, con un bloque omitido.
+
 ## 25 — 2026-09-29
 
 **El campo de la herramienta sugiere nombres mientras se escribe.** Era texto libre, así
