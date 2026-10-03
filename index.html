@@ -1110,8 +1110,7 @@ function aboutHTML(){
   const cite = CITE[lang];
   if(lang==='en') return `
 <h2 id="aboutTitle">About</h2>
-<p><b>${U.appName}</b> · version ${APP.version} · ${APP.date.en}</p>
-<p class="lead">Two numbers, and they are not the same thing. <b>Version ${APP.version}</b> is this program, and it moves with every change, however small. <b>Notation ${APP.notation}</b> is the system of codes and composition rules, and it only moves if those change; that is the one printed on the label, because it is the one needed to interpret it.</p>
+<p><b>${U.appName}</b> · version ${APP.version} · notation ${APP.notation} · ${APP.date.en}</p>
 <p class="lead">An open tool for producing standardised graphic labels that declare the use of artificial intelligence in manuscripts.</p>
 <h3>Author</h3>
 <p>Developed by <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.en}<br>${APP.univ}</p>
@@ -1130,6 +1129,7 @@ ${collabBlock('en')}
 <p>The whole system is this single HTML file: its source code is in plain view and can be read, copied, modified and hosted with no server and no installation. It includes an automated test suite, run from the browser console with <code>window.__app.runSelfTest()</code>.</p>
 <h3>How to cite</h3>
 <p class="cite">${cite}</p>
+<p><b>Which of the two numbers.</b> Cite the <b>program version</b>, ${APP.version}, which is the one above and the one in <code>CITATION.cff</code>: it identifies this exact state of the tool. The <b>notation version</b>, ${APP.notation}, is the system of codes and composition rules, moves only if those change, and is the one printed on the label, because it is what anyone needs to interpret a label years later.</p>
 <h3>Language of the label</h3>
 <p>The tool has <b>two</b> independent languages: that of the screen itself ("Screen language", at the top) and that of what goes into the article ("Label and prose language", in the "Label and prose" group).</p>
 <p><b>The code is invariant: it is always in English.</b> The <code>AI</code> prefix, the "+" separator and the task codes (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) do not change with any language setting. That is the whole point of a code: two articles that declare the same use must produce the same string, in Costa Rica or in Brazil, so that it can be searched, compared and aggregated. What <i>does</i> follow the label language is the natural-language text (the closing phrase, "More info", the tools line and the notice when the level of use is not declared) and the prose declaration.</p>
@@ -1144,8 +1144,7 @@ ${collabBlock('en')}
 
   if(lang==='pt') return `
 <h2 id="aboutTitle">Sobre</h2>
-<p><b>${U.appName}</b> · versão ${APP.version} · ${APP.date.pt}</p>
-<p class="lead">Dois números, e não são a mesma coisa. A <b>versão ${APP.version}</b> é este programa, e muda a cada alteração, por pequena que seja. A <b>notação ${APP.notation}</b> é o sistema de códigos e regras de composição, e só muda se essas mudarem; é a que vai impressa na etiqueta, porque é a que faz falta para interpretá-la.</p>
+<p><b>${U.appName}</b> · versão ${APP.version} · notação ${APP.notation} · ${APP.date.pt}</p>
 <p class="lead">Ferramenta aberta para gerar etiquetas gráficas normalizadas de declaração de uso de inteligência artificial em manuscritos.</p>
 <h3>Autoria</h3>
 <p>Desenvolvido por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.pt}<br>${APP.univ}</p>
@@ -1164,6 +1163,7 @@ ${collabBlock('pt')}
 <p>Todo o sistema é este único arquivo HTML: o código-fonte está à vista e pode ser lido, copiado, modificado e hospedado sem servidor nem instalação. Inclui uma bateria de testes automáticos, executada no console do navegador com <code>window.__app.runSelfTest()</code>.</p>
 <h3>Como citar</h3>
 <p class="cite">${cite}</p>
+<p><b>Qual dos dois números.</b> Cite a <b>versão do programa</b>, ${APP.version}, que é a de cima e a do <code>CITATION.cff</code>: identifica este estado exato da ferramenta. A <b>versão da notação</b>, ${APP.notation}, é o sistema de códigos e regras de composição, muda apenas se essas mudarem, e é a que vai impressa na etiqueta, porque é o que faz falta para interpretar uma etiqueta anos depois.</p>
 <h3>Idioma da etiqueta</h3>
 <p>A ferramenta tem <b>dois</b> idiomas independentes: o da própria tela ("Idioma da tela", acima) e o do que entra no artigo ("Idioma da etiqueta e da prosa", no bloco "Etiqueta e prosa").</p>
 <p><b>O código é invariante: vai sempre em inglês.</b> O prefixo <code>AI</code>, o separador "+" e os códigos de tarefa (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) não mudam com nenhuma opção de idioma. Essa é a razão de ser de um código: dois artigos que declaram o mesmo uso têm de produzir a mesma cadeia, na Costa Rica ou no Brasil, para que se possa buscar, comparar e agregar. O que <i>sim</i> segue o idioma da etiqueta é o texto em língua natural (a frase de fecho, "Mais informações", a linha de ferramentas e o aviso de nível de uso não declarado) e a prosa da declaração.</p>
@@ -1178,8 +1178,7 @@ ${collabBlock('pt')}
 
   return `
 <h2 id="aboutTitle">Acerca de</h2>
-<p><b>${U.appName}</b> · versión ${APP.version} · ${APP.date.es}</p>
-<p class="lead">Dos números, y no son lo mismo. La <b>versión ${APP.version}</b> es este programa, y se mueve con cada cambio, por pequeño que sea. La <b>notación ${APP.notation}</b> es el sistema de códigos y reglas de composición, y solo se mueve si esas cambian; es la que va impresa en la etiqueta, porque es la que hace falta para interpretarla.</p>
+<p><b>${U.appName}</b> · versión ${APP.version} · notación ${APP.notation} · ${APP.date.es}</p>
 <p class="lead">Herramienta abierta para generar etiquetas gráficas normalizadas de declaración de uso de inteligencia artificial en manuscritos.</p>
 <h3>Autoría</h3>
 <p>Desarrollado por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.es}<br>${APP.univ}</p>
@@ -1198,6 +1197,7 @@ ${collabBlock('es')}
 <p>Todo el sistema es este único archivo HTML: el código fuente está a la vista y se puede leer, copiar, modificar y alojar sin servidor ni instalación. Incluye una batería de pruebas automáticas, que se ejecuta desde la consola del navegador con <code>window.__app.runSelfTest()</code>.</p>
 <h3>Cómo citar</h3>
 <p class="cite">${cite}</p>
+<p><b>Cuál de los dos números.</b> Cite la <b>versión del programa</b>, ${APP.version}, que es la de arriba y la del <code>CITATION.cff</code>: identifica este estado exacto de la herramienta. La <b>versión de la notación</b>, ${APP.notation}, es el sistema de códigos y reglas de composición, solo se mueve si esas cambian, y es la que va impresa en la etiqueta, porque es lo que hace falta para interpretar una etiqueta años después.</p>
 <h3>Idioma de la etiqueta</h3>
 <p>La herramienta tiene <b>dos</b> idiomas independientes: el de la propia pantalla ("Idioma de la pantalla", arriba) y el de lo que entra al artículo ("Idioma de la etiqueta y la prosa", en el bloque "Etiqueta y prosa").</p>
 <p><b>El código es invariante: va siempre en inglés.</b> El prefijo <code>AI</code>, el separador "+" y los códigos de tarea (<code>ED</code>, <code>TG</code>, <code>TR</code>, <code>DA</code>, <code>IM</code>, <code>VI</code>, <code>CO</code>, <code>RF</code>, <code>N</code>) no cambian con ninguna opción de idioma. Esa es la razón de ser de un código: dos artículos que declaran el mismo uso tienen que producir la misma cadena, en Costa Rica o en Brasil, para que se pueda buscar, comparar y agregar. Lo que <i>sí</i> sigue al idioma de la etiqueta es el texto en lengua natural (la frase de cierre, "Más información", la línea de herramientas y el aviso de nivel de uso no declarado) y la prosa de la declaración.</p>
@@ -3264,6 +3264,46 @@ function runSelfTest(){
 
     state = prevSt; toolRows = prevT; docLang = prevD; $('docLang').value = prevD;
     applyDocLang(); irA(prevL); buildControls(); buildTools();
+  }
+
+  /* 8terdecies. QUE NADA SE META DONDE NO VA. Un párrafo nuevo sobre el
+     número de versión quedó insertado ENTRE la línea de versión y la frase
+     que dice qué es la herramienta, así que «Acerca de» abría explicando
+     numeración antes de decir para qué sirve. Ninguna prueba lo vio: todas
+     comprobaban que los textos existieran, no dónde. Dos guardas:
+       · la estructura de «Acerca de» y del manual es idéntica en los tres
+         idiomas, así que nada puede añadirse en uno y olvidarse en otro;
+       · «Acerca de» abre por su orden: título, versión, qué es. */
+  { const prevL = $('lang').value;
+    const firma = cont => [...cont.children]
+      .map(n=>n.tagName + (typeof n.className==='string' && n.className ? '.'+n.className : ''))
+      .join(' | ');
+    const formas = {acerca:{}, manual:{}};
+    for(const L of LANG_ALL){
+      irA(L);
+      formas.acerca[L] = firma($('aboutBody'));
+      formas.manual[L] = firma($('manualBody'));
+    }
+    for(const cual of ['acerca','manual']){
+      const juegos = new Set(Object.values(formas[cual]));
+      ok(juegos.size === 1,
+         `«${cual}» tiene la misma estructura en los tres idiomas${juegos.size>1?': '+Object.entries(formas[cual]).map(([k,v])=>k+' tiene '+v.split(' | ').length+' bloques').join(', '):''}`);
+    }
+    for(const L of LANG_ALL){
+      irA(L);
+      const hijos = [...$('aboutBody').children];
+      ok(hijos[0] && hijos[0].tagName==='H2',
+         `[${L}] «Acerca de» abre con su título`);
+      ok(hijos[1] && /AIMLS/.test(hijos[1].textContent) && hijos[1].textContent.includes(APP.version),
+         `[${L}] y sigue la línea de nombre y versión`);
+      /* La frase que dice QUÉ ES va inmediatamente después, antes que
+         cualquier explicación: es lo primero que necesita quien abre esto. */
+      ok(hijos[2] && hijos[2].classList.contains('lead'),
+         `[${L}] y enseguida qué es la herramienta, sin nada intercalado`);
+      ok(hijos[2] && /(etiquetas gráficas|graphic labels|etiquetas gráficas)/i.test(hijos[2].textContent),
+         `[${L}] esa frase describe la herramienta, no otra cosa`);
+    }
+    irA(prevL);
   }
 
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida

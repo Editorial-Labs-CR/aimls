@@ -39,7 +39,18 @@ ahí, y la prosa es justo lo que se pega en el manuscrito. Corregido con dos pun
 
 Manual, «Acerca de», README y `CONTRIBUTING.md` documentan lo nuevo en los tres idiomas.
 
-Batería: **1432 aserciones con conexión · 1423 sin conexión**, con un bloque omitido.
+**Corrección dentro de la misma versión.** El párrafo que explica los dos números de
+versión quedó insertado entre la línea de versión y la frase que dice qué es la
+herramienta, así que «Acerca de» abría explicando numeración antes de decir para qué
+sirve. Ahora el dato va en la línea de arriba, `AIMLS · versión 27 · notación 1.0 ·
+fecha`, y la explicación bajo «Cómo citar», que es donde esos números se usan.
+
+Ninguna prueba lo vio, porque todas comprobaban que los textos **existieran**, no dónde
+estaban. Se añaden dos guardas: que «Acerca de» y el manual tengan la misma estructura en
+los tres idiomas, y que «Acerca de» abra por su orden, título, versión y qué es, sin nada
+intercalado. Comprobado que se ponen en rojo con un párrafo intruso en esa posición.
+
+Batería: **1446 aserciones con conexión · 1437 sin conexión**, con un bloque omitido.
 
 ## 26 — 2026-09-29
 
