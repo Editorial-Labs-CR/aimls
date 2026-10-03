@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  AIMLS · AI Manuscript Labelling System — v26
+  AIMLS · AI Manuscript Labelling System — v27
 
   SPDX-FileCopyrightText: 2026 Alexander Chinchilla Serrano
   SPDX-License-Identifier: MIT AND CC-BY-4.0
@@ -768,7 +768,18 @@ const UI = {
    cambia un código o una descripción, el manual cambia con él.
    ====================================================================== */
 const APP = {
-  version : '26',
+  version : '27',          // versión del SOFTWARE: cambia con cualquier retoque
+  /* Versión de la NOTACIÓN, que es otra cosa y se mueve mucho menos: solo
+     cambia si cambian los códigos, las reglas de composición o los ejes.
+     Es la que se imprime en la etiqueta, porque es la que necesita quien la
+     lea dentro de diez años para interpretarla. Si imprimiéramos la del
+     software, dos artículos que declaran lo mismo llevarían números
+     distintos por haber cambiado un botón, y eso rompe la comparabilidad. */
+  notation: '1.0',
+  /* Dirección canónica del sistema. NO es la del QR, que cada revista puede
+     cambiar por la suya: esta es la que va en la prosa, para que quien lea
+     el artículo sepa dónde está la notación. */
+  home    : 'https://editorial-labs-cr.github.io/aimls/',
   date    : {es:'29 de setiembre de 2026', en:'29 September 2026', pt:'29 de setembro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
@@ -895,6 +906,7 @@ function manualHTML(){
 <li><b>Tools line</b>: the tools and models, when given.</li>
 <li><b>Bottom phrase</b>: a reminder that the label complements the prose declaration.</li>
 <li><b>QR code</b>: links to the explanation of the system.</li>
+<li><b>Identification, top left</b>: the system name and the notation version, for example <code>AIMLS 1.0</code>, with a note of what it is. This way the label can still be interpreted if the QR code fails or is cropped in printing.</li>
 </ul>
 <h3>3. Notation rules</h3>
 <ul>
@@ -957,6 +969,7 @@ ${extentTable()}
 <li><b>Linha de ferramentas</b>: as ferramentas e modelos, quando indicados.</li>
 <li><b>Frase inferior</b>: lembra que a etiqueta complementa a declaração em prosa.</li>
 <li><b>Código QR</b>: leva à explicação do sistema.</li>
+<li><b>Identificação, acima à esquerda</b>: o nome do sistema e a versão da notação, por exemplo <code>AIMLS 1.0</code>, com uma nota do que é. Assim a etiqueta pode ser interpretada mesmo que o código QR falhe ou seja cortado na impressão.</li>
 </ul>
 <h3>3. Regras da notação</h3>
 <ul>
@@ -1019,6 +1032,7 @@ ${extentTable()}
 <li><b>Línea de herramientas</b>: las herramientas y modelos, si se indicaron.</li>
 <li><b>Frase inferior</b>: recuerda que la etiqueta complementa la declaración en prosa.</li>
 <li><b>Código QR</b>: lleva a la explicación del sistema.</li>
+<li><b>Identificación, arriba a la izquierda</b>: el nombre del sistema y la versión de la notación, por ejemplo <code>AIMLS 1.0</code>, con una nota de qué es. Así la etiqueta se puede interpretar aunque el código QR no funcione o se haya recortado al imprimir.</li>
 </ul>
 <h3>3. Reglas de la notación</h3>
 <ul>
@@ -1097,6 +1111,7 @@ function aboutHTML(){
   if(lang==='en') return `
 <h2 id="aboutTitle">About</h2>
 <p><b>${U.appName}</b> · version ${APP.version} · ${APP.date.en}</p>
+<p class="lead">Two numbers, and they are not the same thing. <b>Version ${APP.version}</b> is this program, and it moves with every change, however small. <b>Notation ${APP.notation}</b> is the system of codes and composition rules, and it only moves if those change; that is the one printed on the label, because it is the one needed to interpret it.</p>
 <p class="lead">An open tool for producing standardised graphic labels that declare the use of artificial intelligence in manuscripts.</p>
 <h3>Author</h3>
 <p>Developed by <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.en}<br>${APP.univ}</p>
@@ -1130,6 +1145,7 @@ ${collabBlock('en')}
   if(lang==='pt') return `
 <h2 id="aboutTitle">Sobre</h2>
 <p><b>${U.appName}</b> · versão ${APP.version} · ${APP.date.pt}</p>
+<p class="lead">Dois números, e não são a mesma coisa. A <b>versão ${APP.version}</b> é este programa, e muda a cada alteração, por pequena que seja. A <b>notação ${APP.notation}</b> é o sistema de códigos e regras de composição, e só muda se essas mudarem; é a que vai impressa na etiqueta, porque é a que faz falta para interpretá-la.</p>
 <p class="lead">Ferramenta aberta para gerar etiquetas gráficas normalizadas de declaração de uso de inteligência artificial em manuscritos.</p>
 <h3>Autoria</h3>
 <p>Desenvolvido por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.pt}<br>${APP.univ}</p>
@@ -1163,6 +1179,7 @@ ${collabBlock('pt')}
   return `
 <h2 id="aboutTitle">Acerca de</h2>
 <p><b>${U.appName}</b> · versión ${APP.version} · ${APP.date.es}</p>
+<p class="lead">Dos números, y no son lo mismo. La <b>versión ${APP.version}</b> es este programa, y se mueve con cada cambio, por pequeño que sea. La <b>notación ${APP.notation}</b> es el sistema de códigos y reglas de composición, y solo se mueve si esas cambian; es la que va impresa en la etiqueta, porque es la que hace falta para interpretarla.</p>
 <p class="lead">Herramienta abierta para generar etiquetas gráficas normalizadas de declaración de uso de inteligencia artificial en manuscritos.</p>
 <h3>Autoría</h3>
 <p>Desarrollado por <b>${APP.author}</b><br>${orcidLink()}<br>${mailLink()}<br>${APP.unit.es}<br>${APP.univ}</p>
@@ -1292,6 +1309,8 @@ const BADGE = {
   prefix  : 'AI: ',
   sep     : '+',
   toolsSep: ' · ',          // no «+»: ese signo ya separa códigos
+  system  : 'AIMLS',        // invariante, como el código
+  sysSep  : ' · ',
 };
 
 /* TRADUCIBLE. Esto son DESCRIPCIONES, no código: dicen en lengua natural qué
@@ -1302,12 +1321,15 @@ const BADGE = {
    reemplaza. */
 const BADGE_L = {
   es:{ declaration:'Complementa la declaración en prosa del texto',
+       kind:'Declaración de uso de IA',
        toolsLead:'Herramientas: ', moreInfo:'Más información',
        noUse:'SIN USO POR ENCIMA DEL UMBRAL', noExtent:'NIVEL DE USO NO DECLARADO' },
   en:{ declaration:'Complements the prose declaration in the text',
+       kind:'AI use declaration',
        toolsLead:'Tools: ', moreInfo:'More info',
        noUse:'NO USE ABOVE THRESHOLD', noExtent:'LEVEL OF USE NOT DECLARED' },
   pt:{ declaration:'Complementa a declaração em prosa do texto',
+       kind:'Declaração de uso de IA',
        toolsLead:'Ferramentas: ', moreInfo:'Mais informações',
        noUse:'SEM USO ACIMA DO LIMIAR', noExtent:'NÍVEL DE USO NÃO DECLARADO' },
 };
@@ -1333,6 +1355,11 @@ const D = {
      alto constante de 196 que iguala todas las etiquetas y todos los
      idiomas. Cabe de sobra en el espacio ya reservado. */
   noExtentSize:18,
+  /* Identificación del sistema, arriba a la izquierda. Pequeña a propósito:
+     identifica, no compite con el código. El hueco sobre el icono es de 19
+     unidades en el caso más estrecho (una etiqueta «N»), así que una línea
+     y no más. */
+  sysSize:9.5, sysWeight:600,
   declSize:17, declWeight:500, declLS:0.1,   // la frase es más larga que «Standard Declaration»: baja de cuerpo
   toolsSize:15, toolsWeight:400,
   gapDetailsTools:7, toolsLineGap:4, toolsMinW:300,
@@ -1439,34 +1466,37 @@ const PROSE = {
     none   : 'Las personas autoras declaran que en la preparación de este manuscrito no se utilizaron herramientas de inteligencia artificial por encima del umbral declarable, es decir, más allá de la corrección ortográfica, gramatical o de estilo.',
     lead1  : 'En la preparación de este manuscrito se utilizaron herramientas de inteligencia artificial para la siguiente tarea: ',
     leadN  : 'En la preparación de este manuscrito se utilizaron herramientas de inteligencia artificial para las siguientes tareas: ',
-    extent : lv => `extensión ${lv}`,
+    extent : lv => `nivel de uso: ${lv}`,
     tools  : 'Herramientas utilizadas: ',
     toolPh : '[Indique la herramienta y su versión, p. ej. ChatGPT (GPT-5).]',
     whatPh : '[Describa brevemente qué se hizo con cada herramienta y en qué secciones del manuscrito.]',
     verify : 'Todo el contenido generado o modificado con estas herramientas fue revisado por las personas autoras, quienes verificaron su pertinencia y veracidad y asumen la responsabilidad plena por el contenido final.',
     label  : 'Etiqueta de declaración: ',
+    built  : (v,u) => `Las personas autoras elaboraron esta declaración con AIMLS ${v} (AI Manuscript Labelling System), disponible en ${u}`,
   },
   en:{
     none   : 'The authors declare that no artificial intelligence tools were used in the preparation of this manuscript above the disclosable threshold, that is, beyond spelling, grammar or style correction.',
     lead1  : 'Artificial intelligence tools were used in the preparation of this manuscript for the following task: ',
     leadN  : 'Artificial intelligence tools were used in the preparation of this manuscript for the following tasks: ',
-    extent : lv => `${lv} extent`,
+    extent : lv => `level of use: ${lv}`,
     tools  : 'Tools used: ',
     toolPh : '[State the tool and its version, e.g. ChatGPT (GPT-5).]',
     whatPh : '[Briefly describe what was done with each tool and in which sections of the manuscript.]',
     verify : 'All content generated or modified with these tools was reviewed by the authors, who verified its relevance and accuracy and take full responsibility for the final content.',
     label  : 'Declaration label: ',
+    built  : (v,u) => `The authors prepared this declaration with AIMLS ${v} (AI Manuscript Labelling System), available at ${u}`,
   },
   pt:{
     none   : 'Os autores declaram que na preparação deste manuscrito não foram utilizadas ferramentas de inteligência artificial acima do limiar declarável, isto é, além da correção ortográfica, gramatical ou de estilo.',
     lead1  : 'Na preparação deste manuscrito foram utilizadas ferramentas de inteligência artificial para a seguinte tarefa: ',
     leadN  : 'Na preparação deste manuscrito foram utilizadas ferramentas de inteligência artificial para as seguintes tarefas: ',
-    extent : lv => `extensão ${lv}`,
+    extent : lv => `nível de uso: ${lv}`,
     tools  : 'Ferramentas utilizadas: ',
     toolPh : '[Indique a ferramenta e sua versão, p. ex. ChatGPT (GPT-5).]',
     whatPh : '[Descreva brevemente o que foi feito com cada ferramenta e em quais seções do manuscrito.]',
     verify : 'Todo o conteúdo gerado ou modificado com estas ferramentas foi revisado pelos autores, que verificaram sua pertinência e veracidade e assumem a responsabilidade plena pelo conteúdo final.',
     label  : 'Etiqueta de declaração: ',
+    built  : (v,u) => `Os autores elaboraram esta declaração com AIMLS ${v} (AI Manuscript Labelling System), disponível em ${u}`,
   },
 };
 const lcFirst = t => t.charAt(0).toLowerCase() + t.slice(1);
@@ -1487,7 +1517,8 @@ function proseSegments(pl){
   const P = PROSE[pl];
   const s = badgeStrings();
   if(!s) return [];
-  if(state.N) return [{t:P.none}, {t:' '+P.label + s.canonical + '.'}];
+  if(state.N) return [{t:P.none}, {t:' '+P.label + s.canonical + '.'},
+                      {t:' ' + P.built(APP.notation, APP.home) + '.'}];
 
   /* Las tareas llevan comas internas («refinamiento, corrección, edición o
      formato…»): separarlas con comas las haría ilegibles. Con más de una se
@@ -1505,7 +1536,8 @@ function proseSegments(pl){
   const seg = [{t:tareas}, {t:' '}];
   if(s.tools.length) seg.push({t:P.tools + joinList(s.tools, pl) + '.'});
   else               seg.push({t:P.toolPh, ph:true});
-  seg.push({t:' '}, {t:P.whatPh, ph:true}, {t:' '}, {t:P.verify}, {t:' '+P.label + s.canonical + '.'});
+  seg.push({t:' '}, {t:P.whatPh, ph:true}, {t:' '}, {t:P.verify}, {t:' '+P.label + s.canonical + '.'},
+           {t:' ' + P.built(APP.notation, APP.home) + '.'});
   return seg;
 }
 const proseText = pl => proseSegments(pl).map(x=>x.t).join('');
@@ -1704,6 +1736,21 @@ function computeLayout(s, opts){
   const detailsBaseline = innerY + vDetails.ascent;
   const detailsEndX = cardX + cardW - D.cardPadX;
 
+  /* Línea de identificación del sistema, arriba a la izquierda. No puede
+     invadir lo que tiene a la derecha: con ocho tareas la cadena canónica
+     baja mucho por la izquierda y en español llegaba a solaparse. Así que se
+     mide y se encoge, igual que hace el título. Si ni al cuerpo mínimo cabe,
+     se queda solo el nombre y la versión, que es lo que no puede faltar. */
+  const sysFull  = T.system + ' ' + APP.notation + T.sysSep + T.kind;
+  const sysShort = T.system + ' ' + APP.notation;
+  const sysLimit = Math.min(titleX, detailsEndX - wDetails) - iconX - 10;
+  let sysText = sysFull, sysSize = D.sysSize;
+  while(widthOf(sysText, sysSize, D.sysWeight, 0.15) > sysLimit){
+    if(sysSize > 7.5) { sysSize -= 0.5; continue; }
+    if(sysText === sysFull){ sysText = sysShort; sysSize = D.sysSize; continue; }
+    break;                                   // el nombre solo, aunque apriete
+  }
+
   const toolsBaselines = toolLines.map((l,i)=> innerY + vDetails.h + D.gapDetailsTools
                                           + vTools.ascent + i*(vTools.h + D.toolsLineGap));
   const blockTop0 = innerY + vDetails.h + toolsH + D.gapDetailsBlock;
@@ -1732,6 +1779,7 @@ function computeLayout(s, opts){
     iconX, iconY, iconSize:D.icon,
     titleX, titleBaseline, titleSize, titleW:wTitle, titleShrunk:shrunk,
     detailsEndX, detailsBaseline, detailsW:wDetails,
+    sysText, sysSize,
     toolLines, toolsBaselines,
     ruleY, ruleX0:titleX, ruleX1:titleX + wTitle,
     declBaseline, declCx:titleX + wTitle/2, declW:wDecl,
@@ -1869,6 +1917,7 @@ ${defs}
 <rect data-role="outer" x="0" y="0" width="${f(L.W)}" height="${f(L.H)}" rx="${D.rOut}" fill="${fg}"/>
 <rect data-role="card" x="${f(L.cardX)}" y="${f(L.cardY)}" width="${f(L.cardW)}" height="${f(L.cardH)}" rx="${D.rCard}" fill="${bg}"/>
 <g data-role="icon" transform="translate(${f(L.iconX)},${f(L.iconY)})">${brandIcon(L.iconSize, o.twoTone ? null : fg, null, o.twoTone)}</g>
+<text data-role="system" x="${f(L.iconX)}" y="${f(L.iconY - 7)}" ${FF} font-size="${f(L.sysSize)}" font-weight="${D.sysWeight}" letter-spacing="0.15" fill="${fg}">${esc(L.sysText)}</text>
 <text data-role="details" x="${f(L.detailsEndX)}" y="${f(L.detailsBaseline)}" text-anchor="end" ${FF} font-size="${L.strings.noExtent ? D.noExtentSize : D.detailsSize}" font-weight="${D.detailsWeight}" fill="${fg}">${esc(L.strings.details)}</text>
 ${(L.toolLines||[]).map((l,k)=>`<text data-role="tools" x="${f(L.detailsEndX)}" y="${f(L.toolsBaselines[k])}" text-anchor="end" ${FF} font-size="${D.toolsSize}" font-weight="${D.toolsWeight}" fill="${fg}">${esc(l.t)}</text>`).join('')}
 <text data-role="title" x="${f(L.titleX)}" y="${f(L.titleBaseline)}" ${FF} font-size="${f(L.titleSize)}" font-weight="${D.titleWeight}" letter-spacing="${D.titleLS}" fill="${fg}">${esc(L.strings.title)}</text>
@@ -3141,6 +3190,82 @@ function runSelfTest(){
        `el aviso de nivel no declarado va más pequeño que el dato (${D.noExtentSize} contra ${D.detailsSize})`);
   }
 
+  /* 8duodecies. PROCEDENCIA. Una etiqueta sin nombre de sistema es huérfana:
+     si el QR se rompe, se recorta al imprimir o el PDF va sin enlaces, quien
+     encuentre «AI: ED+TR» no tiene cómo saber qué notación es. Por eso la
+     etiqueta lleva el nombre y la versión de la NOTACIÓN, y la prosa, que
+     viaja aparte dentro del manuscrito, dice quién la hizo y con qué. */
+  { const prevL = $('lang').value, prevD = $('docLang').value;
+    const prevSt = JSON.parse(JSON.stringify(state)), prevT = JSON.parse(JSON.stringify(toolRows));
+
+    /* La versión de la notación es OTRA que la del software, a propósito: la
+       del software cambia al tocar un botón, y dos etiquetas que declaran lo
+       mismo no pueden llevar números distintos por eso. */
+    ok(APP.notation && APP.notation !== APP.version,
+       `la versión de notación (${APP.notation}) no es la del software (${APP.version})`);
+    ok(/^\d+\.\d+$/.test(APP.notation), 'la versión de notación tiene forma de versión');
+
+    const casos = {uno:{ED:1}, dos:{ED:1,TR:3},
+                   ocho:{ED:1,TG:2,TR:3,DA:1,IM:2,VI:3,CO:1,RF:4}, ene:{N:true}};
+    let peorMargen = 1e9, nombreSiempre = true; const alturas = {};
+    for(const L of LANG_ALL){
+      docLang = L; applyDocLang();
+      for(const [nom, st] of Object.entries(casos)){
+        state = st; toolRows = [{name:'ChatGPT', model:'GPT-5'}];
+        const L2 = computeLayout(badgeStrings(), currentOpts());
+        (alturas[nom] = alturas[nom] || new Set()).add(Math.round(L2.H));
+        /* El nombre y la versión no se sacrifican nunca; el descriptor sí
+           puede caer si no hay sitio. */
+        if(!L2.sysText.startsWith(T.system + ' ' + APP.notation)) nombreSiempre = false;
+        const ancho = widthOf(L2.sysText, L2.sysSize, D.sysWeight, 0.15);
+        const limite = Math.min(L2.titleX, L2.detailsEndX - L2.detailsW) - L2.iconX - 10;
+        peorMargen = Math.min(peorMargen, limite - ancho);
+      }
+    }
+    ok(nombreSiempre, 'la etiqueta nunca pierde el nombre ni la versión del sistema');
+    ok(peorMargen >= 0,
+       `la línea del sistema no invade lo que tiene al lado en ningún idioma ni combinación (margen mínimo ${peorMargen.toFixed(1)} u)`);
+    /* El alto depende del CONTENIDO (una etiqueta «N» no lleva línea de
+       herramientas y mide menos), pero para un mismo contenido tiene que ser
+       idéntico en los tres idiomas. Identificar el sistema no puede
+       romperlo: la línea vive en hueco ya existente. */
+    const desiguales = Object.entries(alturas).filter(([,v])=>v.size!==1)
+                             .map(([k,v])=>`${k}: ${[...v].join('/')}`);
+    ok(desiguales.length===0,
+       `identificar el sistema no cambia el alto: mismo contenido, mismo alto en los tres idiomas${desiguales.length?' — '+desiguales.join(', '):''}`);
+
+    /* El descriptor se traduce; el nombre y la versión, no. */
+    for(const L of LANG_ALL){
+      docLang = L; applyDocLang();
+      ok(!!T.kind && T.kind.length > 6, `[${L}] la etiqueta dice qué es, no solo cómo se llama`);
+    }
+    docLang = 'es'; applyDocLang();
+    const kinds = LANG_ALL.map(l=>BADGE_L[l].kind);
+    ok(new Set(kinds).size === LANG_ALL.length || kinds.length === 1,
+       'el descriptor está traducido en cada idioma, no copiado');
+
+    /* La prosa: dice quién la hizo, con qué y dónde encontrarlo. */
+    for(const L of LANG_ALL){
+      docLang = L; applyDocLang();
+      for(const st of [{ED:1,TR:3}, {N:true}]){
+        state = st; toolRows = [{name:'ChatGPT', model:''}];
+        const t = proseText(L);
+        ok(t.includes(APP.home), `[${L}] la prosa lleva la dirección del sistema`);
+        ok(t.includes('AIMLS ' + APP.notation), `[${L}] la prosa nombra el sistema y su versión`);
+        ok(/(personas autoras|authors|autores)/i.test(t),
+           `[${L}] la prosa dice que la declaración la hicieron las personas autoras`);
+      }
+    }
+    /* Y ya no dice «extensión», que era el término viejo. */
+    docLang = 'es'; state = {ED:1,TR:3};
+    applyDocLang();
+    ok(/nivel de uso/.test(proseText('es')) && !/extensi[óo]n/i.test(proseText('es')),
+       'la prosa usa «nivel de uso» y ya no «extensión»');
+
+    state = prevSt; toolRows = prevT; docLang = prevD; $('docLang').value = prevD;
+    applyDocLang(); irA(prevL); buildControls(); buildTools();
+  }
+
   /* 8sexies. LA DIRECCIÓN PÚBLICA, EN UN SOLO SITIO CONCEPTUAL. Vive repetida
      en cuatro lugares: el valor por defecto del QR, og:url, og:image y
      twitter:image. Si el repositorio se renombra y alguno se queda atrás, el
@@ -3223,7 +3348,8 @@ function runSelfTest(){
   /* Se compone desde PROSE en vez de llevar la frase copiada: con el texto
      literal, cualquier retoque de redacción hacía fallar una prueba que vigila
      otra cosa (que la prosa de N esté completa y sin huecos que rellenar). */
-  ok(proseText('es')===PROSE.es.none+' '+PROSE.es.label+'AI: N.',
+  ok(proseText('es')===PROSE.es.none+' '+PROSE.es.label+'AI: N.'
+       +' '+PROSE.es.built(APP.notation, APP.home)+'.',
      'prosa de N: declaración negativa completa, sin huecos');
   ok(proseSegments('es').every(x=>!x.ph), 'la prosa de N no deja nada por completar');
   /* El umbral se explica DENTRO de la prosa: sale publicada en el artículo,

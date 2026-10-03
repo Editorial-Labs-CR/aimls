@@ -28,6 +28,10 @@ empaquetador, y tiene que seguir funcionando abierto directamente desde el disco
 - Leaving a dictionary key in one language and not the others.
 - Changing an activity description without declaring the divergence from the source.
 - Making the label height depend on the language.
+- Removing the system name or the notation version from the label. A label with no
+  system name cannot be interpreted when the QR code fails.
+- Printing the **program** version on the label instead of the **notation** version.
+  They are different numbers on purpose: see the «About» panel.
 - Text overlapping, or content leaving the canvas.
 
 ## Vocabulary / Vocabulario

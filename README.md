@@ -36,6 +36,20 @@ scale and transportable as metadata.
 It is an open notation system, **proposed for any journal or publishing body**. Adoption
 is gradual and does not require changing current policies.
 
+**Provenance.** The label carries its own identification in the top left, the system name
+and the notation version, for example `AIMLS 1.0`, with a short note of what it is. A
+label with no system name is an orphan: if the QR code fails, is cropped in printing or
+the PDF carries no links, whoever finds `AI: ED+TR` has no way to know what notation that
+is. The prose declaration travels separately inside the manuscript, so it closes by
+stating that the authors prepared it, with which system and where to find it.
+
+**Two version numbers, and they are not the same thing.** The **program version** moves
+with every change, however small. The **notation version** is the system of codes and
+composition rules, and only moves if those change. The label prints the notation version,
+because that is the one needed to interpret it: if it printed the program version, two
+articles declaring exactly the same thing would carry different numbers for having
+changed a button, which is the opposite of comparable.
+
 ### Vocabulary
 
 Built on the nine activities of the STM Association (2025), *Recommendations for a
@@ -103,7 +117,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 26) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 27) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -142,6 +156,21 @@ AI: ED+TR+CO          las tareas declaradas
 AI: ED:1+TR:3+CO:2    lo mismo, con el nivel de uso de cada una
 AI: N                 sin uso por encima del umbral declarable
 ```
+
+**Procedencia.** La etiqueta lleva su propia identificación arriba a la izquierda, el
+nombre del sistema y la versión de la notación, por ejemplo `AIMLS 1.0`, con una nota
+breve de qué es. Una etiqueta sin nombre de sistema es huérfana: si el código QR falla,
+se recorta al imprimir o el PDF va sin enlaces, quien encuentre `AI: ED+TR` no tiene cómo
+saber qué notación es. La declaración en prosa viaja aparte dentro del manuscrito, así
+que cierra diciendo que la elaboraron las personas autoras, con qué sistema y dónde
+encontrarlo.
+
+**Dos números de versión, y no son lo mismo.** La **versión del programa** se mueve con
+cada cambio, por pequeño que sea. La **versión de la notación** es el sistema de códigos
+y reglas de composición, y solo se mueve si esas cambian. En la etiqueta se imprime la de
+la notación, porque es la que hace falta para interpretarla: si imprimiéramos la del
+programa, dos artículos que declaran exactamente lo mismo llevarían números distintos por
+haber cambiado un botón, que es lo contrario de comparable.
 
 La etiqueta **no sustituye** la declaración en prosa que pide la revista o entidad
 editora: la acompaña, para que el dato sea comparable entre artículos, agregable en
@@ -222,7 +251,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 26) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 27) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 

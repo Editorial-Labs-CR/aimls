@@ -3,6 +3,44 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 27 — 2026-10-03
+
+**La etiqueta dice de qué sistema es, y la prosa dice quién la hizo.** Hasta ahora no lo
+decía ninguna de las dos. Una etiqueta sin nombre de sistema es huérfana: si el código QR
+se rompe, se recorta al imprimir o el PDF va sin enlaces, quien encuentre `AI: ED+TR` en
+un artículo no tiene cómo saber qué notación es eso.
+
+- **En la etiqueta**, arriba a la izquierda, dentro de la tarjeta: `AIMLS 1.0 ·
+  Declaración de uso de IA`. El nombre y la versión son invariantes, como el código; el
+  descriptor sigue el idioma de la etiqueta. No crece la etiqueta: vive en el hueco que
+  ya había sobre el icono.
+- **En la prosa**, como frase de cierre: «Las personas autoras elaboraron esta
+  declaración con AIMLS 1.0 (AI Manuscript Labelling System), disponible en […]». La
+  prosa viaja aparte dentro del manuscrito, así que necesita su propia procedencia.
+
+**Dos números de versión, y no son lo mismo.** La **versión del programa** se mueve con
+cada cambio, por pequeño que sea: ayer pasamos de la 25 a la 26 por cambiar un botón. La
+**versión de la notación** es el sistema de códigos y reglas de composición, y solo se
+mueve si esas cambian. En la etiqueta se imprime la de la notación, que arranca en `1.0`.
+
+Si imprimiéramos la del programa, dos artículos que declaran exactamente lo mismo
+llevarían números distintos por haber cambiado un botón, y eso es lo contrario de
+comparable, que es la razón de ser del sistema. «Acerca de» explica la diferencia.
+
+**La línea se mide y se encoge sola.** Con ocho tareas la cadena canónica baja mucho por
+la izquierda y en español llegaba a solaparse. Ahora el cuerpo baja hasta 7,5 y, si ni
+así cabe, se queda el nombre y la versión, que es lo que no puede faltar. Comprobado en
+doce combinaciones de idioma y contenido: margen mínimo positivo y el alto sin cambiar.
+
+**La prosa decía «extensión».** La unificación a «nivel de uso» de la versión 26 no llegó
+ahí, y la prosa es justo lo que se pega en el manuscrito. Corregido con dos puntos,
+«(nivel de uso: mayoritaria)», porque los grados son femeninos por concordar con
+«extensión» y un cambio directo habría producido «nivel de uso mayoritaria».
+
+Manual, «Acerca de», README y `CONTRIBUTING.md` documentan lo nuevo en los tres idiomas.
+
+Batería: **1432 aserciones con conexión · 1423 sin conexión**, con un bloque omitido.
+
 ## 26 — 2026-09-29
 
 **El control de extensión era confuso y lo dijo una estudiante.** Había un guion en la
