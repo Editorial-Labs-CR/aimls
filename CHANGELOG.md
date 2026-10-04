@@ -15,6 +15,14 @@ Es la misma lógica de los dos números que la versión 27 tuvo que explicar par
 ahora aplicada a los identificadores. "Acerca de" lo dice en un párrafo, al lado del que
 distingue la versión del programa de la de la notación.
 
+**Y el registro de Zenodo dice dónde correr la herramienta.** Hasta ahora enlazaba al
+repositorio y al código archivado, pero no a la app funcionando, que es lo primero que
+busca quien llega. Va en la descripción y no como identificador relacionado: la
+dirección de Pages sirve siempre la versión más reciente, mientras que el registro
+queda congelado, así que declararla "idéntica" sería cierto hoy y falso en la versión
+siguiente. La descripción puede decir esa diferencia con palabras; el vocabulario de
+relaciones no.
+
 Batería: **1448 aserciones con conexión**, sin fallos.
 
 ## 29 — 2026-10-04
