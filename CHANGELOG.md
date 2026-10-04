@@ -3,6 +3,35 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
+## 28 — 2026-10-03
+
+**Preparación para archivar en Zenodo.** La integración ya está activada, así que lo que
+falta es crear el release; Zenodo congela lo que haya en el repositorio en ese momento y
+le asigna el identificador digital permanente. De ahí que estas dos cosas tengan que
+entrar antes y no después.
+
+- **La fecha estaba mal.** La versión 27 se hizo el 3 de octubre y la app y el archivo de
+  cita decían 29 de setiembre: no se subió al pasar de la 26 a la 27. Corregida en los
+  tres sitios. Con la fecha vieja, el error habría quedado congelado en el identificador.
+- **Nuevo `.zenodo.json`**, que es la única manera de acreditar a quienes colaboraron en
+  el registro de Zenodo: el formato de `CITATION.cff` solo admite `authors` y `contact`,
+  y por eso no estaban. Ahora Carolina Seas Carvajal y Steven Segura Jiménez figuran como
+  `contributors`, con su ORCID, sin convertirse en autoría del software.
+
+**Cuidado con tener dos archivos de metadatos.** Zenodo **ignora por completo**
+`CITATION.cff` cuando existe `.zenodo.json`, mientras que GitHub sigue usando el primero
+para el botón de citar. Si se desincronizan, la cita que ve quien entra al repositorio y
+la del archivo permanente dejan de coincidir, y un identificador ya publicado no se
+corrige. El invariante queda documentado en `CONTRIBUTING.md` y comprobado: misma
+versión, fecha, título, autoría y licencias en los tres archivos, y las mismas personas
+colaboradoras que acredita la app, con su ORCID.
+
+Sobre el ORCID: Zenodo no notifica a nadie. Incluir el identificador es lo que permite
+que después cada quien reclame el registro desde su perfil, o que le entre solo si tiene
+activada la actualización automática de DataCite.
+
+Batería: **1446 aserciones con conexión**, sin fallos.
+
 ## 27 — 2026-10-03
 
 **La etiqueta dice de qué sistema es, y la prosa dice quién la hizo.** Hasta ahora no lo

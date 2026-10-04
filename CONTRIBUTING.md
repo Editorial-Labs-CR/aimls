@@ -32,6 +32,20 @@ empaquetador, y tiene que seguir funcionando abierto directamente desde el disco
   system name cannot be interpreted when the QR code fails.
 - Printing the **program** version on the label instead of the **notation** version.
   They are different numbers on purpose: see the «About» panel.
+
+## Two metadata files that must agree / Dos archivos de metadatos que deben coincidir
+
+`CITATION.cff` and `.zenodo.json` describe the same thing for two different consumers.
+**Zenodo ignores `CITATION.cff` entirely when `.zenodo.json` exists**, while GitHub keeps
+using `CITATION.cff` for the «Cite this repository» button. If they drift, the citation a
+visitor sees and the one in the permanent archive stop matching, and a published DOI
+cannot be corrected.
+
+Keep in sync, every release: **title, version, release date, author and ORCID, licences**.
+The version and date must also match `APP.version` and `APP.date` in `index.html`.
+
+`.zenodo.json` additionally carries what `CITATION.cff` cannot: the people who
+contributed without being authors, under `contributors`, each with their ORCID.
 - Text overlapping, or content leaving the canvas.
 
 ## Vocabulary / Vocabulario
