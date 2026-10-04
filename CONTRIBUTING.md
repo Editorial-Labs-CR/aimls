@@ -31,13 +31,18 @@ empaquetador, y tiene que seguir funcionando abierto directamente desde el disco
 - Removing the system name or the notation version from the label. A label with no
   system name cannot be interpreted when the QR code fails.
 - Printing the **program** version on the label instead of the **notation** version.
-  They are different numbers on purpose: see the «About» panel.
+  They are different numbers on purpose: see the "About" panel.
+- Text overlapping, or any content leaving the card.
+- Letting the identification mark (name, icon and descriptor) overflow the card. The mark
+  sizes the left column, so it is what sets the inner height when the content column is
+  shorter. The descriptor wraps by measurement, not by a per-language table, and never
+  takes more than two lines.
 
 ## Two metadata files that must agree / Dos archivos de metadatos que deben coincidir
 
 `CITATION.cff` and `.zenodo.json` describe the same thing for two different consumers.
 **Zenodo ignores `CITATION.cff` entirely when `.zenodo.json` exists**, while GitHub keeps
-using `CITATION.cff` for the «Cite this repository» button. If they drift, the citation a
+using `CITATION.cff` for the "Cite this repository" button. If they drift, the citation a
 visitor sees and the one in the permanent archive stop matching, and a published DOI
 cannot be corrected.
 
@@ -46,7 +51,12 @@ The version and date must also match `APP.version` and `APP.date` in `index.html
 
 `.zenodo.json` additionally carries what `CITATION.cff` cannot: the people who
 contributed without being authors, under `contributors`, each with their ORCID.
-- Text overlapping, or content leaving the canvas.
+
+The description in `.zenodo.json` is bilingual: English first, then Spanish, separated by
+a rule. Keep both halves saying the same thing.
+
+La descripción de `.zenodo.json` es bilingüe: primero inglés y después español, separados
+por una línea. Las dos mitades tienen que decir lo mismo.
 
 ## Vocabulary / Vocabulario
 

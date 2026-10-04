@@ -17,7 +17,7 @@ institution:
   name: >-
     Vicerrectoría de Investigación, Universidad Estatal a Distancia (UNED),
     Costa Rica
-version: "28"
+version: "29"
 date-released: "2026-10-04"
 license:
   - MIT

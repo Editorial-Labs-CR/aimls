@@ -32,7 +32,7 @@ Under **CC BY 4.0** (this file) / Bajo **CC BY 4.0**:
 
 - the **notation**: the two-letter codes, the `AI: ` prefix, the `+` separator, the
   level-of-use scale and the composition rules;
-- the **texts**: interface strings, user guide, «About», the prose declaration templates
+- the **texts**: interface strings, user guide, "About", the prose declaration templates
   and the Spanish and Portuguese renderings of the activity descriptions;
 - the **label design**: proportions, typographic hierarchy and composition;
 - the **brand icon**.

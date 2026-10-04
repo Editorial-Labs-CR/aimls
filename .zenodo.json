@@ -1,11 +1,11 @@
 {
   "upload_type": "software",
   "title": "AIMLS: AI Manuscript Labelling System",
-  "version": "28",
+  "version": "29",
   "publication_date": "2026-10-04",
   "access_right": "open",
   "license": "mit",
-  "description": "<p>Open notation system and single-file web tool that produces a graphic label and a matching prose declaration of artificial intelligence use in manuscripts, built on the STM (2025) classification of nine activities. Both outputs come from the same declarative act, so they cannot contradict each other.</p><p>The label carries an invariant code (<code>AI: ED+TR+CO</code>) that reads the same in any language, so the record is comparable across articles, aggregable at scale and transportable as metadata. The descriptions inside the label and the prose follow the language of the article.</p><p><strong>Two licences.</strong> The code (HTML, CSS, JavaScript) is under the MIT licence. The content (the notation, the texts, the user guide, the label design and the logo) is under CC BY 4.0. The boundary is explained in LICENSE-CONTENT.md. The STM activity classification is third-party material, cited with attribution and not covered by either licence.</p>",
+  "description": "<p>Open notation system and single-file web tool that produces a graphic label and a matching prose declaration of artificial intelligence use in manuscripts, built on the STM Association (2025) classification of nine activities. Both outputs come from the same declarative act, so they cannot contradict each other.</p><p>The label carries an invariant code (<code>AI: ED+TR+CO</code>) that reads the same in any language, so the record is comparable across articles, aggregable at scale and transportable as metadata. The descriptions inside the label and the prose follow the language of the article. The label also identifies itself: it prints the system name and the notation version, so it can still be read if the QR code fails or is cropped.</p><p>The whole system is one HTML file. It runs from a browser with no server and no installation, and its source can be read, copied, modified and hosted by anyone. It includes an automated test suite that runs from the browser console.</p><p><strong>Two licences.</strong> The code (HTML, CSS, JavaScript) is under the MIT licence. The content (the notation, the texts, the user guide, the label design and the logo) is under CC BY 4.0. The boundary is explained in LICENSE-CONTENT.md. The STM activity classification is third-party material, cited with attribution and not covered by either licence.</p><p><strong>Two version numbers, and they are not the same.</strong> The software version moves with every change. The notation version is the system of codes and composition rules, and only moves if those change; that is the one printed on the label, because it is what is needed to interpret a label years later.</p><hr><p>Sistema de notación abierto y herramienta web de un solo archivo que produce una etiqueta gráfica y la declaración en prosa que le corresponde sobre el uso de inteligencia artificial en manuscritos, sobre la clasificación de nueve actividades de la STM Association (2025). Las dos salidas nacen del mismo acto declarativo, así que no pueden contradecirse.</p><p>La etiqueta lleva un código invariante (<code>AI: ED+TR+CO</code>) que se lee igual en cualquier idioma, de modo que el registro es comparable entre artículos, agregable a escala y transportable como metadato. Las descripciones dentro de la etiqueta y la prosa siguen el idioma del artículo. La etiqueta además se identifica: imprime el nombre del sistema y la versión de la notación, así que se puede leer aunque el código QR falle o se recorte.</p><p>Todo el sistema es un único archivo HTML. Funciona desde el navegador sin servidor ni instalación, y su código fuente se puede leer, copiar, modificar y alojar. Incluye una batería de pruebas automáticas que se ejecuta desde la consola del navegador.</p><p><strong>Dos licencias.</strong> El código (HTML, CSS, JavaScript) está bajo la licencia MIT. El contenido (la notación, los textos, el manual, el diseño de la etiqueta y el logotipo) está bajo CC BY 4.0. El límite se explica en LICENSE-CONTENT.md. La clasificación de actividades de la STM Association es material de terceros, citado con atribución y no cubierto por ninguna de las dos licencias.</p><p><strong>Dos números de versión, y no son lo mismo.</strong> La versión del programa se mueve con cada cambio. La versión de la notación es el sistema de códigos y reglas de composición, y solo se mueve si esas cambian; es la que va impresa en la etiqueta, porque es lo que hace falta para interpretarla años después.</p>",
   "creators": [
     {
       "name": "Chinchilla Serrano, Alexander",
@@ -35,6 +35,10 @@
     "metadata",
     "open science",
     "AI use declaration",
-    "STM classification"
-  ]
+    "STM classification",
+    "integridad científica",
+    "declaración de uso de IA",
+    "ciencia abierta"
+  ],
+  "language": "eng"
 }

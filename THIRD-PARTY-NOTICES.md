@@ -21,9 +21,9 @@ is claimed or granted.
 
 The Spanish and Portuguese renderings of those descriptions are translations made for
 this project and are covered by [CC BY 4.0](LICENSE-CONTENT.md). One of them departs from
-a literal translation on purpose: `RF` reads «Ayuda en la recopilación y búsqueda de
-referencias», because the English *gathering* covers locating the sources and
-«recopilación» alone was narrower than the original. The departure is recorded in the
+a literal translation on purpose: `RF` reads "Ayuda en la recopilación y búsqueda de
+referencias", because the English *gathering* covers locating the sources and
+"recopilación" alone was narrower than the original. The departure is recorded in the
 test suite.
 
 ## 2. QRious — QR code generation

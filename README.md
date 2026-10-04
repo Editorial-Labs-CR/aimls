@@ -36,8 +36,9 @@ scale and transportable as metadata.
 It is an open notation system, **proposed for any journal or publishing body**. Adoption
 is gradual and does not require changing current policies.
 
-**Provenance.** The label carries its own identification in the top left, the system name
-and the notation version, for example `AIMLS 1.0`, with a short note of what it is. A
+**Provenance.** The label carries its own identification in the icon column: the system
+name and the notation version above the icon, for example `AIMLS 1.0`, and what the label
+is below it. A
 label with no system name is an orphan: if the QR code fails, is cropped in printing or
 the PDF carries no links, whoever finds `AI: ED+TR` has no way to know what notation that
 is. The prose declaration travels separately inside the manuscript, so it closes by
@@ -117,7 +118,7 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 28) [Computer software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 29) [Computer software].
 > Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
@@ -157,9 +158,9 @@ AI: ED:1+TR:3+CO:2    lo mismo, con el nivel de uso de cada una
 AI: N                 sin uso por encima del umbral declarable
 ```
 
-**Procedencia.** La etiqueta lleva su propia identificación arriba a la izquierda, el
-nombre del sistema y la versión de la notación, por ejemplo `AIMLS 1.0`, con una nota
-breve de qué es. Una etiqueta sin nombre de sistema es huérfana: si el código QR falla,
+**Procedencia.** La etiqueta lleva su propia identificación en la columna del icono: el
+nombre del sistema y la versión de la notación encima del icono, por ejemplo `AIMLS 1.0`,
+y qué es la etiqueta debajo. Una etiqueta sin nombre de sistema es huérfana: si el código QR falla,
 se recorta al imprimir o el PDF va sin enlaces, quien encuentre `AI: ED+TR` no tiene cómo
 saber qué notación es. La declaración en prosa viaja aparte dentro del manuscrito, así
 que cierra diciendo que la elaboraron las personas autoras, con qué sistema y dónde
@@ -251,7 +252,7 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 28) [Software].
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 29) [Software].
 > Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
 > Distancia. https://github.com/Editorial-Labs-CR/aimls
 
