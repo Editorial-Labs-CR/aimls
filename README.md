@@ -119,12 +119,13 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 29)
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 30)
 > [Computer software]. Open Science Unit, Office of the Vice-Rector for Research,
 > Universidad Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
 
-That identifier covers **all versions** and always resolves to the most recent one. To
-pin this exact version, cite `10.5281/zenodo.23139497` instead.
+That identifier covers **all versions** and always resolves to the most recent one. Each
+archived version also has its own, shown on its own Zenodo record, for pinning an exact
+state.
 
 GitHub also reads [`CITATION.cff`](CITATION.cff).
 
@@ -256,12 +257,13 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 29)
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 30)
 > [Software]. Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad
 > Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
 
-Ese identificador cubre **todas las versiones** y siempre lleva a la más reciente. Para
-fijar esta versión exacta, cite `10.5281/zenodo.23139497`.
+Ese identificador cubre **todas las versiones** y siempre lleva a la más reciente. Cada
+versión archivada tiene además el suyo, que aparece en su propio registro de Zenodo,
+para fijar un estado exacto.
 
 ### Licencias
 

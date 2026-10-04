@@ -3,6 +3,20 @@
 Versions are the `APP.version` value shown in the footer and in "About".
 Las versiones son el valor `APP.version` que aparece en el pie y en "Acerca de".
 
+## 30 — 2026-10-04
+
+**El identificador permanente vuelve al proyecto.** La versión 29 quedó archivada en
+Zenodo y emitió dos identificadores. El que cubre **todas las versiones** siempre lleva a
+la más reciente, y es el que ahora aparece en la cita de la app, en el `CITATION.cff` y en
+el README, en los tres idiomas. El de cada versión concreta no se guarda en el código: se
+quedaría obsoleto en cada release, y el propio registro de Zenodo ya lo muestra.
+
+Es la misma lógica de los dos números que la versión 27 tuvo que explicar para la etiqueta,
+ahora aplicada a los identificadores. "Acerca de" lo dice en un párrafo, al lado del que
+distingue la versión del programa de la de la notación.
+
+Batería: **1448 aserciones con conexión**, sin fallos.
+
 ## 29 — 2026-10-04
 
 **Logotipo nuevo y una identificación que por fin se lee.** Son dos cambios y se hicieron
