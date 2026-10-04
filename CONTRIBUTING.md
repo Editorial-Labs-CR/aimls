@@ -58,6 +58,33 @@ a rule. Keep both halves saying the same thing.
 La descripción de `.zenodo.json` es bilingüe: primero inglés y después español, separados
 por una línea. Las dos mitades tienen que decir lo mismo.
 
+## Versioning, and why not SemVer / Versionado, y por qué no SemVer
+
+There are **two numbers and they measure different things**. The *program* version is a
+serial: it moves with every change, however small. The *notation* version is the system
+of codes and composition rules; it moves only when those change, and it is the one
+printed on every label, because it is what is needed to interpret a label years later.
+
+The program version does **not** follow [Semantic Versioning](https://semver.org/), and
+that is deliberate. SemVer requires a declared public API and exists to prevent
+dependency hell: nothing imports this file as a dependency, so there is no such problem
+to solve here. The public contract of this project is the **notation**, and it already
+behaves the way SemVer intends, moving only on a change to the codes or the composition
+rules. Giving the program a `1.0.0` would put two nearly identical numbers side by side,
+one of them printed on every label, and undo the distinction the About panel exists to
+explain.
+
+**Practical consequence when publishing a release.** Because the tag is not SemVer,
+GitHub cannot infer which release is the most recent: tick **Set as the latest release**
+by hand. GitHub assigns that label automatically from Semantic Versioning when the box is
+left unticked.
+
+Hay **dos números y miden cosas distintas**. El del programa es un correlativo y se mueve
+con cualquier cambio. El de la notación solo se mueve si cambian los códigos o las reglas
+de composición, y es el que va impreso en la etiqueta. El del programa no sigue SemVer a
+propósito, por lo dicho arriba. Al publicar un release, marque a mano la casilla de
+versión más reciente.
+
 ## Vocabulary / Vocabulario
 
 The nine activities come from the STM Association (2025) and are adopted without
