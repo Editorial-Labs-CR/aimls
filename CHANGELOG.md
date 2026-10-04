@@ -3,16 +3,18 @@
 Versions are the `APP.version` value shown in the footer and in «About».
 Las versiones son el valor `APP.version` que aparece en el pie y en «Acerca de».
 
-## 28 — 2026-10-03
+## 28 — 2026-10-04
 
 **Preparación para archivar en Zenodo.** La integración ya está activada, así que lo que
 falta es crear el release; Zenodo congela lo que haya en el repositorio en ese momento y
 le asigna el identificador digital permanente. De ahí que estas dos cosas tengan que
 entrar antes y no después.
 
-- **La fecha estaba mal.** La versión 27 se hizo el 3 de octubre y la app y el archivo de
-  cita decían 29 de setiembre: no se subió al pasar de la 26 a la 27. Corregida en los
-  tres sitios. Con la fecha vieja, el error habría quedado congelado en el identificador.
+- **La fecha no se estaba actualizando.** La versión 27 se hizo el 3 de octubre y la app
+  y el archivo de cita seguían diciendo 29 de setiembre: no se subió al pasar de la 26 a
+  la 27. Con una fecha vieja, el error habría quedado congelado en el identificador, que
+  no se corrige. Ahora la fecha de la versión va en los tres archivos y el verificador la
+  compara, de modo que desincronizarla vuelve a ser difícil.
 - **Nuevo `.zenodo.json`**, que es la única manera de acreditar a quienes colaboraron en
   el registro de Zenodo: el formato de `CITATION.cff` solo admite `authors` y `contact`,
   y por eso no estaban. Ahora Carolina Seas Carvajal y Steven Segura Jiménez figuran como
@@ -29,6 +31,27 @@ colaboradoras que acredita la app, con su ORCID.
 Sobre el ORCID: Zenodo no notifica a nadie. Incluir el identificador es lo que permite
 que después cada quien reclame el registro desde su perfil, o que le entre solo si tiene
 activada la actualización automática de DataCite.
+
+**Auditoría antes de publicar, y tres restos que salieron.** El código fuente se sirve
+tal cual, y el manual invita a ejecutar la batería desde la consola: los comentarios y los
+mensajes de prueba son tan públicos como el README. Con ese criterio salieron tres cosas
+que no debían quedar congeladas en un identificador permanente.
+
+- **Un código de la notación figuraba como no decidido.** Un comentario dejaba abierta la
+  disyuntiva entre `TG` y `GT`. Publicar la notación como 1.0 y a la vez admitir que uno
+  de los nueve códigos se sigue discutiendo es contradictorio, y cambiarlo después sería
+  un cambio rompedor. Queda resuelto a favor de `TG`, con el razonamiento intacto y una
+  consecuencia escrita: los códigos son el contrato de la notación, así que tocar uno
+  obliga a subir la versión de la notación, no la del programa.
+- **Fuera el nombre de trabajo de un documento inédito.** Un comentario citaba el archivo
+  del preprint por su nombre de archivo, con el sufijo de copia incluido. Ahora dice solo
+  de qué apartado del preprint sale la tabla.
+- **Cuatro mensajes de la batería hablaban de más.** Dos citaban números de apartado, que
+  es justo lo que la app prohíbe en pantalla, y otros dos anunciaban una tarea pendiente
+  con un documento que el proyecto no menciona en ninguna otra parte pública. Reescritos
+  en torno a la "tabla de referencia", sin tocar ninguna aserción: la comprobación de
+  coherencia entre la app y el preprint sigue fallando igual si alguien cambia una
+  descripción en un solo lado.
 
 Batería: **1446 aserciones con conexión**, sin fallos.
 

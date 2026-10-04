@@ -2,7 +2,7 @@
   "upload_type": "software",
   "title": "AIMLS: AI Manuscript Labelling System",
   "version": "28",
-  "publication_date": "2026-10-03",
+  "publication_date": "2026-10-04",
   "access_right": "open",
   "license": "mit",
   "description": "<p>Open notation system and single-file web tool that produces a graphic label and a matching prose declaration of artificial intelligence use in manuscripts, built on the STM (2025) classification of nine activities. Both outputs come from the same declarative act, so they cannot contradict each other.</p><p>The label carries an invariant code (<code>AI: ED+TR+CO</code>) that reads the same in any language, so the record is comparable across articles, aggregable at scale and transportable as metadata. The descriptions inside the label and the prose follow the language of the article.</p><p><strong>Two licences.</strong> The code (HTML, CSS, JavaScript) is under the MIT licence. The content (the notation, the texts, the user guide, the label design and the logo) is under CC BY 4.0. The boundary is explained in LICENSE-CONTENT.md. The STM activity classification is third-party material, cited with attribution and not covered by either licence.</p>",

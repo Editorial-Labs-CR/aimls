@@ -461,9 +461,12 @@ const TASKS = [
      «Text Generation» / «Texto Generado» — funciona en los dos idiomas, que
      es lo que exige el §4.1 y lo que GE incumplía (no deriva ni de
      «escritura» ni de «writing»).
-     Pendiente de decidir: GT tiene la misma lógica bilingüe («Generated
-     Text» / «Generación de Texto») y se despega mejor de TR, con el que TG
-     comparte inicial y aparece a menudo al lado: AI: TG+TR vs AI: GT+TR. */
+     Se valoró GT, con la misma lógica bilingüe («Generated Text» /
+     «Generación de Texto») y mejor despegue de TR, con el que TG comparte
+     inicial y aparece a menudo al lado: AI: TG+TR vs AI: GT+TR. Resuelto a
+     favor de TG, y queda fijado: los códigos son el contrato de la notación,
+     así que cambiar uno obliga a subir la versión de la NOTACIÓN, no la del
+     programa. */
   {code:'TG', unit:{es:'el texto del manuscrito', en:'the manuscript text', pt:'o texto do manuscrito'}, from:'Text Generation', gloss:{es:'generación de texto', pt:'geração de texto'}, stm:2,
    es:'Escritura o redacción de contenido del manuscrito',
    en:'Writing or drafting manuscript content',
@@ -780,7 +783,7 @@ const APP = {
      cambiar por la suya: esta es la que va en la prosa, para que quien lea
      el artículo sepa dónde está la notación. */
   home    : 'https://editorial-labs-cr.github.io/aimls/',
-  date    : {es:'3 de octubre de 2026', en:'3 October 2026', pt:'3 de outubro de 2026'},
+  date    : {es:'4 de octubre de 2026', en:'4 October 2026', pt:'4 de outubro de 2026'},
   author  : 'Alexander Chinchilla Serrano',
   citeAuthor : 'Chinchilla Serrano, A.',
   orcid   : '0000-0001-9465-1522',
@@ -2514,7 +2517,7 @@ function runSelfTest(){
   ok(badgeStrings().canonical==='AI: N', 'N produce la cadena «AI: N»');
   ok(badgeStrings().details===T.noUse, 'N no muestra extensión: es una afirmación de no uso, no un nivel');
   state = {}; onToggleSilently('TG',true); onToggleSilently('N',true);
-  ok(JSON.stringify(state)==='{"N":true}', 'N es excluyente: borra las demás tareas (§4.4)');
+  ok(JSON.stringify(state)==='{"N":true}', 'N es excluyente: borra las demás tareas');
   state = {}; onToggleSilently('N',true); onToggleSilently('TR',true);
   ok(!state.N && state.TR===0, 'marcar una tarea desactiva N y NO inventa extensión (arranca en 0)');
 
@@ -2550,7 +2553,7 @@ function runSelfTest(){
   ok(TASKS.every(t=>t.es && t.en), 'cada actividad tiene descripción en ambos idiomas');
   ok(TASKS.find(t=>t.stm===2).code==='TG', 'la actividad 2 usa el código TG (no GE)');
   ok(TASKS.find(t=>t.stm===2).es==='Escritura o redacción de contenido del manuscrito',
-     'TG reproduce literalmente la actividad 2 de la tabla del §4.1');
+     'TG reproduce literalmente la actividad 2 de la tabla de referencia');
   ok(TASKS.find(t=>t.stm===1).en.includes('or formatting'),
      'el inglés de la actividad 1 conserva «or formatting», que la tabla en español recorta');
   ok(TASKS.find(t=>t.stm===5).en.endsWith('for illustrative purposes only'),
@@ -2809,8 +2812,8 @@ function runSelfTest(){
   }
 
   /* 9bis-b. COHERENCIA APP ↔ PREPRINT. La tabla de abajo se extrajo del
-     §4.1 de «preprint-etiquetas-ia (5).docx» con los cambios aceptados. Si
-     alguien toca una descripción en un lado y no en el otro, esto falla.
+     §4.1 del preprint, con los cambios aceptados. Si alguien toca una
+     descripción en un lado y no en el otro, esto falla.
      DIVERGENCIAS_41 lista lo que la app dice DISTINTO a propósito: no se
      actualiza la tabla para hacer callar la prueba, se declara la diferencia
      y se exige el texto nuevo exacto. Cada entrada acá es deuda pendiente
@@ -2828,10 +2831,10 @@ function runSelfTest(){
       const esperado = DIVERGENCIAS_41[k] ? DIVERGENCIAS_41[k].app : v.desc;
       if(t.es!==esperado) (DIVERGENCIAS_41[k] ? malas : difs).push(k);
     });
-    ok(difs.length===0, `las filas de la app coinciden con la tabla del §4.1 del preprint${difs.length?': difieren '+difs.join(', '):''}`);
+    ok(difs.length===0, `las filas de la app coinciden con la tabla de referencia${difs.length?': difieren '+difs.join(', '):''}`);
     ok(malas.length===0, `las divergencias declaradas dicen exactamente lo previsto${malas.length?': '+malas.join(', '):''}`);
     ok(Object.keys(DIVERGENCIAS_41).length===1,
-       `hay ${Object.keys(DIVERGENCIAS_41).length} divergencia(s) declarada(s) con el §4.1, pendiente(s) de replicar en el preprint`);
+       `${Object.keys(DIVERGENCIAS_41).length} descripción(es) se apartan a propósito de la tabla de referencia, con su motivo registrado`);
     ok(TASKS.filter(t=>t.scopeNote).every(t=>LANG_ALL.every(l=>t.scopeNote[l]) && t.scopeNote.es!==t.es),
        'las notas de alcance existen en todos los idiomas y no se confunden con la descripción'); }
 
