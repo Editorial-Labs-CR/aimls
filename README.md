@@ -10,6 +10,7 @@ Declaración gráfica de uso de inteligencia artificial en manuscritos.
 Unidad de Ciencia Abierta · **Vicerrectoría de Investigación**
 Universidad Estatal a Distancia (UNED), Costa Rica
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23139496.svg)](https://doi.org/10.5281/zenodo.23139496)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-black.svg)](LICENSE)
 [![Licence: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-black.svg)](LICENSE-CONTENT.md)
 
@@ -118,9 +119,12 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 29) [Computer software].
-> Open Science Unit, Office of the Vice-Rector for Research, Universidad Estatal a
-> Distancia. https://github.com/Editorial-Labs-CR/aimls
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 29)
+> [Computer software]. Open Science Unit, Office of the Vice-Rector for Research,
+> Universidad Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
+
+That identifier covers **all versions** and always resolves to the most recent one. To
+pin this exact version, cite `10.5281/zenodo.23139497` instead.
 
 GitHub also reads [`CITATION.cff`](CITATION.cff).
 
@@ -252,9 +256,12 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 29) [Software].
-> Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad Estatal a
-> Distancia. https://github.com/Editorial-Labs-CR/aimls
+> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 29)
+> [Software]. Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad
+> Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
+
+Ese identificador cubre **todas las versiones** y siempre lleva a la más reciente. Para
+fijar esta versión exacta, cite `10.5281/zenodo.23139497`.
 
 ### Licencias
 

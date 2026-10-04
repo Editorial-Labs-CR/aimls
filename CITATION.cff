@@ -17,6 +17,9 @@ institution:
   name: >-
     Vicerrectoría de Investigación, Universidad Estatal a Distancia (UNED),
     Costa Rica
+# Identificador de TODAS las versiones: siempre lleva a la más reciente.
+# El de esta versión en concreto es 10.5281/zenodo.23139497
+doi: "10.5281/zenodo.23139496"
 version: "29"
 date-released: "2026-10-04"
 license:
