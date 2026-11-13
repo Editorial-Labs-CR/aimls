@@ -39,6 +39,9 @@ identifiers:
     value: "10.5281/zenodo.23139496"
     description: "Todas las versiones (este es el que se cita)"
   - type: doi
+    value: "10.5281/zenodo.24182779"
+    description: "Versión 32"
+  - type: doi
     value: "10.5281/zenodo.24182271"
     description: "Versión 31"
   - type: doi

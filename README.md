@@ -120,7 +120,7 @@ window.__app.runSelfTest()
 ### How to cite
 
 > Chinchilla Serrano, F. A., Seas Carvajal, C., & Segura Jiménez, S. (2026).
-> *AIMLS: AI Manuscript Labelling System* (Version 31) [Computer software]. Open Science
+> *AIMLS: AI Manuscript Labelling System* (Version 32) [Computer software]. Open Science
 > Unit, Office of the Vice-Rector for Research, Universidad Estatal a Distancia.
 > https://doi.org/10.5281/zenodo.23139496
 
@@ -129,6 +129,7 @@ archived version also has its own, for pinning an exact state:
 
 | Version | DOI | Authors |
 |---|---|---|
+| 32 | [10.5281/zenodo.24182779](https://doi.org/10.5281/zenodo.24182779) | the three |
 | 31 | [10.5281/zenodo.24182271](https://doi.org/10.5281/zenodo.24182271) | the three |
 | 29 | [10.5281/zenodo.23139497](https://doi.org/10.5281/zenodo.23139497) | earlier attribution |
 
@@ -263,7 +264,7 @@ window.__app.runSelfTest()
 ### Cómo citar
 
 > Chinchilla Serrano, F. A., Seas Carvajal, C., & Segura Jiménez, S. (2026).
-> *AIMLS: AI Manuscript Labelling System* (Versión 31) [Software]. Unidad de Ciencia
+> *AIMLS: AI Manuscript Labelling System* (Versión 32) [Software]. Unidad de Ciencia
 > Abierta, Vicerrectoría de Investigación, Universidad Estatal a Distancia.
 > https://doi.org/10.5281/zenodo.23139496
 
@@ -272,6 +273,7 @@ versión archivada tiene además el suyo, para fijar un estado exacto:
 
 | Versión | DOI | Autoría |
 |---|---|---|
+| 32 | [10.5281/zenodo.24182779](https://doi.org/10.5281/zenodo.24182779) | las tres |
 | 31 | [10.5281/zenodo.24182271](https://doi.org/10.5281/zenodo.24182271) | las tres |
 | 29 | [10.5281/zenodo.23139497](https://doi.org/10.5281/zenodo.23139497) | atribución anterior |
 
