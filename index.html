@@ -816,13 +816,14 @@ const APP = {
      el código con cada release, y el registro de Zenodo ya lo muestra. */
   doi     : '10.5281/zenodo.23139496',
   date    : {es:'12 de noviembre de 2026', en:'12 November 2026', pt:'12 de novembro de 2026'},
-  /* AUTORÍA. Los tres constan como autores desde la v31. Hasta la v30 figuraba
-     solo el primero y los otros dos como «colaboración»; el cambio lo pidió la
-     Unidad para que las tres herramientas acrediten igual, y alcanza también a
-     CITATION.cff y .zenodo.json, de modo que la cita del repositorio, la del
-     archivo permanente y la de la propia app digan lo mismo. El depósito de la
-     v29 se queda como estaba: los identificadores publicados no se corrigen.
-     En el preprint estas mismas personas ya figuraban como coautoras. */
+  /* AUTORÍA. Los tres constan como autores desde la v31, porque los tres han
+     trabajado en las versiones nuevas de la herramienta. Hasta la v30 figuraba
+     solo el primero y los otros dos como «colaboración», cuando su aporte ya iba
+     más allá. Alcanza también a CITATION.cff y .zenodo.json, de modo que la cita
+     del repositorio, la del archivo permanente y la de la propia app digan lo
+     mismo. El depósito de la v29 se queda como estaba: los identificadores
+     publicados no se corrigen. En el preprint estas mismas personas ya figuraban
+     como coautoras. */
   authors : [
     {name:'Freddy Alexander Chinchilla Serrano', orcid:'0000-0001-9465-1522', email:'fchinchillas@uned.ac.cr',
      role:{es:'idea original y desarrollo',
@@ -2988,10 +2989,11 @@ function runSelfTest(){
     ok(tuteos.length===0, `el español trata de usted en todas partes${tuteos.length?', y se coló: '+tuteos.join(', '):''}`); }
 
   /* 8octies. CRÉDITO DE AUTORÍA. Es crédito a personas reales, y desde la v31 las
-     tres constan como autoras. Si un nombre se pierde en un idioma, o se cae de
-     la cita, o el bloque se va de sitio, el daño no es cosmético: la cita es lo
-     que lee una comisión de carrera. Hasta la v30 esta misma batería comprobaba
-     lo contrario, que dos de ellas NO estuvieran en los datos de cita. */
+     tres constan como autoras, porque las tres han trabajado en las versiones
+     nuevas. Si un nombre se pierde en un idioma, o se cae de la cita, o el bloque
+     se va de sitio, el daño no es cosmético: deja sin acreditar a quien trabajó.
+     Hasta la v30 esta misma batería comprobaba lo contrario, que dos de ellas NO
+     estuvieran en los datos de cita. */
   { const prevL = $('lang').value;
     for(const L of LANG_ALL){
       irA(L);
@@ -3030,8 +3032,8 @@ function runSelfTest(){
          `[${L}] la conjunción del pie es la del idioma («${AND[L]}»)`);
     }
     irA(prevL);
-    /* NADIE puede caerse de la cita: es la línea que una comisión de carrera lee
-       y la que se pega en un currículum. Se comprueba por apellido, que es lo que
+    /* NADIE puede caerse de la cita: es donde consta quién hizo la herramienta y
+       lo que se copia al citarla. Se comprueba por apellido, que es lo que
        sobrevive al formato APA con iniciales. */
     const fuera = APP.authors.filter(a=>{
       const apellidos = a.name.split(/\s+/).slice(-2).join(' ');

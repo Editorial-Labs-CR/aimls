@@ -10,12 +10,17 @@ figuraba la primera como autora, y Carolina Seas Carvajal y Steven Segura Jimén
 «colaboración». El código llevaba escrito el porqué de esa distinción: en el preprint sí
 son coautoras, y se entendía que el software era otra cosa.
 
-El motivo del cambio es concreto. Una comisión de carrera profesional que mire el producto
-lee la **línea de cita**, y en esa línea la colaboración no aparece: Zenodo la muestra bajo
-un encabezado aparte y `CITATION.cff` no tiene siquiera un campo donde ponerla. No hay un
-punto medio disponible: los formatos de cita son binarios, no existe «co-desarrollador» ni
-en `CITATION.cff` ni en el vocabulario de `contributors` de Zenodo. Para que el crédito
-exista donde se lee, las tres tienen que estar en `authors` y en `creators`.
+El motivo del cambio es el trabajo. Carolina y Steven han trabajado en las versiones nuevas
+de la herramienta, y «colaboración» se quedó corto para lo que aportan: revisión de textos,
+revisión del inglés, pruebas de uso y sugerencias de interfaz que cambiaron la interfaz y la
+redacción de lo que la herramienta dice.
+
+Y tenía que llegar a los metadatos, no solo al texto visible. En la **línea de cita** la
+colaboración no aparece: Zenodo la muestra bajo un encabezado aparte y `CITATION.cff` no
+tiene siquiera un campo donde ponerla. No hay un punto medio disponible, porque los formatos
+de cita son binarios: no existe «co-desarrollador» ni en `CITATION.cff` ni en el vocabulario
+de `contributors` de Zenodo. Para que el crédito exista donde se lee, las tres tienen que
+estar en `authors` y en `creators`.
 
 Alcanza a la app, al `CITATION.cff`, al `.zenodo.json`, al `README`, al `CONTRIBUTING` y al
 aviso de copyright del archivo y del `LICENSE`. La cita pasa a ser:
