@@ -148,6 +148,14 @@ SOFTWARE.
   .dlg-in .cite{border-left:3px solid var(--ink);padding-left:10px;}
   /* Cada persona que colaboró, como bloque propio: sangrado y con una línea
      a la izquierda, para que se distingan del párrafo que las presenta. */
+  /* Columna derecha de la cabecera: la marca arriba y la botonera debajo.
+     A 40 px de alto la «U» de la UNED conserva sus aros; a 32 se funden. */
+  .topright{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+  .marca-uned{flex-shrink:0;display:flex;align-items:center;}
+  .marca-uned img{display:block;height:40px;width:auto;}
+  .marca-uned a{display:block;line-height:0;border-radius:4px;transition:opacity .15s;}
+  .marca-uned a:hover{opacity:.82;}
+  .marca-uned a:focus-visible{outline:2px solid currentColor;outline-offset:3px;}
   .dlg-in .person{margin:6px 0 6px 2px;padding-left:10px;border-left:2px solid var(--line);line-height:1.5;}
   .dlg-in .affil{margin:6px 0 0 12px;color:var(--muted);line-height:1.5;}
   /* El aporte de cada quien, bajo su nombre: en gris y un punto menor, para que
@@ -290,6 +298,17 @@ SOFTWARE.
 <header>
   <div class="topbar">
     <div class="brand"><h1 data-i18n="appName"></h1><span class="brand-desc" data-i18n="appDesc"></span></div>
+    <div class="topright">
+      <!-- Marca institucional. Una sola versión, la negra: AIMLS no tiene temas,
+           el fondo es siempre claro y el negro da 18,8 a 1 de contraste. Va
+           incrustada para que la app siga abriéndose sin servidor. -->
+      <div class="marca-uned">
+        <a href="https://investiga.uned.ac.cr/cienciaabierta/" target="_blank" rel="noopener noreferrer"
+           data-i18n-title="hdrUnidad" title="Unidad de Ciencia Abierta · UNED"
+           aria-label="Unidad de Ciencia Abierta · UNED">
+          <img src="data:image/webp;base64,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" alt="Universidad Estatal a Distancia · Unidad de Ciencia Abierta" width="189" height="40">
+        </a>
+      </div>
     <nav class="topnav">
       <!-- Ajuste global de quien opera la herramienta: va acá arriba y no entre
            los controles de la etiqueta, para que no se confunda con el idioma
@@ -302,6 +321,7 @@ SOFTWARE.
       <button type="button" class="navbtn" data-open="dlgManual" data-i18n="navManual"></button>
       <button type="button" class="navbtn" data-open="dlgAbout" data-i18n="navAbout"></button>
     </nav>
+    </div>
   </div>
   <p class="sub" style="font-size:14px;color:var(--ink);margin-bottom:10px" data-i18n="hdrTag"></p>
   <p class="sub" data-i18n="hdrOpen"></p>
@@ -631,6 +651,7 @@ const UI = {
     noteTools:'Se imprimen en la etiqueta, arriba a la derecha, bajo el código detallado. Hasta 6. Las filas vacías se ignoran, y con "sin uso" no se muestran.',
     metaTools:'Herramientas',
     docTitle:'AIMLS · AI Manuscript Labelling System',
+    hdrUnidad:'Unidad de Ciencia Abierta · UNED',
     qrNoLib:'Sin conexión: la librería del QR (CDN) no cargó. La etiqueta se compone igual, pero el QR sale vacío.',
     qrTooLong:(b,c)=>`La URL ocupa ${b} bytes y el QR sólo admite ${c} con corrección nivel Q. La librería no avisa: truncaría la dirección en silencio y el QR llevaría a una URL cortada. Acortala.`,
     qrDense:b=>`La URL ocupa ${b} bytes: el QR queda muy denso y puede no leerse impreso a tamaño de etiqueta. Conviene una URL corta y permanente.`,
@@ -697,6 +718,7 @@ const UI = {
     noteTools:'Printed on the label, top right, under the detailed code. Up to 6. Empty rows are ignored, and nothing is shown with "no use".',
     metaTools:'Tools',
     docTitle:'AIMLS · AI Manuscript Labelling System',
+    hdrUnidad:'Open Science Unit · UNED',
     qrNoLib:'Offline: the QR library (CDN) did not load. The label is still composed, but the QR comes out empty.',
     qrTooLong:(b,c)=>`The URL takes ${b} bytes and the QR only holds ${c} at error-correction level Q. The library gives no warning: it would silently truncate the address and the QR would lead to a cut-off URL. Shorten it.`,
     qrDense:b=>`The URL takes ${b} bytes: the QR becomes very dense and may not scan when printed at label size. Use a short, permanent URL.`,
@@ -763,6 +785,7 @@ const UI = {
     noteTools:'Impressas na etiqueta, acima à direita, sob o código detalhado. Até 6. Linhas vazias são ignoradas, e nada se mostra com "sem uso".',
     metaTools:'Ferramentas',
     docTitle:'AIMLS · AI Manuscript Labelling System',
+    hdrUnidad:'Unidade de Ciência Aberta · UNED',
     qrNoLib:'Sem conexão: a biblioteca do QR (CDN) não carregou. A etiqueta compõe-se mesmo assim, mas o QR sai vazio.',
     qrTooLong:(b,c)=>`A URL ocupa ${b} bytes e o QR só admite ${c} com correção de nível Q. A biblioteca não avisa: truncaria o endereço em silêncio e o QR levaria a uma URL cortada. Encurte-a.`,
     qrDense:b=>`A URL ocupa ${b} bytes: o QR fica muito denso e pode não ser lido quando impresso no tamanho da etiqueta. Use uma URL curta e permanente.`,
@@ -1253,6 +1276,15 @@ function applyLang(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const v = U[el.getAttribute('data-i18n')];
     if(v !== undefined) el.innerHTML = v;
+  });
+  /* El rótulo del enlace institucional vive en un atributo, no en el contenido,
+     así que tampoco lo alcanza el bucle de arriba. Alimenta el título y el nombre
+     accesible a la vez, para que quien use lector de pantalla oiga lo mismo. */
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+    const v = U[el.getAttribute('data-i18n-title')];
+    if(v === undefined) return;
+    el.title = v;
+    if(el.hasAttribute('aria-label')) el.setAttribute('aria-label', v);
   });
   /* Guías flotantes cuyo texto también se traduce. Van como atributo, no como
      contenido, así que no las alcanza el bucle de arriba. */
@@ -3508,6 +3540,43 @@ function runSelfTest(){
     ok(pie.includes('fchinchillas@uned.ac.cr') && !pie.includes('gmail'), 'el pie usa el correo institucional');
     ok(pie.includes('Universidad Estatal a Distancia'), 'el pie nombra la institución');
     ok($('foot').querySelectorAll('[data-open]').length===2, 'el pie da acceso al manual y al acerca de'); }
+
+  /* 8decies. MARCA INSTITUCIONAL. Es la firma de quien hace la herramienta y un
+     enlace que sale de la app: si no carga, si apunta a otro sitio o si se abre
+     sin `noopener`, el fallo es visible o es de seguridad, no cosmético. */
+  { const a = document.querySelector('.marca-uned a');
+    const img = a && a.querySelector('img');
+    ok(!!a && document.querySelector('header').contains(a),
+       'la marca institucional está en la cabecera');
+    ok(!!img && img.complete && img.naturalWidth > 0,
+       `la imagen de la marca carga (${img ? img.naturalWidth+'×'+img.naturalHeight : 'no hay'})`);
+    ok(!!img && (img.getAttribute('alt')||'').trim().length > 10,
+       'la marca lleva texto alternativo, que es lo que oye un lector de pantalla');
+    ok(!!a && a.getAttribute('href') === 'https://investiga.uned.ac.cr/cienciaabierta/',
+       'el enlace lleva al sitio de la Unidad de Ciencia Abierta');
+    ok(!!a && a.getAttribute('target') === '_blank'
+          && /\bnoopener\b/.test(a.getAttribute('rel')||''),
+       'se abre en pestaña nueva y con noopener');
+    /* Encima de la botonera: es lo que se pidió, y una marca que se cuela entre
+       los controles se lee como un botón más. */
+    const nav = document.querySelector('.topnav');
+    ok(!!nav && !!a && (a.compareDocumentPosition(nav) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0,
+       'la marca va encima de la botonera, no entre los controles');
+    /* El rótulo sigue al idioma, y alimenta a la vez el título y el nombre
+       accesible: si se desincronizan, quien ve y quien oye reciben cosas
+       distintas. */
+    const prevL = $('lang').value;
+    const malos = [];
+    for(const L of LANG_ALL){
+      irA(L);
+      const esperado = UI[L].hdrUnidad;
+      if(!esperado) { malos.push(L+' (sin rótulo)'); continue; }
+      if(a.title !== esperado) malos.push(L+' (título)');
+      if(a.getAttribute('aria-label') !== esperado) malos.push(L+' (nombre accesible)');
+    }
+    irA(prevL);
+    ok(malos.length===0,
+       `el rótulo de la marca sigue al idioma en los tres${malos.length?': '+malos.join(', '):''}`); }
   ['es','en'].forEach(lg=>{
     const pl=lang; lang=lg; U=UI[lg];
     const m = document.createElement('div'); m.innerHTML = manualHTML();
