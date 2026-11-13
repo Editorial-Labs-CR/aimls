@@ -31,9 +31,19 @@ institution:
   name: >-
     Vicerrectoría de Investigación, Universidad Estatal a Distancia (UNED),
     Costa Rica
-# Identificador de TODAS las versiones: siempre lleva a la más reciente. El de cada
-# versión concreta lo muestra su propio registro de Zenodo.
+# Identificador de TODAS las versiones: siempre lleva a la más reciente. Es el que
+# conviene citar, salvo que haga falta fijar un estado exacto.
 doi: "10.5281/zenodo.23139496"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23139496"
+    description: "Todas las versiones (este es el que se cita)"
+  - type: doi
+    value: "10.5281/zenodo.24182271"
+    description: "Versión 31"
+  - type: doi
+    value: "10.5281/zenodo.23139497"
+    description: "Versión 29"
 version: "31"
 date-released: "2026-11-12"
 license:

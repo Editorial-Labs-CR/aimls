@@ -125,8 +125,12 @@ window.__app.runSelfTest()
 > https://doi.org/10.5281/zenodo.23139496
 
 That identifier covers **all versions** and always resolves to the most recent one. Each
-archived version also has its own, shown on its own Zenodo record, for pinning an exact
-state.
+archived version also has its own, for pinning an exact state:
+
+| Version | DOI | Authors |
+|---|---|---|
+| 31 | [10.5281/zenodo.24182271](https://doi.org/10.5281/zenodo.24182271) | the three |
+| 29 | [10.5281/zenodo.23139497](https://doi.org/10.5281/zenodo.23139497) | earlier attribution |
 
 GitHub also reads [`CITATION.cff`](CITATION.cff).
 
@@ -264,8 +268,12 @@ window.__app.runSelfTest()
 > https://doi.org/10.5281/zenodo.23139496
 
 Ese identificador cubre **todas las versiones** y siempre lleva a la más reciente. Cada
-versión archivada tiene además el suyo, que aparece en su propio registro de Zenodo,
-para fijar un estado exacto.
+versión archivada tiene además el suyo, para fijar un estado exacto:
+
+| Versión | DOI | Autoría |
+|---|---|---|
+| 31 | [10.5281/zenodo.24182271](https://doi.org/10.5281/zenodo.24182271) | las tres |
+| 29 | [10.5281/zenodo.23139497](https://doi.org/10.5281/zenodo.23139497) | atribución anterior |
 
 ### Licencias
 
