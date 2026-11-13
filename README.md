@@ -302,8 +302,8 @@ Universidad Estatal a Distancia (UNED), Costa Rica
 | Autoría · Author | ORCID | Aporte · Contribution |
 |---|---|---|
 | **Freddy Alexander Chinchilla Serrano** · <fchinchillas@uned.ac.cr> | [0000-0001-9465-1522](https://orcid.org/0000-0001-9465-1522) | Idea original y desarrollo · Original idea and development |
-| **Carolina Seas Carvajal** · <cseas@uned.ac.cr> | [0000-0002-2102-1973](https://orcid.org/0000-0002-2102-1973) | Revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz · Text revision, English-language review, user testing and interface suggestions |
-| **Steven Segura Jiménez** · <ssegura@uned.ac.cr> | [0009-0005-6475-8798](https://orcid.org/0009-0005-6475-8798) | Revisión de textos, pruebas de uso y sugerencias de interfaz · Text revision, user testing and interface suggestions |
+| **Carolina Seas Carvajal** · <cseas@uned.ac.cr> | [0000-0002-2102-1973](https://orcid.org/0000-0002-2102-1973) | Desarrollo y mejoras, revisión de textos y del inglés, pruebas de uso y diseño de la interfaz · Development and improvements, text and English-language revision, user testing and interface design |
+| **Steven Segura Jiménez** · <ssegura@uned.ac.cr> | [0009-0005-6475-8798](https://orcid.org/0009-0005-6475-8798) | Desarrollo y mejoras, revisión de textos, pruebas de uso y diseño de la interfaz · Development and improvements, text revision, user testing and interface design |
 
 Hasta la versión 30 solo constaba la primera persona como autora y las otras dos como
 colaboración. Desde la **31** las tres constan como autoras, en la app, en `CITATION.cff` y

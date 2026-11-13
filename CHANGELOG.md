@@ -3,6 +3,23 @@
 Versions are the `APP.version` value shown in the footer and in "About".
 Las versiones son el valor `APP.version` que aparece en el pie y en "Acerca de".
 
+## 32 — 2026-11-12
+
+**El aporte de Carolina y Steven se describe por lo que es.** La 31 los acreditó como
+autores pero mantuvo la descripción que arrastraban de cuando figuraban como
+«colaboración», y se quedaba corta: hablaba de revisión y sugerencias cuando el trabajo
+incluye desarrollo. Ahora ambas líneas empiezan por **desarrollo y mejoras**, y lo que
+eran «sugerencias de interfaz» pasa a **diseño de la interfaz**.
+
+Cambia en el «Acerca de» de la app, en los tres idiomas, y en la tabla de autoría del
+`README`. Los metadatos de cita no llevan el aporte de cada persona, así que ni
+`CITATION.cff` ni `.zenodo.json` cambian más que el número de versión.
+
+Sube a 32 y no se queda en 31 porque la 31 ya está archivada en Zenodo: lo que cambie
+después del release es otra versión, o el número dejaría de identificar un estado.
+
+---
+
 ## 31 — 2026-11-12
 
 **Las tres personas que hacen la herramienta constan como autoras.** Hasta la 30 solo

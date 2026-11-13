@@ -44,7 +44,7 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.23139497"
     description: "Versión 29"
-version: "31"
+version: "32"
 date-released: "2026-11-12"
 license:
   - MIT
