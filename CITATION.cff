@@ -7,9 +7,23 @@ abstract: >-
   and a matching prose declaration of artificial intelligence use in manuscripts, built on the STM (2025) classification of nine activities.
 authors:
   - family-names: "Chinchilla Serrano"
-    given-names: "Alexander"
+    given-names: "Freddy Alexander"
     orcid: "https://orcid.org/0000-0001-9465-1522"
     email: "fchinchillas@uned.ac.cr"
+    affiliation: >-
+      Unidad de Ciencia Abierta, Vicerrectoría de Investigación,
+      Universidad Estatal a Distancia (UNED), Costa Rica
+  - family-names: "Seas Carvajal"
+    given-names: "Carolina"
+    orcid: "https://orcid.org/0000-0002-2102-1973"
+    email: "cseas@uned.ac.cr"
+    affiliation: >-
+      Unidad de Ciencia Abierta, Vicerrectoría de Investigación,
+      Universidad Estatal a Distancia (UNED), Costa Rica
+  - family-names: "Segura Jiménez"
+    given-names: "Steven"
+    orcid: "https://orcid.org/0009-0005-6475-8798"
+    email: "ssegura@uned.ac.cr"
     affiliation: >-
       Unidad de Ciencia Abierta, Vicerrectoría de Investigación,
       Universidad Estatal a Distancia (UNED), Costa Rica
@@ -20,8 +34,8 @@ institution:
 # Identificador de TODAS las versiones: siempre lleva a la más reciente. El de cada
 # versión concreta lo muestra su propio registro de Zenodo.
 doi: "10.5281/zenodo.23139496"
-version: "30"
-date-released: "2026-10-04"
+version: "31"
+date-released: "2026-11-12"
 license:
   - MIT
   - CC-BY-4.0

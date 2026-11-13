@@ -46,11 +46,13 @@ using `CITATION.cff` for the "Cite this repository" button. If they drift, the c
 visitor sees and the one in the permanent archive stop matching, and a published DOI
 cannot be corrected.
 
-Keep in sync, every release: **title, version, release date, author and ORCID, licences**.
+Keep in sync, every release: **title, version, release date, every author with their ORCID, licences**.
 The version and date must also match `APP.version` and `APP.date` in `index.html`.
 
-`.zenodo.json` additionally carries what `CITATION.cff` cannot: the people who
-contributed without being authors, under `contributors`, each with their ORCID.
+`.zenodo.json` can additionally carry, under `contributors`, people who contributed
+without being authors, which `CITATION.cff` has no field for. Since version 31 that list
+is empty: the three people who make the tool are authors, in `authors` and in `creators`.
+If it is ever used again, the two files still have to tell the same story.
 
 The description in `.zenodo.json` is bilingual: English first, then Spanish, separated by
 a rule. Keep both halves saying the same thing.

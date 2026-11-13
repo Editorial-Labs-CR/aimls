@@ -119,9 +119,10 @@ window.__app.runSelfTest()
 
 ### How to cite
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Version 30)
-> [Computer software]. Open Science Unit, Office of the Vice-Rector for Research,
-> Universidad Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
+> Chinchilla Serrano, F. A., Seas Carvajal, C., & Segura Jiménez, S. (2026).
+> *AIMLS: AI Manuscript Labelling System* (Version 31) [Computer software]. Open Science
+> Unit, Office of the Vice-Rector for Research, Universidad Estatal a Distancia.
+> https://doi.org/10.5281/zenodo.23139496
 
 That identifier covers **all versions** and always resolves to the most recent one. Each
 archived version also has its own, shown on its own Zenodo record, for pinning an exact
@@ -257,9 +258,10 @@ window.__app.runSelfTest()
 
 ### Cómo citar
 
-> Chinchilla Serrano, A. (2026). *AIMLS: AI Manuscript Labelling System* (Versión 30)
-> [Software]. Unidad de Ciencia Abierta, Vicerrectoría de Investigación, Universidad
-> Estatal a Distancia. https://doi.org/10.5281/zenodo.23139496
+> Chinchilla Serrano, F. A., Seas Carvajal, C., & Segura Jiménez, S. (2026).
+> *AIMLS: AI Manuscript Labelling System* (Versión 31) [Software]. Unidad de Ciencia
+> Abierta, Vicerrectoría de Investigación, Universidad Estatal a Distancia.
+> https://doi.org/10.5281/zenodo.23139496
 
 Ese identificador cubre **todas las versiones** y siempre lleva a la más reciente. Cada
 versión archivada tiene además el suyo, que aparece en su propio registro de Zenodo,
@@ -286,16 +288,24 @@ implica afiliación ni respaldo, y no se reproduce ningún logotipo. Ver
 
 ## Autoría · Authorship
 
-**Alexander Chinchilla Serrano** · [ORCID 0000-0001-9465-1522](https://orcid.org/0000-0001-9465-1522) · <fchinchillas@uned.ac.cr>
 Unidad de Ciencia Abierta, Vicerrectoría de Investigación
 Universidad Estatal a Distancia (UNED), Costa Rica
 
-**Colaboración · Collaboration:** Unidad de Ciencia Abierta. Revisión de textos, revisión
-del inglés, pruebas de uso y sugerencias de interfaz / text revision, English-language
-review, user testing and interface suggestions.
+| Autoría · Author | ORCID | Aporte · Contribution |
+|---|---|---|
+| **Freddy Alexander Chinchilla Serrano** · <fchinchillas@uned.ac.cr> | [0000-0001-9465-1522](https://orcid.org/0000-0001-9465-1522) | Idea original y desarrollo · Original idea and development |
+| **Carolina Seas Carvajal** · <cseas@uned.ac.cr> | [0000-0002-2102-1973](https://orcid.org/0000-0002-2102-1973) | Revisión de textos, revisión del inglés, pruebas de uso y sugerencias de interfaz · Text revision, English-language review, user testing and interface suggestions |
+| **Steven Segura Jiménez** · <ssegura@uned.ac.cr> | [0009-0005-6475-8798](https://orcid.org/0009-0005-6475-8798) | Revisión de textos, pruebas de uso y sugerencias de interfaz · Text revision, user testing and interface suggestions |
 
-- **Carolina Seas Carvajal** · [ORCID 0000-0002-2102-1973](https://orcid.org/0000-0002-2102-1973) · <cseas@uned.ac.cr>
-- **Steven Segura Jiménez** · [ORCID 0009-0005-6475-8798](https://orcid.org/0009-0005-6475-8798) · <ssegura@uned.ac.cr>
+Hasta la versión 30 solo constaba la primera persona como autora y las otras dos como
+colaboración. Desde la **31** las tres constan como autoras, en la app, en `CITATION.cff` y
+en `.zenodo.json`. El depósito de la v29 conserva la atribución anterior: un identificador
+publicado no se corrige.
+
+*Up to version 30 only the first person was listed as author and the other two as
+collaborators. From **31** all three are authors, in the app, in `CITATION.cff` and in
+`.zenodo.json`. The v29 deposit keeps the earlier attribution: a published identifier
+cannot be corrected.*
 
 **Codificación · Coding:** Claude Opus 5 (Anthropic) — identificador del modelo
 `claude-opus-5` — bajo instrucción, criterio y experiencia editorial humana / under human

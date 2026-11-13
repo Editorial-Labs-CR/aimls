@@ -3,6 +3,50 @@
 Versions are the `APP.version` value shown in the footer and in "About".
 Las versiones son el valor `APP.version` que aparece en el pie y en "Acerca de".
 
+## 31 — 2026-11-12
+
+**Las tres personas que hacen la herramienta constan como autoras.** Hasta la 30 solo
+figuraba la primera como autora, y Carolina Seas Carvajal y Steven Segura Jiménez como
+«colaboración». El código llevaba escrito el porqué de esa distinción: en el preprint sí
+son coautoras, y se entendía que el software era otra cosa.
+
+El motivo del cambio es concreto. Una comisión de carrera profesional que mire el producto
+lee la **línea de cita**, y en esa línea la colaboración no aparece: Zenodo la muestra bajo
+un encabezado aparte y `CITATION.cff` no tiene siquiera un campo donde ponerla. No hay un
+punto medio disponible: los formatos de cita son binarios, no existe «co-desarrollador» ni
+en `CITATION.cff` ni en el vocabulario de `contributors` de Zenodo. Para que el crédito
+exista donde se lee, las tres tienen que estar en `authors` y en `creators`.
+
+Alcanza a la app, al `CITATION.cff`, al `.zenodo.json`, al `README`, al `CONTRIBUTING` y al
+aviso de copyright del archivo y del `LICENSE`. La cita pasa a ser:
+
+> Chinchilla Serrano, F. A., Seas Carvajal, C., & Segura Jiménez, S. (2026). *AIMLS: AI
+> Manuscript Labelling System* (Versión 31) [Software].
+
+**El depósito de la versión 29 conserva la atribución anterior.** Un identificador
+publicado no se corrige, y no se intenta: queda como reatribución documentada aquí.
+
+**En «Acerca de», cada quien con su aporte.** El apartado pasa de «Autoría» más
+«Colaboración» a un solo bloque de autoría con las tres personas, cada una con su
+identificador, su correo y lo que aportó, en los tres idiomas. El pie nombra a las tres,
+con la conjunción de cada idioma. El identificador sale del pie: uno solo junto a tres
+nombres sugiere que la obra es de esa persona, y los tres ya están en «Acerca de».
+
+**La batería de pruebas pasa de 1448 a 1456 aserciones, todas en verde.** Las que
+codificaban la autoría anterior cambian de sentido, y una de ellas se invierte por
+completo: comprobaba que dos personas **no** estuvieran en los datos de cita, y ahora
+comprueba que **ninguna falte**. Se añaden también que el pie nombre a las tres y que la
+conjunción sea la del idioma. Cada una se verificó rompiendo el dato a propósito y viendo
+que fallara nombrando a la persona que falta; una aserción invertida que nadie ve fallar no
+prueba nada.
+
+De paso, la prueba de la cita en APA llevaba el nombre escrito literalmente en la propia
+aserción. Ahora se deriva de `APP.citeAuthor`: con el literal, cambiar la autoría dejaba la
+prueba en rojo por el motivo equivocado y, peor, una autoría nueva podía quedar sin
+comprobar.
+
+---
+
 ## 30 — 2026-10-04
 
 **El identificador permanente vuelve al proyecto.** La versión 29 quedó archivada en
